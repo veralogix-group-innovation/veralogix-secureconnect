@@ -1,7 +1,6 @@
 import { NeonHeading } from "@/components/NeonHeading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MetricPill } from "@/components/MetricPill";
-import { Building2, TrendingDown, Users, Award } from "lucide-react";
+import { Building2, Users, Award, ArrowRight } from "lucide-react";
 
 const caseStudies = [
   {
@@ -9,45 +8,60 @@ const caseStudies = [
     location: "Downtown Metro Area",
     units: 280,
     icon: Building2,
-    challenge: "High energy costs and inefficient maintenance scheduling leading to 15% budget overrun annually.",
-    solution: "Implemented full SecureConnect™ suite including IoT sensors, predictive maintenance AI, and smart EV charging infrastructure.",
-    results: [
-      { label: "Energy Savings", value: "32%" },
-      { label: "Maintenance Cost", value: "-28%" },
-      { label: "Resident Satisfaction", value: "+45%" },
+    headlineKPI: "$180K",
+    kpiLabel: "First-Year Savings",
+    narrative: "Parkside Towers struggled with escalating energy costs and reactive maintenance, leading to 15% budget overruns annually. After implementing SecureConnect™ with IoT sensors and predictive maintenance AI, the property transformed from crisis management to proactive optimization. Energy consumption dropped by 32% through smart automation, while predictive alerts prevented costly equipment failures.",
+    whatChanged: [
+      "Automated HVAC optimization reduced peak energy loads",
+      "Predictive maintenance prevented 3 major equipment failures",
+      "Smart EV charging balanced grid demand during off-peak hours",
+      "Real-time monitoring cut response time from hours to minutes"
     ],
-    testimonial: "SecureConnect™ transformed our operations. The predictive maintenance alone saved us $180K in the first year.",
-    author: "Jane Mitchell, Property Manager"
+    beforeAfter: [
+      { metric: "Energy Cost", before: "$42K/mo", after: "$28.5K/mo" },
+      { metric: "Maintenance Budget", before: "$220K/yr", after: "$158K/yr" },
+      { metric: "Resident Satisfaction", before: "3.2/5", after: "4.6/5" }
+    ]
   },
   {
     name: "Riverside Commons",
     location: "Suburban Complex",
     units: 156,
     icon: Users,
-    challenge: "Security concerns and lack of modern amenities causing 22% annual tenant turnover.",
-    solution: "Deployed biometric access control, AI concierge, and community platform with AR leasing experience.",
-    results: [
-      { label: "Turnover Rate", value: "-65%" },
-      { label: "Leasing Speed", value: "+40%" },
-      { label: "Security Incidents", value: "-89%" },
+    headlineKPI: "65%",
+    kpiLabel: "Turnover Reduction",
+    narrative: "Security incidents and dated amenities drove Riverside's 22% annual turnover rate, costing $340K yearly in leasing and renovations. SecureConnect™ introduced biometric access control, AI concierge services, and an AR leasing experience. Within 8 months, security incidents plummeted 89%, leasing speed increased 40%, and the complex became the area's most desirable address.",
+    whatChanged: [
+      "Biometric access eliminated unauthorized entry and package theft",
+      "AI concierge provided 24/7 resident support without staff expansion",
+      "AR leasing tours converted 68% of virtual visitors to applicants",
+      "Community platform fostered resident engagement and retention"
     ],
-    testimonial: "The biometric access and AI concierge gave us a competitive edge. We're now the most sought-after complex in the area.",
-    author: "Robert Chen, Board of Trustees Chair"
+    beforeAfter: [
+      { metric: "Annual Turnover", before: "22%", after: "7.7%" },
+      { metric: "Leasing Time", before: "45 days", after: "27 days" },
+      { metric: "Security Incidents", before: "34/yr", after: "4/yr" }
+    ]
   },
   {
     name: "Harbor View Estates",
     location: "Coastal Development",
     units: 420,
     icon: Award,
-    challenge: "Aging infrastructure with frequent system failures and resident complaints about amenity availability.",
-    solution: "Complete retrofit with smart IoT network, wellness monitoring, drone inspections, and virtual property management.",
-    results: [
-      { label: "System Uptime", value: "99.7%" },
-      { label: "Complaint Resolution", value: "+78%" },
-      { label: "Property Value", value: "+18%" },
+    headlineKPI: "99.7%",
+    kpiLabel: "System Uptime",
+    narrative: "Harbor View's aging infrastructure caused frequent failures across HVAC, elevators, and water systems. Resident complaints surged while property values stagnated. SecureConnect™ deployed a comprehensive IoT sensor network with drone inspections and virtual property management. The transformation achieved 99.7% uptime, slashed complaint resolution time by 78%, and increased property values 18% in 18 months.",
+    whatChanged: [
+      "IoT sensors detected issues before residents noticed them",
+      "Drone inspections identified roof and facade problems early",
+      "Virtual management dashboard enabled remote monitoring 24/7",
+      "Wellness monitoring ensured amenity systems never went offline"
     ],
-    testimonial: "We went from reactive to proactive management. Residents love the transparency and reliability.",
-    author: "Sarah Williams, Managing Agent"
+    beforeAfter: [
+      { metric: "System Failures", before: "26/yr", after: "2/yr" },
+      { metric: "Avg. Resolution Time", before: "6.5 days", after: "1.4 days" },
+      { metric: "Property Value", before: "$385K avg", after: "$454K avg" }
+    ]
   },
 ];
 
@@ -68,73 +82,70 @@ const CaseStudies = () => {
           {caseStudies.map((study, index) => {
             const Icon = study.icon;
             return (
-              <Card key={index} className="glass animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className="flex items-start justify-between flex-wrap gap-4">
+              <Card key={index} className="glass animate-slide-in overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
+                {/* Headline KPI Banner */}
+                <div className="bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 border-b border-primary/30 p-6">
+                  <div className="flex items-center justify-between flex-wrap gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-4 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20">
+                      <div className="p-3 rounded-lg bg-card/80 backdrop-blur-sm">
                         <Icon className="h-8 w-8 text-primary" />
                       </div>
                       <div>
-                        <CardTitle className="text-3xl mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                          {study.name}
-                        </CardTitle>
-                        <div className="flex gap-2 text-muted-foreground">
-                          <span>{study.location}</span>
-                          <span>•</span>
-                          <span>{study.units} units</span>
-                        </div>
+                        <h3 className="text-2xl font-bold text-foreground mb-1">{study.name}</h3>
+                        <p className="text-sm text-muted-foreground">{study.location} • {study.units} units</p>
                       </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        {study.headlineKPI}
+                      </div>
+                      <p className="text-sm text-muted-foreground uppercase tracking-wide">{study.kpiLabel}</p>
                     </div>
                   </div>
-                </CardHeader>
-                
-                <CardContent className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="text-lg font-semibold text-destructive mb-2">Challenge</h4>
-                        <p className="text-muted-foreground">{study.challenge}</p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-lg font-semibold text-primary mb-2">Solution</h4>
-                        <p className="text-muted-foreground">{study.solution}</p>
-                      </div>
-                    </div>
+                </div>
 
-                    <div className="space-y-4">
-                      <h4 className="text-lg font-semibold text-secondary mb-3">Key Results</h4>
-                      <div className="space-y-3">
-                        {study.results.map((result, idx) => (
-                          <div key={idx} className="flex items-center justify-between p-3 rounded-lg bg-card/50 border border-primary/20">
-                            <span className="text-muted-foreground">{result.label}</span>
-                            <span className="text-2xl font-bold text-primary">{result.value}</span>
+                <CardContent className="p-6 space-y-6">
+                  {/* Narrative */}
+                  <div>
+                    <p className="text-foreground leading-relaxed">{study.narrative}</p>
+                  </div>
+
+                  {/* What Changed */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-3 flex items-center gap-2">
+                      <ArrowRight className="h-5 w-5" />
+                      What Changed
+                    </h4>
+                    <ul className="space-y-2">
+                      {study.whatChanged.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                          <span className="text-secondary mt-1">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Before/After Metrics */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-secondary mb-3">Before & After</h4>
+                    <div className="grid gap-3">
+                      {study.beforeAfter.map((metric, idx) => (
+                        <div key={idx} className="flex items-center justify-between p-4 rounded-lg bg-card/50 border border-primary/20">
+                          <span className="font-medium text-foreground">{metric.metric}</span>
+                          <div className="flex items-center gap-3">
+                            <span className="text-muted-foreground line-through">{metric.before}</span>
+                            <ArrowRight className="h-4 w-4 text-accent" />
+                            <span className="text-primary font-bold text-lg">{metric.after}</span>
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-
-                  <div className="border-l-4 border-accent pl-4 py-2 bg-accent/5 rounded">
-                    <p className="text-foreground italic mb-2">"{study.testimonial}"</p>
-                    <p className="text-sm text-muted-foreground">— {study.author}</p>
                   </div>
                 </CardContent>
               </Card>
             );
           })}
-        </div>
-
-        {/* Overall Stats */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-8">Aggregate Impact Across All Clients</h3>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <MetricPill label="Avg Energy Reduction" value="28%" variant="success" />
-            <MetricPill label="Client Satisfaction" value="4.8/5" variant="info" />
-            <MetricPill label="ROI Timeline" value="18 mo" variant="default" />
-            <MetricPill label="Uptime Guarantee" value="99.9%" variant="success" />
-          </div>
         </div>
       </div>
     </div>
