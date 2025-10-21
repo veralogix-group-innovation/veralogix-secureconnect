@@ -1,89 +1,66 @@
 import { Button } from "@/components/ui/button";
 import { NeonHeading } from "@/components/NeonHeading";
+import { GlowButton } from "@/components/GlowButton";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, Zap, Shield, Brain } from "lucide-react";
-import logo from "@/assets/logo-no-bg.svg";
-import heroBackground from "@/assets/hero-background.png";
+import { ArrowRight, Zap, Shield, Brain } from "lucide-react";
+import { HolographicCity } from "@/components/HolographicCity";
+import { ParticleField } from "@/components/ParticleField";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${heroBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      {/* Hero Section - Full Bleed */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        {/* Particle drift background */}
+        <ParticleField />
+        
+        {/* Holographic city silhouette */}
+        <HolographicCity />
         
         {/* Content */}
         <div className="container relative z-10 mx-auto px-4 py-20 text-center">
-          <div className="animate-fade-in">
-            <img 
-              src={logo} 
-              alt="Veralogix SecureConnect" 
-              className="w-full max-w-3xl mx-auto mb-8 animate-float"
-            />
-          </div>
-          
-          <div className="max-w-4xl mx-auto space-y-8 animate-slide-in">
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              Next-generation smart building solutions for residential complexes.
-              <br />
-              Transform your property with AI-powered security, IoT sensors, and intelligent management.
-            </p>
+          <div className="max-w-5xl mx-auto space-y-12">
+            {/* Main Headline */}
+            <h1 className="text-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight animate-fade-in">
+              <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Secure living,
+              </span>
+              <span className="block text-foreground mt-2">
+                beautifully connected.
+              </span>
+            </h1>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              <Button 
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8 animate-slide-in">
+              <GlowButton 
+                glow="green"
                 variant="hero" 
                 size="lg"
                 asChild
+                className="min-w-[200px]"
               >
                 <Link to="/contact">
-                  Book a Demo <ArrowRight className="ml-2" />
+                  Book a demo
                 </Link>
-              </Button>
+              </GlowButton>
               
-              <Button 
+              <GlowButton 
+                glow="blue"
                 variant="neon" 
                 size="lg"
                 asChild
+                className="min-w-[200px]"
               >
-                <a href="#pitch-deck">
-                  <Download className="mr-2" /> Download Pitch Deck
-                </a>
-              </Button>
-            </div>
-
-            {/* Key Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16">
-              <div className="glass p-6 rounded-xl hover-lift">
-                <Zap className="h-12 w-12 text-primary mb-4 mx-auto" />
-                <h3 className="text-xl font-bold text-foreground mb-2">Smart IoT</h3>
-                <p className="text-muted-foreground">Real-time monitoring and automation</p>
-              </div>
-              
-              <div className="glass p-6 rounded-xl hover-lift">
-                <Shield className="h-12 w-12 text-secondary mb-4 mx-auto" />
-                <h3 className="text-xl font-bold text-foreground mb-2">Secure Access</h3>
-                <p className="text-muted-foreground">Biometric and AI-powered security</p>
-              </div>
-              
-              <div className="glass p-6 rounded-xl hover-lift">
-                <Brain className="h-12 w-12 text-accent mb-4 mx-auto" />
-                <h3 className="text-xl font-bold text-foreground mb-2">AI-Driven</h3>
-                <p className="text-muted-foreground">Predictive maintenance and optimization</p>
-              </div>
+                <Link to="/services">
+                  View services
+                </Link>
+              </GlowButton>
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
           <div className="w-6 h-10 border-2 border-primary rounded-full p-1">
             <div className="w-1.5 h-3 bg-primary rounded-full mx-auto animate-pulse" />
           </div>
