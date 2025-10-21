@@ -74,7 +74,195 @@ const serviceDetails: Record<string, {
       { label: "False Rejects", value: "0.1%" }
     ]
   },
-  // Add more service details as needed
+  "vertical-farms": {
+    title: "Vertical Farming Systems",
+    tagline: "Sustainable food production in your complex",
+    benefits: [
+      "Fresh produce grown on-site for residents",
+      "Zero pesticides and reduced carbon footprint",
+      "Educational opportunities for community",
+      "Reduced food costs through local sourcing"
+    ],
+    features: [
+      "Automated hydroponic growing systems",
+      "Climate-controlled indoor environments",
+      "IoT monitoring of nutrients and growth",
+      "Community harvest programs"
+    ],
+    metrics: [
+      { label: "Fresh Produce", value: "365 days" },
+      { label: "Water Savings", value: "90%" },
+      { label: "Carbon Reduced", value: "75%" }
+    ]
+  },
+  "predictive-maintenance": {
+    title: "Predictive Maintenance AI",
+    tagline: "Prevent problems before they happen",
+    benefits: [
+      "Reduce emergency repairs by 60%",
+      "Extend equipment lifespan by 30%",
+      "Lower maintenance costs significantly",
+      "Minimize resident disruption"
+    ],
+    features: [
+      "Machine learning failure prediction",
+      "Automated work order generation",
+      "Equipment performance tracking",
+      "Vendor scheduling integration"
+    ],
+    metrics: [
+      { label: "Downtime Cut", value: "60%" },
+      { label: "Cost Savings", value: "40%" },
+      { label: "Accuracy", value: "92%" }
+    ]
+  },
+  "ev-charging": {
+    title: "EV Charging Infrastructure",
+    tagline: "Power the future of transportation",
+    benefits: [
+      "Attract eco-conscious residents",
+      "Generate additional revenue streams",
+      "Smart load balancing prevents overload",
+      "Seamless billing integration"
+    ],
+    features: [
+      "Level 2 and DC fast charging",
+      "Dynamic power management",
+      "Mobile app reservation system",
+      "Usage analytics dashboard"
+    ],
+    metrics: [
+      { label: "Stations", value: "Scalable" },
+      { label: "Charge Speed", value: "80% in 30min" },
+      { label: "Uptime", value: "99.5%" }
+    ]
+  },
+  "ar-leasing": {
+    title: "AR Leasing Experience",
+    tagline: "Virtual tours that close deals",
+    benefits: [
+      "Tour units remotely from anywhere",
+      "Visualize furniture in empty spaces",
+      "Digital lease signing saves time",
+      "Higher conversion rates"
+    ],
+    features: [
+      "3D virtual walkthroughs",
+      "AR furniture placement",
+      "E-signature integration",
+      "Virtual staging capabilities"
+    ],
+    metrics: [
+      { label: "Tours Increase", value: "200%" },
+      { label: "Conversion Up", value: "35%" },
+      { label: "Lease Time", value: "-50%" }
+    ]
+  },
+  "dynamic-pricing": {
+    title: "Dynamic Pricing Engine",
+    tagline: "Optimize revenue with AI",
+    benefits: [
+      "Maximize occupancy and revenue",
+      "Real-time market analysis",
+      "Seasonal demand optimization",
+      "Competitive positioning insights"
+    ],
+    features: [
+      "Machine learning price models",
+      "Market data integration",
+      "Automated price adjustments",
+      "Revenue forecasting tools"
+    ],
+    metrics: [
+      { label: "Revenue Gain", value: "15%" },
+      { label: "Occupancy", value: "98%" },
+      { label: "Time to Lease", value: "-25%" }
+    ]
+  },
+  "wellness-monitoring": {
+    title: "Wellness Monitoring",
+    tagline: "Healthier living environments",
+    benefits: [
+      "Track air quality in real-time",
+      "Optimize HVAC for health",
+      "Fitness amenity usage tracking",
+      "Community wellness programs"
+    ],
+    features: [
+      "Air quality sensors (CO2, VOC, PM2.5)",
+      "Temperature and humidity monitoring",
+      "Fitness center analytics",
+      "Wellness app integration"
+    ],
+    metrics: [
+      { label: "Air Quality", value: "Excellent" },
+      { label: "Satisfaction", value: "+40%" },
+      { label: "Energy", value: "-20%" }
+    ]
+  },
+  "virtual-property-management": {
+    title: "Virtual Property Management",
+    tagline: "Cloud-powered operations",
+    benefits: [
+      "Manage properties from anywhere",
+      "Automated rent collection",
+      "Resident portal for requests",
+      "Real-time financial reporting"
+    ],
+    features: [
+      "Cloud-based management platform",
+      "Automated workflows",
+      "Resident communication tools",
+      "Integrated accounting"
+    ],
+    metrics: [
+      { label: "Efficiency", value: "+50%" },
+      { label: "Collections", value: "99%" },
+      { label: "Response Time", value: "<2hr" }
+    ]
+  },
+  "drone-inspections": {
+    title: "Drone Roof Inspections",
+    tagline: "Safer, faster, smarter inspections",
+    benefits: [
+      "Eliminate dangerous roof access",
+      "AI-powered damage detection",
+      "Complete visual documentation",
+      "Insurance claim support"
+    ],
+    features: [
+      "4K video and thermal imaging",
+      "AI damage analysis",
+      "3D roof modeling",
+      "Historical comparison reports"
+    ],
+    metrics: [
+      { label: "Safety", value: "100%" },
+      { label: "Time Saved", value: "80%" },
+      { label: "Accuracy", value: "95%" }
+    ]
+  },
+  "community-platform": {
+    title: "Community Platform",
+    tagline: "Connect your residents",
+    benefits: [
+      "Foster community engagement",
+      "Event planning and RSVPs",
+      "Neighborhood watch features",
+      "Marketplace for residents"
+    ],
+    features: [
+      "Social feed and messaging",
+      "Event calendar and booking",
+      "Classifieds marketplace",
+      "Emergency alerts system"
+    ],
+    metrics: [
+      { label: "Engagement", value: "+150%" },
+      { label: "Active Users", value: "85%" },
+      { label: "Retention", value: "+30%" }
+    ]
+  }
 };
 
 const ServiceDetail = () => {

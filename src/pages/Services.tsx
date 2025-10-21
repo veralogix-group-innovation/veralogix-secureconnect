@@ -103,7 +103,8 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-in">
+        {/* 3×4 Grid: 3 columns on desktop, responsive on smaller screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-in">
           {services.map((service) => (
             <ServiceCard
               key={service.slug}
