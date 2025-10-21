@@ -1,0 +1,157 @@
+/* SecureConnect™ Brand System */
+
+/* CSS Variables - Greens Gradient System */
+:root {
+  --green-gradient-start: #A8CF45;
+  --green-gradient-mid: #BAD96B;
+  --green-gradient-dark: #7D9C33;
+  --green-gradient-darkest: #455C08;
+  
+  /* Neon Accents */
+  --electric-blue: #00FFFF;
+  --neon-pink: #FF6EC7;
+  --cyber-purple: #9D00FF;
+  
+  /* Base */
+  --mine-shaft: #373435;
+  
+  /* Grid breakpoints */
+  --grid-cols-mobile: 4;
+  --grid-cols-tablet: 6;
+  --grid-cols-desktop: 12;
+}
+
+/* Typography Utilities */
+.text-heading {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: hsl(var(--foreground));
+}
+
+.text-body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: hsl(var(--foreground));
+}
+
+.text-accent {
+  color: var(--electric-blue);
+  text-shadow: 0 0 10px var(--electric-blue),
+               0 0 20px var(--electric-blue),
+               0 0 30px rgba(0, 255, 255, 0.5);
+  font-weight: 600;
+}
+
+/* Glow Dust Hover Effect */
+.glow-dust {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-dust::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--green-gradient-start),
+    var(--electric-blue),
+    var(--neon-pink),
+    var(--cyber-purple)
+  );
+  border-radius: inherit;
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.glow-dust:hover::before {
+  opacity: 0.6;
+  animation: dust-shimmer 2s ease-in-out infinite;
+}
+
+.glow-dust:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(168, 207, 69, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+@keyframes dust-shimmer {
+  0%, 100% {
+    filter: blur(20px) brightness(1);
+  }
+  50% {
+    filter: blur(25px) brightness(1.2);
+  }
+}
+
+/* Responsive Grid System */
+.grid-responsive {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Mobile: 4 columns */
+@media (max-width: 767px) {
+  .grid-responsive {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .col-span-1 { grid-column: span 1; }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+  .col-span-4 { grid-column: span 4; }
+  .col-span-full-mobile { grid-column: 1 / -1; }
+}
+
+/* Tablet: 6 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-responsive {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .col-span-1-tablet { grid-column: span 1; }
+  .col-span-2-tablet { grid-column: span 2; }
+  .col-span-3-tablet { grid-column: span 3; }
+  .col-span-4-tablet { grid-column: span 4; }
+  .col-span-5-tablet { grid-column: span 5; }
+  .col-span-6-tablet { grid-column: span 6; }
+  .col-span-full-tablet { grid-column: 1 / -1; }
+}
+
+/* Desktop: 12 columns */
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  
+  .col-span-1-desktop { grid-column: span 1; }
+  .col-span-2-desktop { grid-column: span 2; }
+  .col-span-3-desktop { grid-column: span 3; }
+  .col-span-4-desktop { grid-column: span 4; }
+  .col-span-5-desktop { grid-column: span 5; }
+  .col-span-6-desktop { grid-column: span 6; }
+  .col-span-7-desktop { grid-column: span 7; }
+  .col-span-8-desktop { grid-column: span 8; }
+  .col-span-9-desktop { grid-column: span 9; }
+  .col-span-10-desktop { grid-column: span 10; }
+  .col-span-11-desktop { grid-column: span 11; }
+  .col-span-12-desktop { grid-column: span 12; }
+  .col-span-full-desktop { grid-column: 1 / -1; }
+}
+
+/* Quick utility for full-width spans */
+.col-full {
+  grid-column: 1 / -1;
+}
+
+/* Grid gap utilities */
+.grid-gap-sm { gap: 0.75rem; }
+.grid-gap-md { gap: 1.5rem; }
+.grid-gap-lg { gap: 2rem; }
+.grid-gap-xl { gap: 3rem; }
