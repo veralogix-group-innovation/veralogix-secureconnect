@@ -4,47 +4,70 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar, Mail, Phone, MapPin } from "lucide-react";
+import { Calendar, Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { z } from "zod";
+import { Link } from "react-router-dom";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  org: z.string().trim().max(150, "Organization name must be less than 150 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters")
+});
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
-    phone: "",
+    org: "",
     message: ""
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
     
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
+    // Validate with zod
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0].toString()] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
       toast({
-        title: "Missing Fields",
-        description: "Please fill in all required fields.",
+        title: "Validation Error",
+        description: "Please check the form for errors.",
         variant: "destructive"
       });
       return;
     }
 
     // Simulate form submission
+    setIsSubmitted(true);
     toast({
       title: "Message Sent!",
       description: "We'll get back to you within 24 hours.",
     });
     
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: ""
-    });
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setFormData({
+        name: "",
+        email: "",
+        org: "",
+        message: ""
+      });
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   return (
@@ -63,72 +86,73 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="glass animate-slide-in">
             <CardContent className="pt-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name *</Label>
-                  <Input
-                    id="name"
-                    placeholder="John Smith"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    required
-                    className="bg-background/50 border-primary/30 focus:border-primary"
-                  />
+              {isSubmitted ? (
+                <div className="text-center py-12 space-y-4 animate-fade-in">
+                  <div className="flex justify-center">
+                    <CheckCircle2 className="h-16 w-16 text-primary animate-scale-in" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
+                  <p className="text-muted-foreground">
+                    We'll get back to you within 24 hours.
+                  </p>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Full Name *</Label>
+                    <Input
+                      id="name"
+                      placeholder="John Smith"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className={`bg-background/50 border-primary/30 focus:border-primary ${errors.name ? 'border-destructive' : ''}`}
+                    />
+                    {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    required
-                    className="bg-background/50 border-primary/30 focus:border-primary"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email Address *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className={`bg-background/50 border-primary/30 focus:border-primary ${errors.email ? 'border-destructive' : ''}`}
+                    />
+                    {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company / Complex Name</Label>
-                  <Input
-                    id="company"
-                    placeholder="Parkside Towers"
-                    value={formData.company}
-                    onChange={(e) => setFormData({...formData, company: e.target.value})}
-                    className="bg-background/50 border-primary/30 focus:border-primary"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="org">Organization</Label>
+                    <Input
+                      id="org"
+                      placeholder="Parkside Towers"
+                      value={formData.org}
+                      onChange={(e) => setFormData({...formData, org: e.target.value})}
+                      className={`bg-background/50 border-primary/30 focus:border-primary ${errors.org ? 'border-destructive' : ''}`}
+                    />
+                    {errors.org && <p className="text-sm text-destructive">{errors.org}</p>}
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+1 (555) 123-4567"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="bg-background/50 border-primary/30 focus:border-primary"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message *</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell us about your complex and what services interest you..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      className={`bg-background/50 border-primary/30 focus:border-primary resize-none ${errors.message ? 'border-destructive' : ''}`}
+                    />
+                    {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your complex and what services interest you..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    required
-                    className="bg-background/50 border-primary/30 focus:border-primary resize-none"
-                  />
-                </div>
-
-                <Button type="submit" variant="hero" size="lg" className="w-full">
-                  Send Message
-                </Button>
-              </form>
+                  <Button type="submit" variant="hero" size="lg" className="w-full">
+                    Send Message
+                  </Button>
+                </form>
+              )}
             </CardContent>
           </Card>
 
@@ -141,12 +165,12 @@ const Contact = () => {
                     <Calendar className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">Schedule a Demo</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-2">Request a Live Demo</h3>
                     <p className="text-muted-foreground mb-4">
                       Book a personalized 30-minute walkthrough of SecureConnect™ tailored to your complex's needs.
                     </p>
-                    <Button variant="glass">
-                      Open Calendar
+                    <Button variant="glass" asChild>
+                      <Link to="/demo">View Demo Dashboard</Link>
                     </Button>
                   </div>
                 </div>
