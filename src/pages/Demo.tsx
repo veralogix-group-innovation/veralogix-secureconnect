@@ -28,13 +28,13 @@ const sensorData = [
 ];
 
 const energyData = [
-  { time: "00:00", usage: 420 },
-  { time: "04:00", usage: 280 },
-  { time: "08:00", usage: 680 },
-  { time: "12:00", usage: 920 },
-  { time: "16:00", usage: 1050 },
-  { time: "20:00", usage: 780 },
-  { time: "Now", usage: 890 },
+  { day: "Mon", usage: 1188 },
+  { day: "Tue", usage: 1095 },
+  { day: "Wed", usage: 1142 },
+  { day: "Thu", usage: 1220 },
+  { day: "Fri", usage: 1165 },
+  { day: "Sat", usage: 980 },
+  { day: "Today", usage: 1097 },
 ];
 
 const waterData = [
@@ -178,7 +178,7 @@ const Demo = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-primary">
                 <Activity className="h-5 w-5" />
-                Energy Usage (24h)
+                Energy Usage (Last 7 Days)
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -200,7 +200,7 @@ const Demo = () => {
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
                   <XAxis 
-                    dataKey="time" 
+                    dataKey="day" 
                     stroke="hsl(var(--muted-foreground))" 
                     fontSize={12}
                   />
@@ -268,6 +268,14 @@ const Demo = () => {
                 <Car className="h-5 w-5" />
                 EV Load Manager Timeline
               </CardTitle>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 rounded-full bg-accent" />
+                  <span>Current Load: 25.4 kW</span>
+                </div>
+                <span>•</span>
+                <span>Limit: 150 kW</span>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="relative space-y-4">
