@@ -5,13 +5,17 @@ interface NeonHeadingProps {
   level?: "h1" | "h2" | "h3";
   className?: string;
   gradient?: boolean;
+  id?: string;
+  style?: React.CSSProperties;
 }
 
 export const NeonHeading = ({ 
   children, 
   level = "h2", 
   className = "",
-  gradient = true 
+  gradient = true,
+  id,
+  style
 }: NeonHeadingProps) => {
   const baseClasses = "font-bold tracking-tight";
   const gradientClasses = gradient 
@@ -27,7 +31,7 @@ export const NeonHeading = ({
   const Component = level;
 
   return (
-    <Component className={cn(baseClasses, sizes[level], gradientClasses, className)}>
+    <Component id={id} className={cn(baseClasses, sizes[level], gradientClasses, className)} style={style}>
       {children}
     </Component>
   );

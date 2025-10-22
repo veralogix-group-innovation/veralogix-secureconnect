@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Full Bleed */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black" aria-label="Hero section">
         {/* Particle drift background */}
         <ParticleField />
         
@@ -19,19 +19,19 @@ const Home = () => {
         
         {/* Content */}
         <div className="container relative z-10 mx-auto px-4 py-20 text-center">
-          <div className="max-w-5xl mx-auto space-y-12">
+          <div className="max-w-5xl mx-auto" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--g4)' }}>
             {/* Main Headline */}
             <h1 className="text-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight animate-fade-in">
               <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Secure living,
               </span>
-              <span className="block text-foreground mt-2">
+              <span className="block text-foreground" style={{ marginTop: 'var(--g2)' }}>
                 beautifully connected.
               </span>
             </h1>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8 animate-slide-in">
+            <div className="flex flex-col sm:flex-row justify-center items-center animate-slide-in" style={{ gap: 'var(--g3)', paddingTop: 'var(--g4)' }}>
               <GlowButton 
                 glow="green"
                 variant="hero" 
@@ -39,7 +39,7 @@ const Home = () => {
                 asChild
                 className="min-w-[200px]"
               >
-                <Link to="/contact">
+                <Link to="/contact" aria-label="Book a demo for SecureConnect">
                   Book a demo
                 </Link>
               </GlowButton>
@@ -51,7 +51,7 @@ const Home = () => {
                 asChild
                 className="min-w-[200px]"
               >
-                <Link to="/services">
+                <Link to="/services" aria-label="View all SecureConnect services">
                   View services
                 </Link>
               </GlowButton>
@@ -60,7 +60,7 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20" role="presentation" aria-hidden="true">
           <div className="w-6 h-10 border-2 border-primary rounded-full p-1">
             <div className="w-1.5 h-3 bg-primary rounded-full mx-auto animate-pulse" />
           </div>
@@ -68,10 +68,10 @@ const Home = () => {
       </section>
 
       {/* Services Overview Section */}
-      <section className="py-20 px-4">
+      <section className="px-4" style={{ paddingTop: 'var(--g4)', paddingBottom: 'var(--g4)' }} aria-labelledby="services-heading">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <NeonHeading level="h2" className="mb-4">
+          <div className="text-center" style={{ marginBottom: 'var(--g4)' }}>
+            <NeonHeading level="h2" id="services-heading" style={{ marginBottom: 'var(--g2)' }}>
               Comprehensive Smart Solutions
             </NeonHeading>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -81,8 +81,8 @@ const Home = () => {
           
           <div className="text-center">
             <Button variant="glass" size="lg" asChild>
-              <Link to="/services">
-                Explore All Services <ArrowRight className="ml-2" />
+              <Link to="/services" aria-label="Explore all SecureConnect services">
+                Explore All Services <ArrowRight className="ml-2" aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -90,17 +90,17 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
+      <section className="px-4 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10" style={{ paddingTop: 'var(--g4)', paddingBottom: 'var(--g4)' }} aria-labelledby="cta-heading">
         <div className="container mx-auto text-center">
-          <NeonHeading level="h2" className="mb-6">
+          <NeonHeading level="h2" id="cta-heading" style={{ marginBottom: 'var(--g3)' }}>
             Ready to Transform Your Complex?
           </NeonHeading>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto" style={{ marginBottom: 'var(--g4)' }}>
             Join forward-thinking trustees and managing agents who are already leveraging SecureConnect™
           </p>
           <Button variant="hero" size="lg" asChild>
-            <Link to="/contact">
-              Schedule a Consultation <ArrowRight className="ml-2" />
+            <Link to="/contact" aria-label="Schedule a consultation with SecureConnect">
+              Schedule a Consultation <ArrowRight className="ml-2" aria-hidden="true" />
             </Link>
           </Button>
         </div>

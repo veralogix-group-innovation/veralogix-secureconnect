@@ -51,36 +51,40 @@ const ServiceDetail = () => {
               <p className="text-2xl text-muted-foreground">{service.tagline}</p>
             </div>
 
-            {/* Video Placeholder */}
+            {/* Video Placeholder with lazy loading */}
             <Card className="glass overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <Button variant="hero" size="lg">
-                  <PlayCircle className="mr-2 h-6 w-6" /> Watch Demo (30s)
+              <div 
+                className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center"
+                role="img"
+                aria-label={`${service.title} demonstration video placeholder`}
+              >
+                <Button variant="hero" size="lg" aria-label={`Play ${service.title} 30 second demo video`}>
+                  <PlayCircle className="mr-2 h-6 w-6" aria-hidden="true" /> Watch Demo (30s)
                 </Button>
               </div>
             </Card>
 
             {/* How It Works */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <section id="how-it-works" aria-labelledby="how-it-works-heading">
+              <h2 id="how-it-works-heading" className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" style={{ marginBottom: 'var(--g3)' }}>
                 How It Works
               </h2>
               <FeatureDiagram steps={service.howItWorks.steps} />
             </section>
 
             {/* Benefits & Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--g4)' }} id="benefits">
               <Card className="glass">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-primary flex items-center gap-2">
-                    <CheckCircle2 className="h-6 w-6" />
+                  <CardTitle className="text-2xl text-primary flex items-center" style={{ gap: 'var(--g1)' }}>
+                    <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
                     Key Benefits
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent style={{ display: 'flex', flexDirection: 'column', gap: 'var(--g2)' }}>
                   {service.benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div key={index} className="flex items-start" style={{ gap: 'var(--g2)' }}>
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" role="presentation" />
                       <p className="text-foreground">{benefit}</p>
                     </div>
                   ))}
@@ -89,15 +93,15 @@ const ServiceDetail = () => {
 
               <Card className="glass">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-secondary flex items-center gap-2">
-                    <Award className="h-6 w-6" />
+                  <CardTitle className="text-2xl text-secondary flex items-center" style={{ gap: 'var(--g1)' }}>
+                    <Award className="h-6 w-6" aria-hidden="true" />
                     Core Features
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent style={{ display: 'flex', flexDirection: 'column', gap: 'var(--g2)' }}>
                   {service.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                    <div key={index} className="flex items-start" style={{ gap: 'var(--g2)' }}>
+                      <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" role="presentation" />
                       <p className="text-foreground">{feature}</p>
                     </div>
                   ))}
@@ -106,13 +110,13 @@ const ServiceDetail = () => {
             </div>
 
             {/* FAQs */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <HelpCircle className="h-8 w-8 text-accent" />
+            <section id="faqs" aria-labelledby="faqs-heading">
+              <h2 id="faqs-heading" className="text-3xl font-bold flex items-center" style={{ marginBottom: 'var(--g3)', gap: 'var(--g2)' }}>
+                <HelpCircle className="h-8 w-8 text-accent" aria-hidden="true" />
                 Frequently Asked Questions
               </h2>
               <Card className="glass">
-                <CardContent className="pt-6">
+                <CardContent style={{ paddingTop: 'var(--g3)' }}>
                   <Accordion type="single" collapsible className="w-full">
                     {service.faqs.map((faq, index) => (
                       <AccordionItem key={index} value={`item-${index}`}>

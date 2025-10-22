@@ -92,27 +92,28 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen py-20 px-4">
+    <div className="min-h-screen px-4" style={{ paddingTop: 'var(--g4)', paddingBottom: 'var(--g4)' }}>
       <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <NeonHeading level="h1" className="mb-6">
+        <header className="text-center animate-fade-in" style={{ marginBottom: 'var(--g4)' }}>
+          <NeonHeading level="h1" style={{ marginBottom: 'var(--g3)' }}>
             SecureConnect™ Services
           </NeonHeading>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive smart building solutions designed for the future of residential complex management
           </p>
-        </div>
+        </header>
 
         {/* 3×4 Grid: 3 columns on desktop, responsive on smaller screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-in">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 animate-slide-in" style={{ gap: 'var(--g4)' }} role="list">
           {services.map((service) => (
-            <ServiceCard
-              key={service.slug}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              slug={service.slug}
-            />
+            <div key={service.slug} role="listitem">
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                slug={service.slug}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -25,19 +25,18 @@ export const ServiceCard = ({ title, description, icon: Icon, slug }: ServiceCar
         "transition-all duration-500 hover-lift"
       )}
     >
-      <Link to={`/services/${slug}`} className="block h-full">
-        <CardHeader className="space-y-4">
-          <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-primary/30 to-secondary/20 group-hover:from-primary/50 group-hover:to-secondary/40 transition-all duration-300">
+      <Link to={`/services/${slug}`} className="block h-full" aria-label={`Learn more about ${title}`}>
+        <CardHeader style={{ display: 'flex', flexDirection: 'column', gap: 'var(--g2)' }}>
+          <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-primary/30 to-secondary/20 group-hover:from-primary/50 group-hover:to-secondary/40 transition-all duration-300" aria-hidden="true">
             <Icon 
-              className="h-8 w-8 text-primary group-hover:text-secondary transition-colors duration-300" 
-              aria-label={`${title} icon`}
+              className="h-8 w-8 text-primary group-hover:text-secondary transition-colors duration-300"
             />
           </div>
           <h3 className="text-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent style={{ display: 'flex', flexDirection: 'column', gap: 'var(--g3)' }}>
           <p className="text-body text-muted-foreground leading-relaxed line-clamp-2">
             {description}
           </p>
@@ -45,9 +44,10 @@ export const ServiceCard = ({ title, description, icon: Icon, slug }: ServiceCar
             variant="ghost" 
             size="sm"
             className="w-full group/btn border border-primary/30 hover:border-primary hover:bg-primary/10 text-primary"
+            aria-label={`Explore ${title} service details`}
           >
             Explore
-            <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
           </Button>
         </CardContent>
       </Link>

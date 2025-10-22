@@ -75,6 +75,12 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 73 57% 54% / 0.3;
     --sidebar-ring: 73 57% 54%;
+    
+    /* Spacing tokens */
+    --g1: 0.5rem;
+    --g2: 1rem;
+    --g3: 1.5rem;
+    --g4: 2rem;
   }
 }
 
@@ -106,9 +112,43 @@ All colors MUST be HSL.
   }
   
   /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure visible focus indicators for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Skip-to-content link for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
 }
 
 @layer components {
