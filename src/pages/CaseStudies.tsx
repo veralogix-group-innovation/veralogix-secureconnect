@@ -1,6 +1,6 @@
 import { NeonHeading } from "@/components/NeonHeading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Building2, Users, Award, ArrowRight } from "lucide-react";
+import { CardFX } from "@/components/CardFX";
+import { Building2, Users, Award } from "lucide-react";
 
 const caseStudies = [
   {
@@ -75,74 +75,32 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        <div className="space-y-12">
-          {caseStudies.map((study, index) => {
-            const Icon = study.icon;
-            return (
-              <Card key={index} className="glass animate-slide-in overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
-                {/* Headline KPI Banner */}
-                <div className="bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 border-b border-primary/30 p-6">
-                  <div className="flex items-center justify-between flex-wrap gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-card/80 backdrop-blur-sm">
-                        <Icon className="h-8 w-8 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-foreground mb-1">{study.name}</h3>
-                        <p className="text-sm text-muted-foreground">{study.location} • {study.units} units</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        {study.headlineKPI}
-                      </div>
-                      <p className="text-sm text-muted-foreground uppercase tracking-wide">{study.kpiLabel}</p>
-                    </div>
-                  </div>
-                </div>
+        <div className="container mx-auto" style={{ width: 'min(1100px, 92vw)' }}>
+          <div className="flex flex-wrap gap-7 justify-center">
+            {caseStudies.map((study, index) => {
+              const Icon = study.icon;
+              
+              // Construct description with narrative + key metrics
+              const description = `${study.narrative.slice(0, 140)}... 
+              
+What Changed:
+${study.whatChanged.slice(0, 2).map(item => `• ${item}`).join('\n')}
 
-                <CardContent className="p-6 space-y-6">
-                  {/* Narrative */}
-                  <div>
-                    <p className="text-foreground leading-relaxed">{study.narrative}</p>
-                  </div>
-
-                  {/* What Changed */}
-                  <div>
-                    <h4 className="text-lg font-semibold text-primary mb-3 flex items-center gap-2">
-                      <ArrowRight className="h-5 w-5" />
-                      What Changed
-                    </h4>
-                    <ul className="space-y-2">
-                      {study.whatChanged.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                          <span className="text-secondary mt-1">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Before/After Metrics */}
-                  <div>
-                    <h4 className="text-lg font-semibold text-secondary mb-3">Before & After</h4>
-                    <div className="grid gap-3">
-                      {study.beforeAfter.map((metric, idx) => (
-                        <div key={idx} className="flex items-center justify-between p-4 rounded-lg bg-card/50 border border-primary/20">
-                          <span className="font-medium text-foreground">{metric.metric}</span>
-                          <div className="flex items-center gap-3">
-                            <span className="text-muted-foreground line-through">{metric.before}</span>
-                            <ArrowRight className="h-4 w-4 text-accent" />
-                            <span className="text-primary font-bold text-lg">{metric.after}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+Before → After:
+${study.beforeAfter.map(m => `${m.metric}: ${m.before} → ${m.after}`).join(' | ')}`;
+              
+              return (
+                <CardFX
+                  key={index}
+                  title={`${study.name}\n${study.headlineKPI} ${study.kpiLabel}`}
+                  icon={<Icon className="h-12 w-12" />}
+                  description={description}
+                  ctaLabel="View Full Story"
+                  ctaLink="#"
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
