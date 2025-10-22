@@ -1,0 +1,165 @@
+/* CardFX Component - Neon Green Flip Card Effect */
+
+/* Card container */
+.card {
+  position: relative;
+  width: var(--card-w, 300px);
+  height: var(--card-h, 200px);
+}
+
+/* Shared face styles */
+.face {
+  width: 100%;
+  height: 100%;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, box-shadow, filter, opacity;
+  border-radius: 14px;
+}
+
+/* Face 1 (Front - Icon + Title) */
+.face1 {
+  position: relative;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transform: translateY(100px);
+  box-shadow: inset 0 0 0 1px rgba(111, 255, 0, 0.18);
+}
+
+.card:hover .face1 {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 0 60px rgba(255, 255, 255, 0.06),
+    inset 20px 0 90px var(--neonD),
+    inset -20px 0 90px var(--neonB),
+    inset 20px 0 260px var(--neonE),
+    inset -20px 0 260px var(--neonC),
+    0 0 36px rgba(0, 0, 0, 0.6),
+    -10px 0 80px rgba(79, 255, 0, 0.25),
+    10px 0 80px rgba(143, 255, 0, 0.25);
+}
+
+/* Front content */
+.face1 .content {
+  opacity: 0.28;
+  text-align: center;
+  transition: opacity 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .face1 .content {
+  opacity: 1;
+}
+
+.face1 .iconWrapper {
+  font-size: 3em;
+  color: var(--neonE);
+  filter: drop-shadow(0 0 6px rgba(111, 255, 0, 0.35));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.face1 .iconWrapper > * {
+  width: 1em;
+  height: 1em;
+}
+
+.face1 h3 {
+  margin: 0.6rem 0 0;
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* Face 2 (Back - Description + CTA) */
+.face2 {
+  position: relative;
+  background: #0e0e0e;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateY(-100px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 
+              0 0 0 1px rgba(111, 255, 0, 0.16) inset;
+}
+
+.card:hover .face2 {
+  transform: translateY(0);
+}
+
+/* Back content */
+.face2 .content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  color: #e9ffe9;
+}
+
+.face2 .content a {
+  display: inline-block;
+  margin: 15px 0 0;
+  padding: 10px 14px;
+  color: #0B0B0B;
+  text-decoration: none;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--neonA), var(--neonC) 55%, var(--neonE));
+  border-radius: 999px;
+  border: 0;
+  box-shadow: 0 0 18px rgba(31, 255, 0, 0.55);
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+
+.face2 .content a:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 0 28px rgba(79, 255, 0, 0.65), 
+              0 0 56px rgba(79, 255, 0, 0.35);
+}
+
+.face2 .content a:focus-visible {
+  outline: 2px solid var(--neonC);
+  outline-offset: 3px;
+}
+
+/* Responsiveness */
+@media (max-width: 980px) {
+  .card {
+    --card-w: 44vw;
+    --card-h: 200px;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    --card-w: 86vw;
+    --card-h: 190px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .face {
+    transition: none;
+  }
+  
+  .face1,
+  .face2 {
+    transform: none !important;
+  }
+  
+  .card:hover .face1,
+  .card:hover .face2 {
+    transform: none !important;
+  }
+}

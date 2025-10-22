@@ -10,6 +10,14 @@
   
   /* Base */
   --mine-shaft: #373435;
+  --white: #FFFFFF;
+  
+  /* Neon Green Ramp (accents) */
+  --neonA: #1FFF00; /* rgb(31,255,0)  */
+  --neonB: #4FFF00; /* rgb(79,255,0)  */
+  --neonC: #6FFF00; /* rgb(111,255,0) */
+  --neonD: #8FFF00; /* rgb(143,255,0) */
+  --neonE: #9FFF00; /* rgb(159,255,0) */
   
   /* Grid breakpoints */
   --grid-cols-mobile: 4;
