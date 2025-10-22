@@ -30,9 +30,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Sensors are installed throughout the property in key areas",
-        "Data streams to cloud dashboard in real-time with AI analysis",
-        "Alerts sent instantly to property management and maintenance teams"
+        "Sensor nodes deployed",
+        "LoRaWAN gateway relay",
+        "BMS/IoT platform integration",
+        "Dashboards & alerts",
+        "Predictive maintenance loop"
       ]
     },
     faqs: [
@@ -75,9 +77,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Resident asks question via app, SMS, or voice interface",
-        "AI understands intent and searches knowledge base",
-        "Response provided instantly or ticket created for complex issues"
+        "Resident request received",
+        "NLP intent analysis",
+        "Route to booking/maintenance/FAQ",
+        "Status update & notification"
       ]
     },
     faqs: [
@@ -120,9 +123,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Resident enrolls biometrics via secure mobile app",
-        "System creates encrypted template stored in cloud",
-        "Entry granted in under 2 seconds with multi-factor verification"
+        "Enrollment with consent",
+        "On-device biometric match",
+        "Door controller access",
+        "Immutable audit log (privacy-first)"
       ]
     },
     faqs: [
@@ -165,9 +169,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Hydroponic towers installed in common areas or rooftops",
-        "Automated system controls water, nutrients, and lighting cycles",
-        "Residents harvest fresh produce weekly through community program"
+        "Hydro/aero stacks deployed",
+        "Sensor feedback monitoring",
+        "LED & irrigation control",
+        "Harvest cycle",
+        "Community hub distribution"
       ]
     },
     faqs: [
@@ -210,9 +216,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "IoT sensors monitor equipment performance and detect anomalies",
-        "AI predicts failures 2-4 weeks before they occur",
-        "Automated work orders scheduled during optimal maintenance windows"
+        "Data lake aggregation",
+        "ML anomaly detection model",
+        "Ticket priority assignment",
+        "Technician dispatch",
+        "Feedback loop improves model"
       ]
     },
     faqs: [
@@ -255,9 +263,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Charging stations installed with smart load management",
-        "Residents reserve and pay through mobile app",
-        "Dynamic pricing and billing automatically integrated with rent"
+        "Smart load manager allocates power",
+        "EV chargers energized",
+        "Solar/battery buffer integration",
+        "Off-peak scheduling optimization"
       ]
     },
     faqs: [
@@ -300,9 +309,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "3D scan of units creates immersive virtual tour",
-        "Prospects explore via mobile AR or web browser from anywhere",
-        "Digital application and e-signature complete lease in minutes"
+        "3D scan performed",
+        "Virtual tour published",
+        "CRM lead capture",
+        "E-lease execution"
       ]
     },
     faqs: [
@@ -345,9 +355,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "AI analyzes 50+ factors: market rates, seasonality, local events, unit features",
-        "Price recommendations generated daily for each unit and floor plan",
-        "Auto-adjust prices or approve recommendations via dashboard"
+        "Demand/seasonality/cost inputs",
+        "Pricing engine calculates optimal rates",
+        "Resident UI displays pricing",
+        "Governance guardrails enforce limits"
       ]
     },
     faqs: [
@@ -390,9 +401,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Sensors monitor air quality, temperature, humidity in real-time",
-        "HVAC systems auto-adjust for optimal health and comfort",
-        "Residents receive wellness scores and tips via mobile app"
+        "CO₂/PM/VOC/noise sensors",
+        "Threshold monitoring",
+        "HVAC auto-adjustments",
+        "Comfort index published"
       ]
     },
     faqs: [
@@ -435,9 +447,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Entire property operations centralized in cloud platform",
-        "Automated workflows handle rent collection, maintenance, communication",
-        "Real-time dashboards provide insights from anywhere on any device"
+        "Tenant portal interface",
+        "Work orders bidirectional",
+        "Payments processing",
+        "IoT oversight integration"
       ]
     },
     faqs: [
@@ -480,9 +493,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Drone captures 4K video and thermal imaging of entire roof",
-        "AI analyzes footage and identifies damage, wear, and defects",
-        "Detailed report with 3D model and repair recommendations delivered in 48 hours"
+        "Flight plan programmed",
+        "Roof imaging capture",
+        "AI defect detection",
+        "Maintenance ticket generated"
       ]
     },
     faqs: [
@@ -525,9 +539,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     howItWorks: {
       steps: [
-        "Residents join private community via mobile app or web",
-        "Share updates, organize events, buy/sell items, and connect with neighbors",
-        "Management pushes important alerts and gauges community satisfaction"
+        "Events/messaging/polls posted",
+        "AI moderation filters content",
+        "Analytics dashboard insights"
       ]
     },
     faqs: [
