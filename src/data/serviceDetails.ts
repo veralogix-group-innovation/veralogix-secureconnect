@@ -14,9 +14,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     tagline: "Transform your complex into an intelligent ecosystem",
     benefits: [
       "30% reduction in energy costs through real-time monitoring",
-      "Proactive leak detection prevents costly water damage",
-      "Automated HVAC optimization for resident comfort",
-      "Predictive analytics for utility usage patterns"
+      "Proactive leak detection prevents $50K+ water damage claims",
+      "99.9% sensor uptime with <5 min emergency response time"
     ],
     features: [
       "Temperature, humidity, and air quality sensors",
@@ -59,10 +58,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "AI Concierge",
     tagline: "Your 24/7 intelligent building assistant",
     benefits: [
-      "Instant response to resident queries any time",
-      "Automated maintenance request routing",
-      "Package delivery notifications and tracking",
-      "Amenity booking and calendar management"
+      "85% of queries resolved instantly with <30s response time",
+      "Automated maintenance request routing reduces staff workload by 40%",
+      "4.7/5 resident satisfaction score with 24/7 availability"
     ],
     features: [
       "Natural language processing in multiple languages",
@@ -105,10 +103,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Biometric Access Control",
     tagline: "Secure, touchless, and seamless entry",
     benefits: [
-      "Eliminate lost keys and access cards",
-      "Audit trail for all entry events",
-      "Guest access with time-limited permissions",
-      "Enhanced security with face + fingerprint"
+      "99.8% recognition accuracy with <2 second entry speed",
+      "Complete audit trail eliminates security card replacement costs ($50/card)",
+      "0.1% false rejection rate with multi-factor backup methods"
     ],
     features: [
       "Facial recognition with mask detection",
@@ -151,10 +148,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Vertical Farming Systems",
     tagline: "Sustainable food production in your complex",
     benefits: [
-      "Fresh produce grown on-site for residents",
-      "Zero pesticides and reduced carbon footprint",
-      "Educational opportunities for community",
-      "Reduced food costs through local sourcing"
+      "365-day fresh produce with 90% less water than traditional farming",
+      "75% carbon footprint reduction from eliminated transportation",
+      "30-40% cost savings vs. retail prices for residents"
     ],
     features: [
       "Automated hydroponic growing systems",
@@ -197,10 +193,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Predictive Maintenance AI",
     tagline: "Prevent problems before they happen",
     benefits: [
-      "Reduce emergency repairs by 60%",
-      "Extend equipment lifespan by 30%",
-      "Lower maintenance costs significantly",
-      "Minimize resident disruption"
+      "60% reduction in emergency repairs and equipment downtime",
+      "40% lower maintenance costs with 92% prediction accuracy",
+      "30% extended equipment lifespan through proactive care"
     ],
     features: [
       "Machine learning failure prediction",
@@ -243,10 +238,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "EV Charging Infrastructure",
     tagline: "Power the future of transportation",
     benefits: [
-      "Attract eco-conscious residents",
-      "Generate additional revenue streams",
-      "Smart load balancing prevents overload",
-      "Seamless billing integration"
+      "99.5% uptime with 80% charge in 30 minutes",
+      "Smart load management prevents electrical overload",
+      "Generate additional revenue with flexible billing models"
     ],
     features: [
       "Level 2 and DC fast charging",
@@ -289,10 +283,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "AR Leasing Experience",
     tagline: "Virtual tours that close deals",
     benefits: [
-      "Tour units remotely from anywhere",
-      "Visualize furniture in empty spaces",
-      "Digital lease signing saves time",
-      "Higher conversion rates"
+      "200% increase in tour volume with 24/7 virtual access",
+      "35% higher conversion rates through emotional connection",
+      "50% reduction in lease signing time with digital workflows"
     ],
     features: [
       "3D virtual walkthroughs",
@@ -335,10 +328,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Dynamic Pricing Engine",
     tagline: "Optimize revenue with AI",
     benefits: [
-      "Maximize occupancy and revenue",
-      "Real-time market analysis",
-      "Seasonal demand optimization",
-      "Competitive positioning insights"
+      "15% revenue increase with 98% occupancy rates",
+      "25% faster time-to-lease through optimized pricing",
+      "Real-time analysis of 50+ market factors updated daily"
     ],
     features: [
       "Machine learning price models",
@@ -381,10 +373,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Wellness Monitoring",
     tagline: "Healthier living environments",
     benefits: [
-      "Track air quality in real-time",
-      "Optimize HVAC for health",
-      "Fitness amenity usage tracking",
-      "Community wellness programs"
+      "40% increase in resident satisfaction through excellent air quality",
+      "20% energy savings through optimized HVAC automation",
+      "Real-time monitoring of CO2, VOCs, PM2.5, and humidity"
     ],
     features: [
       "Air quality sensors (CO2, VOC, PM2.5)",
@@ -427,10 +418,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Virtual Property Management",
     tagline: "Cloud-powered operations",
     benefits: [
-      "Manage properties from anywhere",
-      "Automated rent collection",
-      "Resident portal for requests",
-      "Real-time financial reporting"
+      "50% efficiency gain through automated workflows and cloud access",
+      "99% rent collection rate with <2 hour response time",
+      "Bank-level security with 99.9% uptime SLA"
     ],
     features: [
       "Cloud-based management platform",
@@ -473,10 +463,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Drone Roof Inspections",
     tagline: "Safer, faster, smarter inspections",
     benefits: [
-      "Eliminate dangerous roof access",
-      "AI-powered damage detection",
-      "Complete visual documentation",
-      "Insurance claim support"
+      "100% safety improvement eliminating dangerous roof access",
+      "80% time savings with 95% AI damage detection accuracy",
+      "Complete 4K video documentation delivered in 48 hours"
     ],
     features: [
       "4K video and thermal imaging",
@@ -519,10 +508,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     title: "Community Platform",
     tagline: "Connect your residents",
     benefits: [
-      "Foster community engagement",
-      "Event planning and RSVPs",
-      "Neighborhood watch features",
-      "Marketplace for residents"
+      "150% increase in community engagement with 85% active users",
+      "30% improvement in retention rates through stronger connections",
+      "Private platform with AI moderation and emergency alerts"
     ],
     features: [
       "Social feed and messaging",

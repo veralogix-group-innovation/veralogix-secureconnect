@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { NeonHeading } from "@/components/NeonHeading";
 import { Button } from "@/components/ui/button";
+import { GlowButton } from "@/components/GlowButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";
 import { FeatureDiagram } from "@/components/FeatureDiagram";
@@ -140,9 +141,9 @@ const ServiceDetail = () => {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button variant="hero" size="lg" asChild>
+                  <GlowButton glow="green" size="lg" asChild>
                     <Link to="/contact">Schedule a Demo</Link>
-                  </Button>
+                  </GlowButton>
                   <Button variant="glass" size="lg" asChild>
                     <Link to="/services">
                       <ArrowLeft className="mr-2" /> View All Services
