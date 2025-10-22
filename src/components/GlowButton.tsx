@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import { ButtonProps } from "@/components/ui/button";
 
 interface GlowButtonProps extends ButtonProps {
-  glow?: "green" | "blue" | "pink";
+  glow?: "green" | "light";
 }
 
 export const GlowButton = ({ glow = "green", className = "", ...props }: GlowButtonProps) => {
-  const glowClass = glow === "green" ? "glow-green" : glow === "blue" ? "glow-blue" : "glow-pink";
+  const glowClass = glow === "green" ? "glow-green" : "glow-light";
   
   return (
     <Button 

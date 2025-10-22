@@ -45,7 +45,7 @@ const Home = () => {
               </GlowButton>
               
               <GlowButton 
-                glow="blue"
+                glow="light"
                 variant="neon" 
                 size="lg"
                 asChild

@@ -2,15 +2,11 @@
 
 /* CSS Variables - Greens Gradient System */
 :root {
-  --green-gradient-start: #A8CF45;
-  --green-gradient-mid: #BAD96B;
-  --green-gradient-dark: #7D9C33;
-  --green-gradient-darkest: #455C08;
-  
-  /* Neon Accents */
-  --electric-blue: #00FFFF;
-  --neon-pink: #FF6EC7;
-  --cyber-purple: #9D00FF;
+  --salad-green: #A8CF45;
+  --june-bud: #BAD96B;
+  --green-onion: #7D9C33;
+  --verdan-green: #455C08;
+  --light-cyan: #EFFFFF;
   
   /* Base */
   --mine-shaft: #373435;
@@ -38,10 +34,10 @@
 }
 
 .text-accent {
-  color: var(--electric-blue);
-  text-shadow: 0 0 10px var(--electric-blue),
-               0 0 20px var(--electric-blue),
-               0 0 30px rgba(0, 255, 255, 0.5);
+  color: var(--june-bud);
+  text-shadow: 0 0 10px var(--june-bud),
+               0 0 20px var(--june-bud),
+               0 0 30px rgba(186, 217, 107, 0.5);
   font-weight: 600;
 }
 
@@ -57,10 +53,10 @@
   inset: -2px;
   background: linear-gradient(
     135deg,
-    var(--green-gradient-start),
-    var(--electric-blue),
-    var(--neon-pink),
-    var(--cyber-purple)
+    var(--salad-green),
+    var(--june-bud),
+    var(--green-onion),
+    var(--verdan-green)
   );
   border-radius: inherit;
   opacity: 0;
@@ -77,7 +73,7 @@
 .glow-dust:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 40px rgba(168, 207, 69, 0.3),
-              0 0 20px rgba(0, 255, 255, 0.2);
+              0 0 20px rgba(186, 217, 107, 0.2);
 }
 
 @keyframes dust-shimmer {
