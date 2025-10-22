@@ -10,17 +10,16 @@ const caseStudies = [
     icon: Building2,
     headlineKPI: "$180K",
     kpiLabel: "First-Year Savings",
-    narrative: "Parkside Towers struggled with escalating energy costs and reactive maintenance, leading to 15% budget overruns annually. After implementing SecureConnect™ with IoT sensors and predictive maintenance AI, the property transformed from crisis management to proactive optimization. Energy consumption dropped by 32% through smart automation, while predictive alerts prevented costly equipment failures.",
+    narrative: "Parkside Towers faced escalating energy costs and reactive maintenance, leading to 15% annual budget overruns and resident complaints. After implementing SecureConnect™ with IoT sensors and predictive maintenance AI, the property transformed from crisis management to proactive optimization. Energy consumption dropped 32% through smart HVAC automation, while ML-powered predictive alerts prevented three major equipment failures that would have cost $85K in emergency repairs. Real-time monitoring cut maintenance response time from 4.2 hours to 18 minutes, and EV charging optimization reduced peak demand charges by $3,200 monthly. The complex now operates 28% below comparable properties while delivering measurably higher resident satisfaction.",
     whatChanged: [
-      "Automated HVAC optimization reduced peak energy loads",
-      "Predictive maintenance prevented 3 major equipment failures",
-      "Smart EV charging balanced grid demand during off-peak hours",
-      "Real-time monitoring cut response time from hours to minutes"
+      "Automated HVAC optimization reduced peak energy loads by 32%",
+      "Predictive maintenance prevented 3 major equipment failures ($85K avoided)",
+      "Smart EV charging balanced grid demand, cutting peak charges $3.2K/mo",
+      "Real-time monitoring cut response time from 4.2 hours to 18 minutes"
     ],
     beforeAfter: [
       { metric: "Energy Cost", before: "$42K/mo", after: "$28.5K/mo" },
-      { metric: "Maintenance Budget", before: "$220K/yr", after: "$158K/yr" },
-      { metric: "Resident Satisfaction", before: "3.2/5", after: "4.6/5" }
+      { metric: "Maintenance Budget", before: "$220K/yr", after: "$158K/yr" }
     ]
   },
   {
@@ -30,17 +29,16 @@ const caseStudies = [
     icon: Users,
     headlineKPI: "65%",
     kpiLabel: "Turnover Reduction",
-    narrative: "Security incidents and dated amenities drove Riverside's 22% annual turnover rate, costing $340K yearly in leasing and renovations. SecureConnect™ introduced biometric access control, AI concierge services, and an AR leasing experience. Within 8 months, security incidents plummeted 89%, leasing speed increased 40%, and the complex became the area's most desirable address.",
+    narrative: "Riverside Commons suffered from security incidents and dated amenities that drove 22% annual turnover, costing $340K yearly in leasing commissions, unit renovations, and lost rent. SecureConnect™ deployed biometric access control, AI concierge services, and AR leasing experiences to modernize the resident lifecycle. Within eight months, security incidents plummeted 89% as unauthorized entry and package theft became virtually impossible. The AI concierge handled 1,840 resident requests without adding staff, while AR virtual tours converted 68% of remote prospects into applicants. Leasing velocity increased 40%, and the complex transformed from 22% turnover to 7.7%—saving $221K annually while becoming the area's most desirable address.",
     whatChanged: [
-      "Biometric access eliminated unauthorized entry and package theft",
-      "AI concierge provided 24/7 resident support without staff expansion",
+      "Biometric access eliminated 89% of security incidents and package theft",
+      "AI concierge handled 1,840 requests with zero staff expansion",
       "AR leasing tours converted 68% of virtual visitors to applicants",
-      "Community platform fostered resident engagement and retention"
+      "Community platform increased resident engagement by 340%"
     ],
     beforeAfter: [
       { metric: "Annual Turnover", before: "22%", after: "7.7%" },
-      { metric: "Leasing Time", before: "45 days", after: "27 days" },
-      { metric: "Security Incidents", before: "34/yr", after: "4/yr" }
+      { metric: "Leasing Time", before: "45 days", after: "27 days" }
     ]
   },
   {
@@ -50,17 +48,16 @@ const caseStudies = [
     icon: Award,
     headlineKPI: "99.7%",
     kpiLabel: "System Uptime",
-    narrative: "Harbor View's aging infrastructure caused frequent failures across HVAC, elevators, and water systems. Resident complaints surged while property values stagnated. SecureConnect™ deployed a comprehensive IoT sensor network with drone inspections and virtual property management. The transformation achieved 99.7% uptime, slashed complaint resolution time by 78%, and increased property values 18% in 18 months.",
+    narrative: "Harbor View Estates' aging infrastructure triggered frequent failures across HVAC, elevators, and water systems—averaging 26 critical outages yearly. Resident complaints surged 140% while property values stagnated below market comparables. SecureConnect™ deployed a comprehensive IoT sensor network with quarterly drone inspections and virtual property management dashboards. The transformation was immediate: sensors detected anomalies 2–6 hours before resident impact, enabling preemptive repairs. Drone thermal imaging identified roof degradation and facade issues invisible from ground level. Virtual management dashboards gave trustees 24/7 visibility into all building systems. System uptime improved from 94.2% to 99.7%, complaint resolution time dropped 78%, and property values increased 18% in 18 months as Harbor View became synonymous with reliability.",
     whatChanged: [
-      "IoT sensors detected issues before residents noticed them",
-      "Drone inspections identified roof and facade problems early",
-      "Virtual management dashboard enabled remote monitoring 24/7",
-      "Wellness monitoring ensured amenity systems never went offline"
+      "IoT sensors detected issues 2–6 hours before resident impact",
+      "Drone thermal imaging identified roof/facade problems early",
+      "Virtual dashboards provided trustees 24/7 system visibility",
+      "Wellness monitoring ensured amenities maintained 99.7% uptime"
     ],
     beforeAfter: [
       { metric: "System Failures", before: "26/yr", after: "2/yr" },
-      { metric: "Avg. Resolution Time", before: "6.5 days", after: "1.4 days" },
-      { metric: "Property Value", before: "$385K avg", after: "$454K avg" }
+      { metric: "Avg. Resolution Time", before: "6.5 days", after: "1.4 days" }
     ]
   },
 ];
