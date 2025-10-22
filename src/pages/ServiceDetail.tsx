@@ -162,17 +162,25 @@ const ServiceDetail = () => {
                 <CardHeader>
                   <CardTitle className="text-lg">Quick Summary</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-6">
                   <div>
-                    <div className="text-sm text-muted-foreground mb-2">Key Metrics</div>
-                    <div className="space-y-3">
-                      {service.metrics.map((metric, index) => (
-                        <div key={index} className="flex justify-between items-center">
-                          <span className="text-sm">{metric.label}</span>
-                          <span className="font-bold text-primary">{metric.value}</span>
-                        </div>
+                    <div className="text-xs font-semibold text-primary mb-2">PROBLEM</div>
+                    <p className="text-sm leading-relaxed">{service.problem}</p>
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-primary mb-2">CAPABILITY</div>
+                    <p className="text-sm leading-relaxed">{service.capability}</p>
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold text-primary mb-2">KPIs</div>
+                    <ul className="space-y-2">
+                      {service.kpis.map((kpi, index) => (
+                        <li key={index} className="text-sm flex items-start gap-2">
+                          <span className="text-primary mt-1">•</span>
+                          <span>{kpi}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
                   <Button variant="hero" className="w-full" asChild>
                     <Link to="/contact">Get Started</Link>

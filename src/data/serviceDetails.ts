@@ -1,6 +1,9 @@
 export interface ServiceDetail {
   title: string;
   tagline: string;
+  problem: string;
+  capability: string;
+  kpis: string[];
   benefits: string[];
   features: string[];
   metrics: { label: string; value: string }[];
@@ -12,6 +15,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "smart-iot-sensors": {
     title: "Smart IoT Sensors",
     tagline: "Transform your complex into an intelligent ecosystem",
+    problem: "Buildings operate blindly, wasting energy and reacting to failures instead of preventing them.",
+    capability: "SecureConnect™ IoT sensors deliver real-time environmental intelligence with predictive alerts.",
+    kpis: [
+      "Common-area energy –18–25%",
+      "MTTR ↓ 35–45%",
+      "False alarms ↓ 30–40%"
+    ],
     benefits: [
       "30% reduction in energy costs through real-time monitoring",
       "Proactive leak detection prevents $50K+ water damage claims",
@@ -59,6 +69,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "ai-concierge": {
     title: "AI Concierge",
     tagline: "Your 24/7 intelligent building assistant",
+    problem: "Residents wait hours for simple answers while staff drown in repetitive inquiries.",
+    capability: "SecureConnect™ AI Concierge resolves 85% of queries instantly with natural language understanding.",
+    kpis: [
+      "Staff workload ↓ 40–50%",
+      "Response time <30s (vs. 4hr avg)",
+      "Satisfaction 4.7/5.0"
+    ],
     benefits: [
       "85% of queries resolved instantly with <30s response time",
       "Automated maintenance request routing reduces staff workload by 40%",
@@ -105,6 +122,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "biometric-access": {
     title: "Biometric Access Control",
     tagline: "Secure, touchless, and seamless entry",
+    problem: "Key cards are lost, cloned, and create security gaps; manual logs are unreliable.",
+    capability: "SecureConnect™ biometric access delivers 99.8% accuracy with immutable audit trails and consent-first privacy.",
+    kpis: [
+      "Card replacement cost $0 (was $50/ea)",
+      "Security incidents ↓ 60–70%",
+      "Entry speed <2s (99.9% uptime)"
+    ],
     benefits: [
       "99.8% recognition accuracy with <2 second entry speed",
       "Complete audit trail eliminates security card replacement costs ($50/card)",
@@ -151,6 +175,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "vertical-farms": {
     title: "Vertical Farming Systems",
     tagline: "Sustainable food production in your complex",
+    problem: "Food miles and costs rise; residents want sustainability but lack access to fresh produce.",
+    capability: "SecureConnect™ vertical farms deliver 365-day yields with 90% less water and zero transport emissions.",
+    kpis: [
+      "Water use ↓ 90% vs. soil farming",
+      "Carbon footprint –75% (transport eliminated)",
+      "Resident savings 30–40% below retail"
+    ],
     benefits: [
       "365-day fresh produce with 90% less water than traditional farming",
       "75% carbon footprint reduction from eliminated transportation",
@@ -198,6 +229,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "predictive-maintenance": {
     title: "Predictive Maintenance AI",
     tagline: "Prevent problems before they happen",
+    problem: "Emergency repairs cost 3× planned work and cause tenant churn; equipment fails without warning.",
+    capability: "SecureConnect™ Predictive AI forecasts failures 2–4 weeks early with 92% accuracy, eliminating downtime.",
+    kpis: [
+      "Emergency repairs ↓ 60–70%",
+      "Maintenance costs –40%",
+      "Equipment lifespan +30%"
+    ],
     benefits: [
       "60% reduction in emergency repairs and equipment downtime",
       "40% lower maintenance costs with 92% prediction accuracy",
@@ -245,6 +283,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "ev-charging": {
     title: "EV Charging Infrastructure",
     tagline: "Power the future of transportation",
+    problem: "EV owners avoid properties without charging; electrical panels can't handle unmanaged load.",
+    capability: "SecureConnect™ smart charging prevents overload, schedules off-peak loads, and generates ancillary revenue.",
+    kpis: [
+      "Electrical overload incidents: 0",
+      "Off-peak utilization 70–80%",
+      "Revenue/charger $150–300/mo"
+    ],
     benefits: [
       "99.5% uptime with 80% charge in 30 minutes",
       "Smart load management prevents electrical overload",
@@ -291,6 +336,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "ar-leasing": {
     title: "AR Leasing Experience",
     tagline: "Virtual tours that close deals",
+    problem: "Prospects can't visualize units remotely; in-person tours waste staff time with unqualified leads.",
+    capability: "SecureConnect™ AR tours let prospects walk units 24/7, place furniture virtually, and e-sign leases in minutes.",
+    kpis: [
+      "Tour volume +200%",
+      "Conversion rates +35%",
+      "Lease-signing time ↓ 50%"
+    ],
     benefits: [
       "200% increase in tour volume with 24/7 virtual access",
       "35% higher conversion rates through emotional connection",
@@ -337,6 +389,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "dynamic-pricing": {
     title: "Dynamic Pricing Engine",
     tagline: "Optimize revenue with AI",
+    problem: "Static pricing leaves revenue on the table; manual adjustments lag market shifts by weeks.",
+    capability: "SecureConnect™ pricing AI analyzes 50+ factors daily and auto-adjusts rates within governance guardrails.",
+    kpis: [
+      "Revenue +10–15%",
+      "Occupancy 95–98%",
+      "Time-to-lease ↓ 25%"
+    ],
     benefits: [
       "15% revenue increase with 98% occupancy rates",
       "25% faster time-to-lease through optimized pricing",
@@ -383,6 +442,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "wellness-monitoring": {
     title: "Wellness Monitoring",
     tagline: "Healthier living environments",
+    problem: "Poor air quality triggers allergies and complaints; HVAC runs on dumb schedules, wasting energy.",
+    capability: "SecureConnect™ wellness sensors auto-tune HVAC for optimal CO₂/VOC/PM2.5 and publish comfort scores.",
+    kpis: [
+      "Resident satisfaction +40%",
+      "HVAC energy –20%",
+      "Air quality: excellent 95% of hours"
+    ],
     benefits: [
       "40% increase in resident satisfaction through excellent air quality",
       "20% energy savings through optimized HVAC automation",
@@ -429,6 +495,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "virtual-property-management": {
     title: "Virtual Property Management",
     tagline: "Cloud-powered operations",
+    problem: "Staff juggle spreadsheets, paper tickets, and siloed tools; portfolio visibility is days behind.",
+    capability: "SecureConnect™ Virtual PM unifies rent, work orders, and IoT oversight in one cloud platform with <2hr SLA.",
+    kpis: [
+      "Staff efficiency +50%",
+      "Rent collection 99% (was 94%)",
+      "Response time <2hr (was 18hr)"
+    ],
     benefits: [
       "50% efficiency gain through automated workflows and cloud access",
       "99% rent collection rate with <2 hour response time",
@@ -475,6 +548,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "drone-inspections": {
     title: "Drone Roof Inspections",
     tagline: "Safer, faster, smarter inspections",
+    problem: "Manual roof inspections are dangerous, slow, and miss 40% of defects; claim denials rise.",
+    capability: "SecureConnect™ drones capture 4K thermal imaging; AI detects 95% of defects in 48hr turnaround.",
+    kpis: [
+      "Safety incidents: 0 (was 2–3/yr)",
+      "Inspection time ↓ 80%",
+      "Defect detection +40–50%"
+    ],
     benefits: [
       "100% safety improvement eliminating dangerous roof access",
       "80% time savings with 95% AI damage detection accuracy",
@@ -521,6 +601,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "community-platform": {
     title: "Community Platform",
     tagline: "Connect your residents",
+    problem: "Isolated residents churn faster; paper flyers and bulletin boards fail to engage.",
+    capability: "SecureConnect™ Community Platform fosters neighbor connections with events, polls, and AI-moderated messaging.",
+    kpis: [
+      "Engagement +150%",
+      "Retention +25–30%",
+      "Active users 85%"
+    ],
     benefits: [
       "150% increase in community engagement with 85% active users",
       "30% improvement in retention rates through stronger connections",
