@@ -1,52 +1,11 @@
 import { NeonHeading } from "@/components/NeonHeading";
-import { ArrowRight, Zap, Shield, Brain } from "lucide-react";
-import { HolographicCity } from "@/components/HolographicCity";
-import { ParticleField } from "@/components/ParticleField";
+import { ArrowRight } from "lucide-react";
+import { HeroSection } from "@/components/HeroSection";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Full Bleed */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black" aria-label="Hero section">
-        {/* Particle drift background */}
-        <ParticleField />
-        
-        {/* Holographic city silhouette */}
-        <HolographicCity />
-        
-        {/* Content */}
-        <div className="container relative z-10 mx-auto px-4 py-20 text-center">
-          <div className="max-w-5xl mx-auto" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--g4)' }}>
-            {/* Main Headline */}
-            <h1 className="text-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight animate-fade-in">
-              <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                Secure living,
-              </span>
-              <span className="block text-foreground" style={{ marginTop: 'var(--g2)' }}>
-                beautifully connected.
-              </span>
-            </h1>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center items-center animate-slide-in" style={{ gap: 'var(--g3)', paddingTop: 'var(--g4)' }}>
-              <a href="/contact" className="btn btn--mag" aria-label="Book a demo for SecureConnect">
-                Book a demo
-              </a>
-              
-              <a href="/services" className="btn btn--shimmer" aria-label="View all SecureConnect services">
-                View services
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20" role="presentation" aria-hidden="true">
-          <div className="w-6 h-10 border-2 border-primary rounded-full p-1">
-            <div className="w-1.5 h-3 bg-primary rounded-full mx-auto animate-pulse" />
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Services Overview Section */}
       <section className="px-4" style={{ paddingTop: 'var(--g4)', paddingBottom: 'var(--g4)' }} aria-labelledby="services-heading">
