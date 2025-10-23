@@ -34,9 +34,11 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Button variant="hero" asChild>
-              <Link to="/contact" aria-label="Book a demo with Veralogix">Book Demo</Link>
-            </Button>
+            <Link to="/contact">
+              <button className="btn btn--neon" aria-label="Book a demo with Veralogix">
+                Book Demo
+              </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -65,11 +67,11 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Button variant="hero" asChild className="w-full">
-              <Link to="/contact" onClick={() => setIsOpen(false)} aria-label="Book a demo with Veralogix">
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <button className="btn btn--neon w-full" aria-label="Book a demo with Veralogix">
                 Book Demo
-              </Link>
-            </Button>
+              </button>
+            </Link>
           </div>
         )}
       </div>

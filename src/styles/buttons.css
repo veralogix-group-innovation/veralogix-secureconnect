@@ -1,75 +1,173 @@
 /* SecureConnect™ Button Animation System */
-/* Self-contained with inline values */
+/* Inline hex values for self-containment */
 
-.btn {
-  border: 0 !important;
-  border-radius: 999px !important;
-  padding: 0.85rem 1.2rem !important;
-  cursor: pointer !important;
-  transition: transform 150ms cubic-bezier(.2,.8,.2,1),
-              filter 150ms cubic-bezier(.2,.8,.2,1),
-              box-shadow 150ms cubic-bezier(.2,.8,.2,1) !important;
-  font-weight: 600 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.5rem !important;
-  min-width: 200px !important;
-  height: 3.5rem !important;
-  font-size: 1rem !important;
+/* CSS Variables for button system */
+:root {
+  --btn-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --btn-dur-fast: 150ms;
+  --btn-dur-med: 250ms;
+  --btn-dur-slow: 900ms;
+  --btn-glow-neon: 0 0 18px rgba(31,255,0,.55);
+  --btn-glow-strong: 0 0 28px rgba(79,255,0,.65), 0 0 56px rgba(79,255,0,.35);
 }
 
-.btn:focus-visible {
-  outline: 2px solid #6FFF00 !important;
-  outline-offset: 3px !important;
+/* Base button shell (all variants inherit) */
+.btn,
+a.btn,
+button.btn {
+  --r: 999px;
+  --pad: 0.85rem 1.2rem;
+  border-radius: var(--r);
+  padding: var(--pad);
+  border: 0;
+  cursor: pointer;
+  transition: transform var(--btn-dur-fast) var(--btn-ease),
+              filter var(--btn-dur-fast) var(--btn-ease),
+              box-shadow var(--btn-dur-fast) var(--btn-ease);
+  will-change: transform, filter, box-shadow;
+  color: #FFFFFF;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 200px;
+  height: 3.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-/* Neon Pulse */
+.btn:focus-visible,
+a.btn:focus-visible,
+button.btn:focus-visible {
+  outline: 2px solid #6FFF00;
+  outline-offset: 3px;
+}
+
+/* Neon Pulse (primary CTA) */
 .btn--neon {
   background: linear-gradient(135deg, #1FFF00, #6FFF00 55%, #9FFF00) !important;
   color: #0A0A0A !important;
-  box-shadow: 0 0 18px rgba(31,255,0,.55) !important;
+  filter: saturate(1.05);
+  box-shadow: var(--btn-glow-neon) !important;
 }
 
 .btn--neon:hover {
-  filter: brightness(1.1) saturate(1.2) !important;
-  box-shadow: 0 0 28px rgba(79,255,0,.65), 0 0 56px rgba(79,255,0,.35) !important;
+  filter: brightness(1.06) saturate(1.2) !important;
+  box-shadow: var(--btn-glow-strong) !important;
   transform: translateY(-2px) !important;
 }
 
-/* Magnetic Tilt */
+@media (prefers-reduced-motion: no-preference) {
+  .btn--neon {
+    animation: breath 2.8s var(--btn-ease) infinite;
+  }
+  
+  @keyframes breath {
+    50% {
+      box-shadow: 0 0 18px rgba(31,255,0,.35);
+    }
+  }
+}
+
+/* Magnetic Tilt (hero only) */
 .btn--mag {
   background: linear-gradient(135deg, #0d0d0d, #161616) !important;
-  border: 1px solid #4FFF00 !important;
   color: #FFFFFF !important;
+  border: 1px solid #4FFF00 !important;
+  transform: perspective(600px) rotateX(0) rotateY(0);
+}
+
+.btn--mag[data-tilt] {
+  transform: perspective(600px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(var(--tz,0px));
 }
 
 .btn--mag:hover {
-  box-shadow: 0 0 28px rgba(79,255,0,.65), 0 0 56px rgba(79,255,0,.35) !important;
+  box-shadow: var(--btn-glow-strong) !important;
 }
 
-/* Shimmer */
+/* Shimmer Line (secondary CTA) */
 .btn--shimmer {
-  position: relative !important;
-  overflow: hidden !important;
+  position: relative;
+  overflow: hidden;
+  color: #FFFFFF !important;
   background: #1a1a1a !important;
   border: 1px solid #4FFF00 !important;
-  color: #FFFFFF !important;
 }
 
 .btn--shimmer::after {
   content: "";
   position: absolute;
   inset: -150% -20%;
-  background: linear-gradient(75deg, transparent 45%, rgba(255, 255, 255, .18) 50%, transparent 55%);
+  background: linear-gradient(75deg, transparent 45%, rgba(255,255,255,.18) 50%, transparent 55%);
   transform: translateX(-20%);
   pointer-events: none;
 }
 
 .btn--shimmer:hover::after {
-  animation: shimmer 900ms cubic-bezier(.2,.8,.2,1);
+  animation: shimmer 900ms var(--btn-ease);
 }
 
 @keyframes shimmer {
-  to { transform: translateX(40%); }
+  to {
+    transform: translateX(40%);
+  }
+}
+
+/* Hover Dust (tertiary/micro) */
+.btn--dust {
+  position: relative;
+  background: #111;
+  color: #FFFFFF;
+  border: 1px solid #4FFF00;
+}
+
+.btn--dust i {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask: radial-gradient(6px 6px at 50% 50%, #000 98%, transparent);
+  background:
+    radial-gradient(3px 3px at 10% 40%, #4FFF00 40%, transparent 45%),
+    radial-gradient(2px 2px at 80% 30%, #8FFF00 40%, transparent 45%),
+    radial-gradient(2px 2px at 40% 70%, #1FFF00 40%, transparent 45%),
+    radial-gradient(3px 3px at 60% 20%, #9FFF00 40%, transparent 45%);
+  opacity: 0;
+  transition: opacity var(--btn-dur-med) var(--btn-ease);
+}
+
+.btn--dust:hover i {
+  opacity: 0.55;
+  filter: blur(0.2px) drop-shadow(0 0 6px #6FFF00);
+}
+
+/* Press Ripple (forms/dialogs) */
+.btn--ripple {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0e0e0e, #141414);
+  color: #FFFFFF;
+  border: 1px solid #4FFF00;
+}
+
+.btn--ripple span.r {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #6FFF00, transparent 60%);
+  animation: rip 600ms ease-out forwards;
+}
+
+@keyframes rip {
+  from {
+    opacity: 0.6;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 25;
+  }
 }

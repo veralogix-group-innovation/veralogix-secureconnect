@@ -1,5 +1,4 @@
 import { NeonHeading } from "@/components/NeonHeading";
-import { Link } from "react-router-dom";
 import { ArrowRight, Zap, Shield, Brain } from "lucide-react";
 import { HolographicCity } from "@/components/HolographicCity";
 import { ParticleField } from "@/components/ParticleField";
@@ -30,17 +29,13 @@ const Home = () => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center items-center animate-slide-in" style={{ gap: 'var(--g3)', paddingTop: 'var(--g4)' }}>
-              <Link to="/contact" aria-label="Book a demo for SecureConnect">
-                <button className="btn btn--mag">
-                  Book a demo
-                </button>
-              </Link>
+              <a href="/contact" className="btn btn--mag" aria-label="Book a demo for SecureConnect">
+                Book a demo
+              </a>
               
-              <Link to="/services" aria-label="View all SecureConnect services">
-                <button className="btn btn--shimmer">
-                  View services
-                </button>
-              </Link>
+              <a href="/services" className="btn btn--shimmer" aria-label="View all SecureConnect services">
+                View services
+              </a>
             </div>
           </div>
         </div>
@@ -66,11 +61,9 @@ const Home = () => {
           </div>
           
           <div className="text-center">
-            <Link to="/services" aria-label="Explore all SecureConnect services">
-              <button className="btn btn--neon">
-                Explore All Services <ArrowRight className="ml-2" aria-hidden="true" />
-              </button>
-            </Link>
+            <a href="/services" className="btn btn--neon inline-flex" aria-label="Explore all SecureConnect services">
+              Explore All Services <ArrowRight className="ml-2" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>
@@ -84,11 +77,9 @@ const Home = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto" style={{ marginBottom: 'var(--g4)' }}>
             Join forward-thinking trustees and managing agents who are already leveraging SecureConnect™
           </p>
-          <Link to="/contact" aria-label="Schedule a consultation with SecureConnect">
-            <button className="btn btn--neon">
-              Schedule a Consultation <ArrowRight className="ml-2" aria-hidden="true" />
-            </button>
-          </Link>
+          <a href="/contact" className="btn btn--neon inline-flex" aria-label="Schedule a consultation with SecureConnect">
+            Schedule a Consultation <ArrowRight className="ml-2" aria-hidden="true" />
+          </a>
         </div>
       </section>
     </div>

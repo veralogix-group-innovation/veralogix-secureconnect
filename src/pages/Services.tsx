@@ -104,11 +104,19 @@ const Services = () => {
         </header>
 
         {/* 3×4 Grid: 3 columns on desktop, responsive on smaller screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 animate-slide-in" style={{ gap: 'var(--g4)' }} role="list">
-          {services.map((service) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--g4)' }} role="list">
+          {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div key={service.slug} role="listitem">
+              <div 
+                key={service.slug} 
+                role="listitem"
+                className="animate-fade-in"
+                style={{ 
+                  animationDelay: `${index * 50}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
                 <CardFX
                   title={service.title}
                   description={service.description}
