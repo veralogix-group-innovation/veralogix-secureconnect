@@ -8,10 +8,24 @@
     <meta name="author" content="Veralogix Group" />
     <meta name="theme-color" content="#373435" />
     
-    <!-- Preconnect for performance -->
+    <!-- Critical CSS inline for LCP optimization -->
+    <style>
+      /* Inline critical above-the-fold styles */
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{background:#14120f;color:#fafafa;font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.6}
+      #root{min-height:100vh}
+      .skip-to-content{position:absolute;left:-9999px;z-index:999;padding:1rem;background:#A8CF45;color:#000;text-decoration:none;font-weight:600}
+      .skip-to-content:focus{left:50%;transform:translateX(-50%);top:1rem}
+    </style>
+    
+    <!-- Preconnect & Preload for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/src/assets/hero-background.png" as="image" type="image/png" fetchpriority="high">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Veralogix SecureConnect™ - Smart Building Solutions" />
@@ -30,6 +44,7 @@
     <!-- Performance hints -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     
+    <!-- HSTS & Security Headers (set via hosting) -->
     <!-- Canonical URL -->
     <link rel="canonical" href="https://veralogix-secureconnect.lovable.app" />
   </head>
@@ -37,6 +52,6 @@
   <body>
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>

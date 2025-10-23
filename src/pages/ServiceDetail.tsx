@@ -11,10 +11,36 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useEffect, useRef, useState } from "react";
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? serviceDetails[slug] : null;
+  const videoPlaceholderRef = useRef<HTMLDivElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  // Lazy load video with IntersectionObserver
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!videoPlaceholderRef.current || prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !videoLoaded) {
+            setVideoLoaded(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(videoPlaceholderRef.current);
+
+    return () => observer.disconnect();
+  }, [videoLoaded]);
 
   if (!service) {
     return (
@@ -54,13 +80,30 @@ const ServiceDetail = () => {
             {/* Video Placeholder with lazy loading */}
             <Card className="glass overflow-hidden">
               <div 
-                className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center"
+                ref={videoPlaceholderRef}
+                className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center relative"
                 role="img"
                 aria-label={`${service.title} demonstration video placeholder`}
               >
-                <button className="btn btn--neon h-14 px-10 text-base" aria-label={`Play ${service.title} 30 second demo video`}>
-                  <PlayCircle className="mr-2 h-6 w-6" aria-hidden="true" /> Watch Demo (30s)
-                </button>
+                {videoLoaded ? (
+                  <div className="w-full h-full relative">
+                    <video
+                      className="w-full h-full object-cover"
+                      poster={`/assets/video-posters/${slug}.jpg`}
+                      controls
+                      preload="metadata"
+                      aria-label={`${service.title} demonstration video`}
+                    >
+                      <source src={`/assets/videos/${slug}-demo.mp4`} type="video/mp4" />
+                      <track kind="captions" src={`/assets/videos/${slug}-captions.vtt`} srcLang="en" label="English" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ) : (
+                  <button className="btn btn--neon h-14 px-10 text-base" aria-label={`Load ${service.title} 30 second demo video`}>
+                    <PlayCircle className="mr-2 h-6 w-6" aria-hidden="true" /> Watch Demo (30s)
+                  </button>
+                )}
               </div>
             </Card>
 

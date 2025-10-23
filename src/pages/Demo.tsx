@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { Activity, Zap, Droplet, AlertCircle, Car, Sun } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 
 // Mock Data
 const accessEvents = [
@@ -63,19 +64,25 @@ const maintenanceQueue = [
 ];
 
 const Demo = () => {
-  const [glowIntensity, setGlowIntensity] = useState<"low" | "high">("high");
+  const [glowIntensity, setGlowIntensity] = useState<number>(1.0);
 
-  const toggleGlow = () => {
-    setGlowIntensity(prev => prev === "high" ? "low" : "high");
+  const handleGlowChange = (value: number[]) => {
+    const factor = value[0];
+    setGlowIntensity(factor);
+    
+    // Update CSS custom properties for glow
+    document.documentElement.style.setProperty(
+      '--glow-neon', 
+      `0 0 ${18 * factor}px rgba(31, 255, 0, ${0.55 * factor})`
+    );
+    document.documentElement.style.setProperty(
+      '--glow-strong', 
+      `0 0 ${28 * factor}px rgba(79, 255, 0, ${0.65 * factor}), 0 0 ${56 * factor}px rgba(79, 255, 0, ${0.35 * factor})`
+    );
   };
 
   return (
-    <div 
-      className="min-h-screen py-20 px-4 transition-all duration-500"
-      style={{
-        filter: glowIntensity === "low" ? "brightness(0.85) saturate(0.8)" : "brightness(1) saturate(1)",
-      }}
-    >
+    <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-7xl">
         <div className="flex justify-between items-start mb-12">
           <div className="text-center flex-1 animate-fade-in">
@@ -87,14 +94,24 @@ const Demo = () => {
             </p>
           </div>
           
-          <button
-            className="btn btn--dust h-9 px-4 gap-2"
-            onClick={toggleGlow}
-          >
-            <Sun className="h-4 w-4" />
-            Glow: {glowIntensity === "high" ? "High" : "Low"}
-            <i aria-hidden="true"></i>
-          </button>
+          <div className="flex flex-col gap-2 min-w-[200px]">
+            <div className="flex items-center gap-2">
+              <Sun className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium">Glow Intensity</span>
+            </div>
+            <Slider
+              value={[glowIntensity]}
+              onValueChange={handleGlowChange}
+              min={0.3}
+              max={1.5}
+              step={0.1}
+              className="w-full"
+              aria-label="Adjust glow intensity"
+            />
+            <span className="text-xs text-muted-foreground text-center">
+              {Math.round(glowIntensity * 100)}%
+            </span>
+          </div>
         </div>
 
         {/* Key Metrics Row */}
@@ -184,19 +201,24 @@ const Demo = () => {
                 config={{
                   usage: {
                     label: "Usage (kWh)",
-                    color: "hsl(var(--primary))",
+                    color: "var(--neonC)",
                   },
                 }}
                 className="h-[250px]"
+                aria-label="Energy usage chart showing last 7 days"
               >
                 <AreaChart data={energyData}>
                   <defs>
                     <linearGradient id="energyGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
-                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0.1} />
+                      <stop offset="0%" stopColor="var(--neonC)" stopOpacity={0.8} />
+                      <stop offset="100%" stopColor="var(--neonC)" stopOpacity={0.1} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
+                  <CartesianGrid 
+                    strokeDasharray="3 3" 
+                    stroke="rgba(255,255,255,0.08)" 
+                    opacity={0.3} 
+                  />
                   <XAxis 
                     dataKey="day" 
                     stroke="hsl(var(--muted-foreground))" 
@@ -210,7 +232,7 @@ const Demo = () => {
                   <Area
                     type="monotone"
                     dataKey="usage"
-                    stroke="hsl(var(--primary))"
+                    stroke="var(--neonC)"
                     fill="url(#energyGradient)"
                     strokeWidth={2}
                   />
@@ -232,13 +254,18 @@ const Demo = () => {
                 config={{
                   usage: {
                     label: "Usage (Liters)",
-                    color: "hsl(var(--secondary))",
+                    color: "var(--neonB)",
                   },
                 }}
                 className="h-[300px]"
+                aria-label="Water usage chart showing weekly consumption"
               >
                 <BarChart data={waterData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
+                  <CartesianGrid 
+                    strokeDasharray="3 3" 
+                    stroke="rgba(255,255,255,0.08)" 
+                    opacity={0.3} 
+                  />
                   <XAxis 
                     dataKey="day" 
                     stroke="hsl(var(--muted-foreground))" 
@@ -251,7 +278,7 @@ const Demo = () => {
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <Bar 
                     dataKey="usage" 
-                    fill="hsl(var(--secondary))" 
+                    fill="var(--neonB)" 
                     radius={[8, 8, 0, 0]}
                   />
                 </BarChart>
