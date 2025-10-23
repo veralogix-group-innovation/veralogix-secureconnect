@@ -12,12 +12,23 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useEffect, useRef, useState } from "react";
+import { DroneLoader } from "@/components/DroneLoader";
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? serviceDetails[slug] : null;
   const videoPlaceholderRef = useRef<HTMLDivElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+
+  // Show drone loader briefly when navigating to service page
+  useEffect(() => {
+    setPageLoading(true);
+    const timer = setTimeout(() => {
+      setPageLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [slug]);
 
   // Lazy load video with IntersectionObserver
   useEffect(() => {
@@ -41,6 +52,10 @@ const ServiceDetail = () => {
 
     return () => observer.disconnect();
   }, [videoLoaded]);
+
+  if (pageLoading) {
+    return <DroneLoader text="loading service" />;
+  }
 
   if (!service) {
     return (

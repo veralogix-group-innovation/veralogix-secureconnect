@@ -42,7 +42,15 @@ const RouteChangeHandler = () => {
 };
 
 const App = () => {
-  const [loadingComplete, setLoadingComplete] = useState(false);
+  // Only show loading video on first visit (per session)
+  const [loadingComplete, setLoadingComplete] = useState(() => {
+    return sessionStorage.getItem('introVideoShown') === 'true';
+  });
+
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem('introVideoShown', 'true');
+    setLoadingComplete(true);
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -50,7 +58,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         {!loadingComplete && (
-          <LoadingScreen onComplete={() => setLoadingComplete(true)} />
+          <LoadingScreen onComplete={handleLoadingComplete} />
         )}
         <BrowserRouter>
           <RouteChangeHandler />
