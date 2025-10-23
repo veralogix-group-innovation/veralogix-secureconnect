@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { NeonHeading } from "@/components/NeonHeading";
+import { MetricPill } from "@/components/MetricPill";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";
 import { FeatureDiagram } from "@/components/FeatureDiagram";
@@ -159,7 +160,7 @@ const ServiceDetail = () => {
           </div>
 
           {/* Sticky Sidebar */}
-          <aside className="lg:col-span-1">
+          <aside className="lg:col-span-1" role="complementary" aria-label="Service summary">
             <div className="sticky top-24 space-y-6">
               {/* Summary Card */}
               <Card className="glass border-2 border-primary/30">
@@ -176,15 +177,17 @@ const ServiceDetail = () => {
                     <p className="text-sm leading-relaxed">{service.capability}</p>
                   </div>
                   <div>
-                    <div className="text-xs font-semibold text-primary mb-2">KPIs</div>
-                    <ul className="space-y-2">
+                    <div className="text-xs font-semibold text-primary mb-2">KEY PERFORMANCE INDICATORS</div>
+                    <div className="flex flex-col gap-2">
                       {service.kpis.map((kpi, index) => (
-                        <li key={index} className="text-sm flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span>{kpi}</span>
-                        </li>
+                        <MetricPill 
+                          key={index}
+                          label={kpi.split(':')[0] || kpi.split('↓')[0] || kpi.split('−')[0] || kpi} 
+                          value={kpi.includes(':') ? kpi.split(':')[1].trim() : kpi.includes('↓') ? kpi.split('↓')[1].trim() : kpi.includes('−') ? kpi.split('−')[1].trim() : '✓'} 
+                          variant="success"
+                        />
                       ))}
-                    </ul>
+                    </div>
                   </div>
                   <Link to="/contact">
                     <button className="btn btn--neon w-full h-11 px-6">Get Started</button>
@@ -194,18 +197,37 @@ const ServiceDetail = () => {
 
               {/* Navigation Card */}
               <Card className="glass">
-                <CardContent className="pt-6">
-                  <nav className="space-y-2 text-sm">
-                    <a href="#top" className="block text-muted-foreground hover:text-primary transition-colors">
+                <CardHeader>
+                  <CardTitle className="text-lg">Navigation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <nav className="space-y-2 text-sm" aria-label="Page sections">
+                    <a 
+                      href="#top" 
+                      className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
                       Overview
                     </a>
-                    <a href="#how-it-works" className="block text-muted-foreground hover:text-primary transition-colors">
+                    <a 
+                      href="#how-it-works" 
+                      className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
                       How It Works
                     </a>
-                    <a href="#benefits" className="block text-muted-foreground hover:text-primary transition-colors">
+                    <a 
+                      href="#benefits" 
+                      className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
                       Benefits & Features
                     </a>
-                    <a href="#faqs" className="block text-muted-foreground hover:text-primary transition-colors">
+                    <a 
+                      href="#faqs" 
+                      className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
                       FAQs
                     </a>
                   </nav>

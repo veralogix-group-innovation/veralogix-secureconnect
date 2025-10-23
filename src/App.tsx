@@ -11,6 +11,8 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Demo from "./pages/Demo";
 import CaseStudies from "./pages/CaseStudies";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Security from "./pages/Security";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import { initButtonEffects } from "./scripts/buttons";
@@ -55,6 +57,8 @@ const App = () => (
               <Route path="/demo" element={<Demo />} />
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/security" element={<Security />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

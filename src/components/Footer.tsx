@@ -42,6 +42,16 @@ export const Footer = () => {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/security" className="text-muted-foreground hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded">
+                  Security
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -71,9 +81,15 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary/20 flex flex-col md:flex-row justify-between items-center" style={{ paddingTop: 'var(--g4)', gap: 'var(--g2)' }}>
-          <p className="text-muted-foreground text-sm">
-            © {currentYear} Veralogix Group. SecureConnect™ is a registered trademark.
-          </p>
+          <div className="text-center md:text-left">
+            <p className="text-muted-foreground text-sm mb-2">
+              © {currentYear} Veralogix Group. SecureConnect™ is a registered trademark.
+            </p>
+            <p className="text-xs text-muted-foreground flex items-center gap-1 justify-center md:justify-start">
+              <span className="inline-block w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+              We encrypt data at rest and in transit.
+            </p>
+          </div>
           
           <div className="flex" style={{ gap: 'var(--g2)' }} role="list" aria-label="Social media links">
             <a 
