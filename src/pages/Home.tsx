@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
 import { NeonHeading } from "@/components/NeonHeading";
-import { GlowButton } from "@/components/GlowButton";
 import { Link } from "react-router-dom";
 import { ArrowRight, Zap, Shield, Brain } from "lucide-react";
 import { HolographicCity } from "@/components/HolographicCity";
@@ -32,29 +30,17 @@ const Home = () => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center items-center animate-slide-in" style={{ gap: 'var(--g3)', paddingTop: 'var(--g4)' }}>
-              <GlowButton 
-                glow="green"
-                variant="hero" 
-                size="lg"
-                asChild
-                className="min-w-[200px]"
-              >
-                <Link to="/contact" aria-label="Book a demo for SecureConnect">
+              <Link to="/contact" aria-label="Book a demo for SecureConnect">
+                <button className="btn btn--mag min-w-[200px] h-14 px-10 text-base">
                   Book a demo
-                </Link>
-              </GlowButton>
+                </button>
+              </Link>
               
-              <GlowButton 
-                glow="light"
-                variant="neon" 
-                size="lg"
-                asChild
-                className="min-w-[200px]"
-              >
-                <Link to="/services" aria-label="View all SecureConnect services">
+              <Link to="/services" aria-label="View all SecureConnect services">
+                <button className="btn btn--shimmer min-w-[200px] h-14 px-10 text-base">
                   View services
-                </Link>
-              </GlowButton>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -80,11 +66,11 @@ const Home = () => {
           </div>
           
           <div className="text-center">
-            <Button variant="glass" size="lg" asChild>
-              <Link to="/services" aria-label="Explore all SecureConnect services">
+            <Link to="/services" aria-label="Explore all SecureConnect services">
+              <button className="btn btn--neon h-14 px-10 text-base">
                 Explore All Services <ArrowRight className="ml-2" aria-hidden="true" />
-              </Link>
-            </Button>
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -98,11 +84,11 @@ const Home = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto" style={{ marginBottom: 'var(--g4)' }}>
             Join forward-thinking trustees and managing agents who are already leveraging SecureConnect™
           </p>
-          <Button variant="hero" size="lg" asChild>
-            <Link to="/contact" aria-label="Schedule a consultation with SecureConnect">
+          <Link to="/contact" aria-label="Schedule a consultation with SecureConnect">
+            <button className="btn btn--neon h-14 px-10 text-base">
               Schedule a Consultation <ArrowRight className="ml-2" aria-hidden="true" />
-            </Link>
-          </Button>
+            </button>
+          </Link>
         </div>
       </section>
     </div>

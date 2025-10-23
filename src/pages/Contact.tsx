@@ -1,5 +1,4 @@
 import { NeonHeading } from "@/components/NeonHeading";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -148,9 +147,9 @@ const Contact = () => {
                     {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
                   </div>
 
-                  <Button type="submit" variant="hero" size="lg" className="w-full">
+                  <button type="submit" className="btn btn--ripple w-full h-14 px-10 text-base">
                     Send Message
-                  </Button>
+                  </button>
                 </form>
               )}
             </CardContent>
@@ -169,9 +168,9 @@ const Contact = () => {
                     <p className="text-muted-foreground mb-4">
                       Book a personalized 30-minute walkthrough of SecureConnect™ tailored to your complex's needs.
                     </p>
-                    <Button variant="glass" asChild>
-                      <Link to="/demo">View Demo Dashboard</Link>
-                    </Button>
+                    <Link to="/demo">
+                      <button className="btn btn--shimmer h-11 px-6">View Demo Dashboard</button>
+                    </Link>
                   </div>
                 </div>
               </CardContent>
@@ -224,9 +223,9 @@ const Contact = () => {
                 <p className="text-muted-foreground mb-4">
                   Get our comprehensive 20-page pitch deck with detailed service breakdowns, pricing, and case studies.
                 </p>
-                <Button variant="neon" className="w-full">
+                <button className="btn btn--shimmer w-full h-11 px-6">
                   Download PDF (4.2 MB)
-                </Button>
+                </button>
               </CardContent>
             </Card>
           </div>

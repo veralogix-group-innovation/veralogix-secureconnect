@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { LucideIcon, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -40,15 +39,14 @@ export const ServiceCard = ({ title, description, icon: Icon, slug }: ServiceCar
           <p className="text-body text-muted-foreground leading-relaxed line-clamp-2">
             {description}
           </p>
-          <Button 
-            variant="ghost" 
-            size="sm"
-            className="w-full group/btn border border-primary/30 hover:border-primary hover:bg-primary/10 text-primary"
+          <button 
+            className="btn btn--dust w-full h-9 px-4 text-sm border border-primary/30 hover:border-primary"
             aria-label={`Explore ${title} service details`}
           >
             Explore
-            <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
-          </Button>
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            <i aria-hidden="true"></i>
+          </button>
         </CardContent>
       </Link>
     </Card>

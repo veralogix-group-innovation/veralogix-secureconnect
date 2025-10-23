@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Home from "./pages/Home";
@@ -12,8 +12,31 @@ import Demo from "./pages/Demo";
 import CaseStudies from "./pages/CaseStudies";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { useEffect } from "react";
+import { initButtonEffects } from "./scripts/buttons";
 
 const queryClient = new QueryClient();
+
+// Component to reinitialize button effects on route change
+const RouteChangeHandler = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    // Initialize button effects after route change and DOM update
+    const timer = setTimeout(() => {
+      initButtonEffects();
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+  
+  // Also initialize on first mount
+  useEffect(() => {
+    initButtonEffects();
+  }, []);
+  
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -21,6 +44,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <RouteChangeHandler />
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main id="main-content" className="flex-grow pt-20">

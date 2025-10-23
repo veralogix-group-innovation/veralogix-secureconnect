@@ -19,6 +19,14 @@
   --neonD: #8FFF00; /* rgb(143,255,0) */
   --neonE: #9FFF00; /* rgb(159,255,0) */
   
+  /* Glow & Motion Tokens */
+  --glow-neon: 0 0 18px rgba(31,255,0,.55);
+  --glow-strong: 0 0 28px rgba(79,255,0,.65), 0 0 56px rgba(79,255,0,.35);
+  --ease-standard: cubic-bezier(.2,.8,.2,1);
+  --dur-fast: 150ms;
+  --dur-med: 250ms;
+  --dur-slow: 900ms;
+  
   /* Grid breakpoints */
   --grid-cols-mobile: 4;
   --grid-cols-tablet: 6;
@@ -152,6 +160,12 @@
 /* Quick utility for full-width spans */
 .col-full {
   grid-column: 1 / -1;
+}
+
+/* Global Focus Styling */
+:focus-visible {
+  outline: 2px solid var(--neonC);
+  outline-offset: 3px;
 }
 
 /* Grid gap utilities */

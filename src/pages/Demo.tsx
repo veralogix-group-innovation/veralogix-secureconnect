@@ -7,7 +7,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { Activity, Zap, Droplet, AlertCircle, Car, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 // Mock Data
 const accessEvents = [
@@ -88,15 +87,14 @@ const Demo = () => {
             </p>
           </div>
           
-          <Button
-            variant="outline"
-            size="sm"
+          <button
+            className="btn btn--dust h-9 px-4 gap-2"
             onClick={toggleGlow}
-            className="gap-2"
           >
             <Sun className="h-4 w-4" />
             Glow: {glowIntensity === "high" ? "High" : "Low"}
-          </Button>
+            <i aria-hidden="true"></i>
+          </button>
         </div>
 
         {/* Key Metrics Row */}

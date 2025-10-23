@@ -1,7 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { NeonHeading } from "@/components/NeonHeading";
-import { Button } from "@/components/ui/button";
-import { GlowButton } from "@/components/GlowButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";
 import { FeatureDiagram } from "@/components/FeatureDiagram";
@@ -20,14 +18,14 @@ const ServiceDetail = () => {
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>
-          <Button variant="glass" asChild>
-            <Link to="/services">
-              <ArrowLeft className="mr-2" /> Back to Services
-            </Link>
-          </Button>
-        </div>
+      <div className="text-center">
+        <Link to="/services">
+          <button className="btn btn--dust h-11 px-6">
+            <ArrowLeft className="mr-2" /> Back to Services
+            <i aria-hidden="true"></i>
+          </button>
+        </Link>
+      </div>
       </div>
     );
   }
@@ -35,11 +33,12 @@ const ServiceDetail = () => {
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-7xl">
-        <Button variant="ghost" asChild className="mb-8">
-          <Link to="/services">
+        <Link to="/services">
+          <button className="btn btn--dust mb-8 h-11 px-6">
             <ArrowLeft className="mr-2" /> Back to Services
-          </Link>
-        </Button>
+            <i aria-hidden="true"></i>
+          </button>
+        </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content */}
@@ -58,9 +57,9 @@ const ServiceDetail = () => {
                 role="img"
                 aria-label={`${service.title} demonstration video placeholder`}
               >
-                <Button variant="hero" size="lg" aria-label={`Play ${service.title} 30 second demo video`}>
+                <button className="btn btn--neon h-14 px-10 text-base" aria-label={`Play ${service.title} 30 second demo video`}>
                   <PlayCircle className="mr-2 h-6 w-6" aria-hidden="true" /> Watch Demo (30s)
-                </Button>
+                </button>
               </div>
             </Card>
 
@@ -145,14 +144,15 @@ const ServiceDetail = () => {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <GlowButton glow="green" size="lg" asChild>
-                    <Link to="/contact">Schedule a Demo</Link>
-                  </GlowButton>
-                  <Button variant="glass" size="lg" asChild>
-                    <Link to="/services">
+                  <Link to="/contact">
+                    <button className="btn btn--neon h-14 px-10 text-base">Schedule a Demo</button>
+                  </Link>
+                  <Link to="/services">
+                    <button className="btn btn--dust h-14 px-10 text-base">
                       <ArrowLeft className="mr-2" /> View All Services
-                    </Link>
-                  </Button>
+                      <i aria-hidden="true"></i>
+                    </button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
@@ -186,9 +186,9 @@ const ServiceDetail = () => {
                       ))}
                     </ul>
                   </div>
-                  <Button variant="hero" className="w-full" asChild>
-                    <Link to="/contact">Get Started</Link>
-                  </Button>
+                  <Link to="/contact">
+                    <button className="btn btn--neon w-full h-11 px-6">Get Started</button>
+                  </Link>
                 </CardContent>
               </Card>
 

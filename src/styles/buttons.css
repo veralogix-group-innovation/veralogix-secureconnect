@@ -1,0 +1,166 @@
+/* SecureConnect™ Button Animation System */
+
+/* Base Button Class */
+.btn {
+  --r: 999px;
+  --pad: .85rem 1.2rem;
+  border: 0;
+  border-radius: var(--r);
+  padding: var(--pad);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-standard),
+              filter var(--dur-fast) var(--ease-standard),
+              box-shadow var(--dur-fast) var(--ease-standard);
+  will-change: transform, filter, box-shadow;
+  color: var(--white);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--neonC);
+  outline-offset: 3px;
+}
+
+/* Variant: Neon Pulse (Primary CTA) */
+.btn--neon {
+  background: linear-gradient(135deg, var(--neonA), var(--neonC) 55%, var(--neonE));
+  color: #0A0A0A;
+  filter: saturate(1.05);
+  box-shadow: var(--glow-neon);
+}
+
+.btn--neon:hover {
+  filter: brightness(1.06) saturate(1.2);
+  box-shadow: var(--glow-strong);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn--neon {
+    animation: breath 2.8s var(--ease-standard) infinite;
+  }
+  
+  @keyframes breath {
+    50% {
+      box-shadow: 0 0 18px rgba(31, 255, 0, .35);
+    }
+  }
+}
+
+/* Variant: Shimmer Line (Secondary CTA) */
+.btn--shimmer {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in oklab, #000 80%, var(--neonC));
+  border: 1px solid color-mix(in oklab, var(--neonB) 55%, #000);
+  color: var(--white);
+}
+
+.btn--shimmer::after {
+  content: "";
+  position: absolute;
+  inset: -150% -20%;
+  background: linear-gradient(75deg, transparent 45%, rgba(255, 255, 255, .18) 50%, transparent 55%);
+  transform: translateX(-20%);
+}
+
+.btn--shimmer:hover::after {
+  animation: shimmer 900ms var(--ease-standard);
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(40%);
+  }
+}
+
+/* Variant: Hover Dust (Tertiary/Micro CTA) */
+.btn--dust {
+  position: relative;
+  background: #111;
+  border: 1px solid var(--neonB);
+  color: var(--white);
+}
+
+.btn--dust i {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask: radial-gradient(6px 6px at 50% 50%, #000 98%, transparent);
+  background:
+    radial-gradient(3px 3px at 10% 40%, var(--neonB) 40%, transparent 45%),
+    radial-gradient(2px 2px at 80% 30%, var(--neonD) 40%, transparent 45%),
+    radial-gradient(2px 2px at 40% 70%, var(--neonA) 40%, transparent 45%),
+    radial-gradient(3px 3px at 60% 20%, var(--neonE) 40%, transparent 45%);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-standard);
+}
+
+.btn--dust:hover i {
+  opacity: .55;
+  filter: blur(.2px) drop-shadow(0 0 6px var(--neonC));
+}
+
+/* Variant: Magnetic Tilt (Hero CTAs) */
+.btn--mag {
+  background: linear-gradient(135deg, #0d0d0d, #161616);
+  border: 1px solid var(--neonB);
+  color: var(--white);
+  transform: perspective(600px) rotateX(0) rotateY(0);
+}
+
+.btn--mag[data-tilt] {
+  transform: perspective(600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(var(--tz, 0px));
+}
+
+.btn--mag:hover {
+  box-shadow: var(--glow-strong);
+}
+
+/* Variant: Press Ripple (Forms/Dialogs) */
+.btn--ripple {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0e0e0e, #141414);
+  border: 1px solid var(--neonB);
+  color: var(--white);
+}
+
+.btn--ripple span.r {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, var(--neonC), transparent 60%);
+  animation: rip 600ms ease-out forwards;
+}
+
+@keyframes rip {
+  from {
+    opacity: .6;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 25;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .btn--neon {
+    animation: none;
+  }
+  
+  .btn--shimmer::after,
+  .btn--dust i,
+  .btn--mag[data-tilt],
+  .btn--ripple span.r {
+    animation: none;
+    transition: none;
+  }
+}
