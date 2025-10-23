@@ -3,6 +3,14 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  safelist: [
+    'btn',
+    'btn--neon',
+    'btn--shimmer',
+    'btn--dust',
+    'btn--mag',
+    'btn--ripple',
+  ],
   prefix: "",
   theme: {
     container: {

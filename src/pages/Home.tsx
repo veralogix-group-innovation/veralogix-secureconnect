@@ -31,13 +31,13 @@ const Home = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center items-center animate-slide-in" style={{ gap: 'var(--g3)', paddingTop: 'var(--g4)' }}>
               <Link to="/contact" aria-label="Book a demo for SecureConnect">
-                <button className="btn btn--mag min-w-[200px] h-14 px-10 text-base">
+                <button className="btn btn--mag">
                   Book a demo
                 </button>
               </Link>
               
               <Link to="/services" aria-label="View all SecureConnect services">
-                <button className="btn btn--shimmer min-w-[200px] h-14 px-10 text-base">
+                <button className="btn btn--shimmer">
                   View services
                 </button>
               </Link>
@@ -67,7 +67,7 @@ const Home = () => {
           
           <div className="text-center">
             <Link to="/services" aria-label="Explore all SecureConnect services">
-              <button className="btn btn--neon h-14 px-10 text-base">
+              <button className="btn btn--neon">
                 Explore All Services <ArrowRight className="ml-2" aria-hidden="true" />
               </button>
             </Link>
@@ -85,7 +85,7 @@ const Home = () => {
             Join forward-thinking trustees and managing agents who are already leveraging SecureConnect™
           </p>
           <Link to="/contact" aria-label="Schedule a consultation with SecureConnect">
-            <button className="btn btn--neon h-14 px-10 text-base">
+            <button className="btn btn--neon">
               Schedule a Consultation <ArrowRight className="ml-2" aria-hidden="true" />
             </button>
           </Link>
