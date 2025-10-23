@@ -41,54 +41,57 @@ export const HeroSection = () => {
       : false;
 
   return (
-    <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden bg-[var(--base)]" aria-label="Hero section">
-      {/* Video background */}
-      <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          className={`h-full w-full object-cover ${loaded ? "opacity-100" : "opacity-0"} transition-opacity duration-700`}
-          playsInline
-          muted
-          autoPlay
-          preload="auto"
-          poster={logo}
-          aria-label="SecureConnect hero video"
-        >
-          {!prefersReducedMotion && (
-            <source src={heroVideo} type="video/mp4" />
-          )}
-        </video>
-        {/* Subtle overlay for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" aria-hidden="true" />
-      </div>
-
-      {/* Content overlay */}
-      <div className="container relative z-10 mx-auto px-4 py-24 md:py-32 text-center">
-        <h1 className="text-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-          <span className="block text-white">SecureConnect&#x1a; for Complexes</span>
-          <span className="block text-[hsl(var(--primary))] mt-3">Futuristic. Secure. Connected.</span>
-        </h1>
-
-        <p className="text-body text-lg md:text-xl text-white/90 max-w-3xl mx-auto mt-6">
-          Smart services that reduce false alarms, optimize energy, and delight residents.
-        </p>
-
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" className="btn btn--neon" aria-label="Book a demo">
-            Book a demo
-          </a>
-          <a href="/services" className="btn btn--shimmer" aria-label="Explore services">
-            View services
-          </a>
+    <>
+      {/* Video section with equalizer */}
+      <section className="relative min-h-[60vh] md:min-h-[70vh] overflow-hidden bg-[var(--base)]" aria-label="Hero video">
+        <div className="absolute inset-0">
+          <video
+            ref={videoRef}
+            className={`h-full w-full object-cover ${loaded ? "opacity-100" : "opacity-0"} transition-opacity duration-700`}
+            playsInline
+            muted
+            autoPlay
+            preload="auto"
+            poster={logo}
+            aria-label="SecureConnect hero video"
+          >
+            {!prefersReducedMotion && (
+              <source src={heroVideo} type="video/mp4" />
+            )}
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" aria-hidden="true" />
         </div>
-      </div>
 
-      {/* Equalizer at bottom */}
-      <div className="eq-wrap" aria-hidden="true">
-        {Array.from({ length: 16 }).map((_, i) => (
-          <span key={i} style={{ ["--i" as any]: i } as React.CSSProperties} />
-        ))}
-      </div>
-    </section>
+        {/* Equalizer at bottom */}
+        <div className="eq-wrap" aria-hidden="true">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} style={{ ["--i" as any]: i } as React.CSSProperties} />
+          ))}
+        </div>
+      </section>
+
+      {/* Content section below video */}
+      <section className="relative bg-[var(--base)] py-16 md:py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            <span className="block text-white">SecureConnect™ for Complexes</span>
+            <span className="block text-[var(--neonC)] mt-3">Futuristic. Secure. Connected.</span>
+          </h1>
+
+          <p className="text-body text-lg md:text-xl text-white/90 max-w-3xl mx-auto mt-6">
+            Smart services that reduce false alarms, optimize energy, and delight residents.
+          </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="/contact" className="btn-neon" aria-label="Book a demo">
+              Book a Demo
+            </a>
+            <a href="/services" className="btn-neon" aria-label="Explore services">
+              View Services
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };

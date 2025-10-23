@@ -1,7 +1,6 @@
-/* SecureConnect™ Button Animation System */
-/* Inline hex values for self-containment */
+/* SecureConnect™ Button System */
 
-/* CSS Variables for button system */
+/* CSS Variables */
 :root {
   --btn-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --btn-dur-fast: 150ms;
@@ -11,7 +10,109 @@
   --btn-glow-strong: 0 0 28px rgba(79,255,0,.65), 0 0 56px rgba(79,255,0,.35);
 }
 
-/* Base button shell (all variants inherit) */
+/* ============================================
+   NEON BUTTON (PRIMARY DESIGN)
+   ============================================ */
+.btn-neon,
+a.btn-neon,
+button.btn-neon {
+  position: relative;
+  display: inline-block;
+  color: var(--neonA);
+  border: 0.4em solid var(--neonA);
+  border-radius: 30px;
+  padding: 0.5em 1.5em;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  background: transparent;
+  
+  /* Intense neon glow */
+  box-shadow: 1px 1px 30px 1px var(--neonA),
+              inset 1px 1px 30px 1px var(--neonA);
+  text-shadow: 0px 0px 5px #fff, 0 0 15px currentColor;
+  
+  transition: color 100ms linear, text-shadow 100ms linear;
+}
+
+/* Reflection puddle effect below button */
+.btn-neon::after,
+a.btn-neon::after,
+button.btn-neon::after {
+  content: "";
+  position: absolute;
+  background: var(--neonA);
+  width: 100%;
+  height: 100%;
+  top: 140%;
+  left: 0;
+  transform: perspective(1em) rotateX(10deg) scale(1, 0.36);
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  transition: width 100ms linear, height 100ms linear, filter 100ms linear;
+}
+
+/* Hover fill background */
+.btn-neon::before,
+a.btn-neon::before,
+button.btn-neon::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 20px;
+  box-shadow: 1px 1px 40px 10px var(--neonA);
+  opacity: 0;
+  background: var(--neonA);
+  transition: opacity 100ms linear;
+}
+
+.btn-neon:hover,
+a.btn-neon:hover,
+button.btn-neon:hover {
+  text-shadow: none;
+  color: rgba(55, 52, 53, 0.7);
+}
+
+.btn-neon:hover::before,
+a.btn-neon:hover::before,
+button.btn-neon:hover::before {
+  opacity: 0.8;
+}
+
+.btn-neon:hover::after,
+a.btn-neon:hover::after,
+button.btn-neon:hover::after {
+  width: 105%;
+  height: 105%;
+  filter: blur(45px);
+}
+
+.btn-neon:focus-visible,
+a.btn-neon:focus-visible,
+button.btn-neon:focus-visible {
+  outline: 2px solid var(--neonC);
+  outline-offset: 3px;
+}
+
+/* Disable reflection for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-neon::after,
+  a.btn-neon::after,
+  button.btn-neon::after {
+    display: none;
+  }
+}
+
+/* ============================================
+   BASE BUTTON STYLES (LEGACY/FALLBACK)
+   ============================================ */
 .btn,
 a.btn,
 button.btn {
