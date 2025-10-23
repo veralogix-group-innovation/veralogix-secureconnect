@@ -25,7 +25,7 @@ button.btn {
               filter var(--btn-dur-fast) var(--btn-ease),
               box-shadow var(--btn-dur-fast) var(--btn-ease);
   will-change: transform, filter, box-shadow;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
@@ -36,6 +36,9 @@ button.btn {
   font-size: 1rem;
   text-decoration: none;
   box-sizing: border-box;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a) !important;
+  border: 1px solid rgba(111, 255, 0, 0.4) !important;
+  box-shadow: 0 0 20px rgba(31, 255, 0, 0.2);
 }
 
 .btn:focus-visible,
@@ -49,13 +52,29 @@ button.btn:focus-visible {
 .btn--neon {
   background: linear-gradient(135deg, #1FFF00, #6FFF00 55%, #9FFF00) !important;
   color: #0A0A0A !important;
-  filter: saturate(1.05);
-  box-shadow: var(--btn-glow-neon) !important;
+  border: 0 !important;
+  box-shadow:
+    inset 0 0 60px rgba(255, 255, 255, 0.15),
+    inset 20px 0 80px rgba(143, 255, 0, 0.6),
+    inset -20px 0 80px rgba(79, 255, 0, 0.6),
+    inset 20px 0 300px rgba(159, 255, 0, 0.5),
+    inset -20px 0 300px rgba(111, 255, 0, 0.5),
+    0 0 50px rgba(111, 255, 0, 0.8),
+    -10px 0 80px rgba(79, 255, 0, 0.6),
+    10px 0 80px rgba(143, 255, 0, 0.6) !important;
 }
 
 .btn--neon:hover {
   filter: brightness(1.06) saturate(1.2) !important;
-  box-shadow: var(--btn-glow-strong) !important;
+  box-shadow:
+    inset 0 0 70px rgba(255, 255, 255, 0.2),
+    inset 22px 0 90px rgba(143, 255, 0, 0.7),
+    inset -22px 0 90px rgba(79, 255, 0, 0.7),
+    inset 22px 0 320px rgba(159, 255, 0, 0.6),
+    inset -22px 0 320px rgba(111, 255, 0, 0.6),
+    0 0 60px rgba(111, 255, 0, 0.9),
+    -12px 0 90px rgba(79, 255, 0, 0.7),
+    12px 0 90px rgba(143, 255, 0, 0.7) !important;
   transform: translateY(-2px) !important;
 }
 
@@ -73,10 +92,11 @@ button.btn:focus-visible {
 
 /* Magnetic Tilt (hero only) */
 .btn--mag {
-  background: linear-gradient(135deg, #0d0d0d, #161616) !important;
+  background: #1a1a1a !important;
   color: #FFFFFF !important;
-  border: 1px solid #4FFF00 !important;
+  border: 1px solid rgba(79, 255, 0, 0.6) !important;
   transform: perspective(600px) rotateX(0) rotateY(0);
+  box-shadow: 0 0 20px rgba(31, 255, 0, 0.25);
 }
 
 .btn--mag[data-tilt] {
@@ -84,7 +104,13 @@ button.btn:focus-visible {
 }
 
 .btn--mag:hover {
-  box-shadow: var(--btn-glow-strong) !important;
+  box-shadow:
+    inset 0 0 40px rgba(255, 255, 255, 0.1),
+    inset 15px 0 60px rgba(143, 255, 0, 0.5),
+    inset -15px 0 60px rgba(79, 255, 0, 0.5),
+    0 0 40px rgba(111, 255, 0, 0.7),
+    -8px 0 60px rgba(79, 255, 0, 0.5),
+    8px 0 60px rgba(143, 255, 0, 0.5) !important;
 }
 
 /* Shimmer Line (secondary CTA) */
@@ -93,7 +119,8 @@ button.btn:focus-visible {
   overflow: hidden;
   color: #FFFFFF !important;
   background: #1a1a1a !important;
-  border: 1px solid #4FFF00 !important;
+  border: 1px solid rgba(79, 255, 0, 0.5) !important;
+  box-shadow: 0 0 18px rgba(31, 255, 0, 0.2);
 }
 
 .btn--shimmer::after {
@@ -103,6 +130,16 @@ button.btn:focus-visible {
   background: linear-gradient(75deg, transparent 45%, rgba(255,255,255,.18) 50%, transparent 55%);
   transform: translateX(-20%);
   pointer-events: none;
+}
+
+.btn--shimmer:hover {
+  box-shadow:
+    inset 0 0 30px rgba(255, 255, 255, 0.08),
+    inset 12px 0 50px rgba(143, 255, 0, 0.4),
+    inset -12px 0 50px rgba(79, 255, 0, 0.4),
+    0 0 35px rgba(111, 255, 0, 0.6),
+    -6px 0 50px rgba(79, 255, 0, 0.4),
+    6px 0 50px rgba(143, 255, 0, 0.4);
 }
 
 .btn--shimmer:hover::after {
