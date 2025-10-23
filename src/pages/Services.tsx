@@ -1,4 +1,4 @@
-import { ServiceCard } from "@/components/ServiceCard";
+import { CardFX } from "@/components/CardFX";
 import { NeonHeading } from "@/components/NeonHeading";
 import { 
   Radio, 
@@ -105,16 +105,20 @@ const Services = () => {
 
         {/* 3×4 Grid: 3 columns on desktop, responsive on smaller screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 animate-slide-in" style={{ gap: 'var(--g4)' }} role="list">
-          {services.map((service) => (
-            <div key={service.slug} role="listitem">
-              <ServiceCard
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                slug={service.slug}
-              />
-            </div>
-          ))}
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <div key={service.slug} role="listitem">
+                <CardFX
+                  title={service.title}
+                  description={service.description}
+                  icon={<IconComponent />}
+                  ctaLabel="Explore"
+                  ctaLink={`/services/${service.slug}`}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
