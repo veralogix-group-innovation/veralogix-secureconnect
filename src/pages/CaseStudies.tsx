@@ -1,6 +1,7 @@
 import { NeonHeading } from "@/components/NeonHeading";
-import { CardFX } from "@/components/CardFX";
-import { Building2, Users, Award } from "lucide-react";
+import { MetricPill } from "@/components/MetricPill";
+import { Building2, Users, Award, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const caseStudies = [
   {
@@ -62,10 +63,76 @@ const caseStudies = [
   },
 ];
 
+// Video reel data
+const videoReels = [
+  {
+    title: "Seamless Security",
+    description: "Watch biometric authentication flow from panel interaction to door unlock and real-time dashboard updates.",
+    thumbnail: "/placeholder.svg"
+  },
+  {
+    title: "Connected Living",
+    description: "See sensor overlays detecting environmental changes and triggering predictive maintenance alerts.",
+    thumbnail: "/placeholder.svg"
+  },
+  {
+    title: "Sustainable Ops",
+    description: "Experience the EV charging schedule timeline sweep optimizing for off-peak grid demand.",
+    thumbnail: "/placeholder.svg"
+  }
+];
+
+// Lazy video component
+const LazyVideo = ({ title, description, thumbnail }: { title: string; description: string; thumbnail: string }) => {
+  const videoRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion = useRef(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (videoRef.current) observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={videoRef} className="relative aspect-video rounded-lg overflow-hidden border border-primary/20 bg-card/50">
+      {!isVisible ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-card to-background">
+          <Play className="h-16 w-16 text-primary/40" />
+        </div>
+      ) : (
+        <div className="relative h-full">
+          <img src={thumbnail} alt={title} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
+            <button className="btn btn--neon">
+              <Play className="h-5 w-5 mr-2 inline" />
+              Play Video
+            </button>
+          </div>
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+        <h4 className="text-lg font-semibold text-white mb-1">{title}</h4>
+        <p className="text-sm text-white/80">{description}</p>
+      </div>
+    </div>
+  );
+};
+
 const CaseStudies = () => {
   return (
     <div className="min-h-screen py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
+        {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <NeonHeading level="h1" className="mb-4">
             Proven Results
@@ -75,33 +142,100 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        <div className="container mx-auto" style={{ width: 'min(1100px, 92vw)' }}>
-          <div className="flex flex-wrap gap-7 justify-center">
-            {caseStudies.map((study, index) => {
-              const Icon = study.icon;
-              
-              // Construct description with narrative + key metrics
-              const description = `${study.narrative.slice(0, 140)}... 
-              
-What Changed:
-${study.whatChanged.slice(0, 2).map(item => `• ${item}`).join('\n')}
+        {/* Case Studies */}
+        <div className="space-y-12 mb-20">
+          {caseStudies.map((study, index) => {
+            const Icon = study.icon;
+            
+            return (
+              <article 
+                key={index}
+                className="grid lg:grid-cols-2 gap-8 p-8 rounded-xl border border-primary/20 bg-card/30 backdrop-blur-sm animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                {/* Left Column - Main Content */}
+                <div className="space-y-6">
+                  {/* Header with Icon */}
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
+                      <Icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1">{study.name}</h3>
+                      <p className="text-sm text-muted-foreground">{study.location} • {study.units} units</p>
+                    </div>
+                  </div>
 
-Before → After:
-${study.beforeAfter.map(m => `${m.metric}: ${m.before} → ${m.after}`).join(' | ')}`;
-              
-              return (
-                <CardFX
-                  key={index}
-                  title={`${study.name}\n${study.headlineKPI} ${study.kpiLabel}`}
-                  icon={<Icon className="h-12 w-12" />}
-                  description={description}
-                  ctaLabel="View Full Story"
-                  ctaLink="#"
-                />
-              );
-            })}
-          </div>
+                  {/* Headline KPI */}
+                  <div className="p-6 rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30">
+                    <div className="text-5xl font-bold text-primary mb-2">{study.headlineKPI}</div>
+                    <div className="text-lg text-muted-foreground">{study.kpiLabel}</div>
+                  </div>
+
+                  {/* Narrative */}
+                  <p className="text-base leading-relaxed text-foreground/90">
+                    {study.narrative}
+                  </p>
+                </div>
+
+                {/* Right Column - Metrics & Changes */}
+                <div className="space-y-6">
+                  {/* Before vs After */}
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-primary"></span>
+                      Before → After
+                    </h4>
+                    {study.beforeAfter.map((comparison, idx) => (
+                      <div key={idx} className="p-4 rounded-lg bg-background/50 border border-primary/20">
+                        <div className="text-sm text-muted-foreground mb-2">{comparison.metric}</div>
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg text-destructive/80 line-through">{comparison.before}</span>
+                          <span className="text-primary">→</span>
+                          <span className="text-2xl font-bold text-primary">{comparison.after}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* What Changed */}
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-primary"></span>
+                      Key Improvements
+                    </h4>
+                    <ul className="space-y-3">
+                      {study.whatChanged.map((change, idx) => (
+                        <li key={idx} className="flex gap-3 text-sm leading-relaxed">
+                          <span className="text-primary mt-1 flex-shrink-0">✓</span>
+                          <span className="text-foreground/80">{change}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
+
+        {/* Video Reels Section */}
+        <section className="mt-20">
+          <div className="text-center mb-12">
+            <NeonHeading level="h2" className="mb-4">
+              See It In Action
+            </NeonHeading>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Experience SecureConnect™ through our interactive demonstration reels
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {videoReels.map((reel, index) => (
+              <LazyVideo key={index} {...reel} />
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
