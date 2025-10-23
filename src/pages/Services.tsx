@@ -92,7 +92,7 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen px-4" style={{ paddingTop: 'var(--g4)', paddingBottom: 'var(--g4)' }}>
+    <div className="px-4" style={{ paddingTop: 'var(--g4)', paddingBottom: 'calc(var(--g4) * 3)' }}>
       <div className="container mx-auto">
         <header className="text-center animate-fade-in" style={{ marginBottom: 'var(--g4)' }}>
           <NeonHeading level="h1" style={{ marginBottom: 'var(--g3)' }}>
