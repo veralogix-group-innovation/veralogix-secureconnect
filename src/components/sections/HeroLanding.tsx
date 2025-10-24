@@ -61,13 +61,6 @@ export const HeroLanding = () => {
         <path d="M 200 400 Q 350 350 500 400" className="stream-path stream-3" />
       </svg>
       
-      <svg className="drone" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
-        <ellipse cx="30" cy="20" rx="15" ry="8" fill="hsl(var(--salad-green))" opacity="0.6" />
-        <circle cx="15" cy="15" r="4" fill="hsl(var(--neonC))" className="propeller" />
-        <circle cx="45" cy="15" r="4" fill="hsl(var(--neonC))" className="propeller" />
-        <rect x="24" y="16" width="12" height="8" rx="2" fill="hsl(var(--june-bud))" />
-        <circle cx="30" cy="32" r="6" fill="rgba(79, 200, 255, 0.4)" className="drone-glow" />
-      </svg>
       
       <div className="hero-dust" aria-hidden="true"></div>
       
