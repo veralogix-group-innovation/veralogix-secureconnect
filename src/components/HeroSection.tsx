@@ -75,7 +75,7 @@ export const HeroSection = () => {
       <section className="relative bg-[var(--base)] py-16 md:py-24 hero-content-dust">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            <span className="block text-white">Smart Living. Smarter Security.</span>
+            <span className="block text-[var(--june-bud)] hero-glow">Smart Living. Smarter Security.</span>
           </h1>
 
           <p className="text-body text-lg md:text-xl text-white/90 max-w-3xl mx-auto mt-6">
