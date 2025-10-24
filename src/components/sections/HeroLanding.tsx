@@ -12,8 +12,8 @@ export const HeroLanding = () => {
     if (!v) return;
 
     const onTimeUpdate = () => {
-      // Freeze before black fade
-      if (v.duration && v.currentTime >= v.duration - 1) {
+      // Freeze at logo
+      if (v.duration && v.currentTime >= v.duration - 0.1) {
         v.pause();
       }
     };
