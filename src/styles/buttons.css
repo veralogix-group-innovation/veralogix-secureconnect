@@ -312,3 +312,27 @@ button.btn:focus-visible {
     scale: 25;
   }
 }
+
+/* Electric Blue Button Variant */
+.btn-blue {
+  background: linear-gradient(135deg, rgba(79, 200, 255, 0.9), rgba(79, 200, 255, 0.7));
+  box-shadow: 0 0 20px rgba(79, 200, 255, 0.5);
+  color: #0a0a0a;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  border: 0;
+  cursor: pointer;
+  transition: transform 150ms cubic-bezier(.2,.8,.2,1),
+             filter 150ms cubic-bezier(.2,.8,.2,1),
+             box-shadow 150ms cubic-bezier(.2,.8,.2,1);
+}
+.btn-blue:hover {
+  box-shadow: 0 0 30px rgba(79, 200, 255, 0.7), 0 0 60px rgba(79, 200, 255, 0.4);
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+.btn-blue:focus-visible {
+  outline: 2px solid hsl(var(--neonC));
+  outline-offset: 3px;
+}

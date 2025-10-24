@@ -85,6 +85,21 @@ All colors MUST be HSL.
     --g2: 1rem;
     --g3: 1.5rem;
     --g4: 2rem;
+    
+    /* Neon Ramp (accents) */
+    --neonA: 31 255 0;    /* rgb(31,255,0)  - #1FFF00 */
+    --neonB: 79 255 0;    /* rgb(79,255,0)  - #4FFF00 */
+    --neonC: 111 255 0;   /* rgb(111,255,0) - #6FFF00 */
+    --neonD: 143 255 0;   /* rgb(143,255,0) - #8FFF00 */
+    --neonE: 159 255 0;   /* rgb(159,255,0) - #9FFF00 */
+    
+    /* Additional accent colors */
+    --electric-blue: 199 100% 65%;  /* rgb(79, 200, 255) */
+    --neon-pink: 329 100% 56%;      /* rgb(255, 0, 110) */
+    --dawn-green: 77 54% 64%;       /* June Bud with transparency for dawn effect */
+    
+    /* Base color */
+    --base: #373435;
   }
 }
 

@@ -1,0 +1,97 @@
+.security-section {
+  position: relative;
+  background: #0a0a0a;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.binary-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.15;
+}
+
+.rain-column {
+  position: absolute;
+  top: -100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: hsl(var(--salad-green));
+  animation: rainFall linear infinite;
+}
+
+.rain-column span {
+  display: block;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+@keyframes rainFall {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .content-wrapper {
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: center;
+  }
+}
+
+.text-content {
+  max-width: 500px;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .text-content {
+    text-align: left;
+  }
+}
+
+.security-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: hsl(var(--june-bud));
+  text-shadow: 0 0 20px rgba(186, 217, 107, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+.security-description {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rain-column {
+    animation: none;
+    position: static;
+    opacity: 0.05;
+  }
+}

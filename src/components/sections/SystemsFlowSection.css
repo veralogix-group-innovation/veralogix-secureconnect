@@ -1,0 +1,168 @@
+.systems-flow-section {
+  position: relative;
+  background: var(--base);
+  overflow: hidden;
+}
+
+.grid-background {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(111, 255, 0, 0.05) 49px, rgba(111, 255, 0, 0.05) 50px),
+    repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(111, 255, 0, 0.05) 49px, rgba(111, 255, 0, 0.05) 50px);
+  opacity: 0.3;
+}
+
+.particle-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1px 1px at 25% 35%, rgba(111, 255, 0, 0.3), transparent),
+    radial-gradient(1px 1px at 75% 65%, rgba(111, 255, 0, 0.3), transparent);
+  background-size: 100% 100%;
+  animation: particleDrift 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes particleDrift {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.flow-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .flow-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.flow-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .flow-wrapper {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flow-node.visible {
+  animation: nodeAppear 0.5s ease forwards;
+}
+
+@keyframes nodeAppear {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.node-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(55, 52, 53, 0.6);
+  border: 2px solid hsl(var(--june-bud));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--salad-green));
+  box-shadow: 
+    0 0 20px rgba(186, 217, 107, 0.3),
+    inset 0 0 30px rgba(186, 217, 107, 0.1);
+}
+
+.node-label {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+.node-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.connection-line {
+  width: 100px;
+  height: 60px;
+  opacity: 0;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.connection-line.visible {
+  animation: lineDraw 0.8s ease forwards;
+}
+
+@keyframes lineDraw {
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+.connection-line line {
+  stroke: rgba(79, 200, 255, 0.6);
+  stroke-width: 2;
+  fill: none;
+}
+
+.flow-particle {
+  fill: rgba(79, 200, 255, 0.9);
+}
+
+.flow-caption {
+  text-align: center;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-node,
+  .connection-line,
+  .particle-overlay {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .flow-node.visible,
+  .connection-line.visible {
+    opacity: 1;
+    transform: none;
+    stroke-dashoffset: 0;
+  }
+}
