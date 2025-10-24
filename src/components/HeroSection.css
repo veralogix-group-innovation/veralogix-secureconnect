@@ -34,3 +34,53 @@
     height: 14px;
   }
 }
+
+/* Moving light dust backdrop */
+.hero-content-dust {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content-dust::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, var(--neonB), transparent),
+    radial-gradient(2px 2px at 60% 70%, var(--neonA), transparent),
+    radial-gradient(1px 1px at 50% 50%, var(--neonC), transparent),
+    radial-gradient(1px 1px at 80% 10%, var(--neonD), transparent),
+    radial-gradient(2px 2px at 90% 60%, var(--neonA), transparent),
+    radial-gradient(1px 1px at 33% 80%, var(--neonB), transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: dust-float 20s ease-in-out infinite;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+@keyframes dust-float {
+  0%, 100% { 
+    background-position: 0% 0%; 
+    opacity: 0.15;
+  }
+  25% { 
+    background-position: 100% 100%; 
+    opacity: 0.25;
+  }
+  50% { 
+    background-position: 0% 100%; 
+    opacity: 0.15;
+  }
+  75% { 
+    background-position: 100% 0%; 
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content-dust::before {
+    animation: none;
+    opacity: 0.1;
+  }
+}

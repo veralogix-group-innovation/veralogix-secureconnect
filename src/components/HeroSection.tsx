@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import heroVideo from "@/assets/hero.mp4";
 import logo from "@/assets/logo-no-bg.svg";
 import "./HeroSection.css";
@@ -71,23 +72,22 @@ export const HeroSection = () => {
       </section>
 
       {/* Content section below video */}
-      <section className="relative bg-[var(--base)] py-16 md:py-24">
+      <section className="relative bg-[var(--base)] py-16 md:py-24 hero-content-dust">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            <span className="block text-white">SecureConnect™ for Complexes</span>
-            <span className="block text-[var(--neonC)] mt-3">Futuristic. Secure. Connected.</span>
+            <span className="block text-white">Smart Living. Smarter Security.</span>
           </h1>
 
           <p className="text-body text-lg md:text-xl text-white/90 max-w-3xl mx-auto mt-6">
-            Smart services that reduce false alarms, optimize energy, and delight residents.
+            Where AI, IoT, and design converge to protect and connect your community.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="/services" className="btn-neon" aria-label="Explore the future">
+              Explore the Future <ArrowRight className="inline-block ml-2" size={20} />
+            </a>
             <a href="/contact" className="btn-neon" aria-label="Book a demo">
               Book a Demo
-            </a>
-            <a href="/services" className="btn-neon" aria-label="Explore services">
-              View Services
             </a>
           </div>
         </div>
