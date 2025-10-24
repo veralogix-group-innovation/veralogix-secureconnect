@@ -13,11 +13,11 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Base colors - Green Gradient System */
-    --background: 10 2% 8%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
 
-    /* Mine Shaft base */
-    --mine-shaft: 10 2% 21%;
+    /* Pure black base */
+    --mine-shaft: 0 0% 0%;
     
     /* Green gradient system */
     --salad-green: 73 57% 54%;
@@ -28,7 +28,7 @@ All colors MUST be HSL.
     
     /* Semantic tokens */
     --primary: 73 57% 54%; /* Salad Green */
-    --primary-foreground: 10 2% 8%;
+    --primary-foreground: 0 0% 0%;
     --primary-glow: 77 54% 64%;
     
     --secondary: 77 50% 40%; /* Green Onion */
@@ -36,30 +36,30 @@ All colors MUST be HSL.
     --secondary-glow: 77 54% 64%;
     
     --accent: 77 54% 64%; /* June Bud */
-    --accent-foreground: 10 2% 8%;
+    --accent-foreground: 0 0% 0%;
     --accent-glow: 77 54% 74%;
     
-    --muted: 10 2% 21%;
+    --muted: 0 0% 0%;
     --muted-foreground: 0 0% 65%;
     
-    --card: 10 2% 12%;
+    --card: 0 0% 0%;
     --card-foreground: 0 0% 98%;
     
-    --popover: 10 2% 10%;
+    --popover: 0 0% 0%;
     --popover-foreground: 0 0% 98%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
     --border: 73 57% 54%;
-    --input: 10 2% 21%;
+    --input: 0 0% 0%;
     --ring: 73 57% 54%;
     
     --radius: 0.75rem;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(73 57% 54%), hsl(77 54% 64%), hsl(77 50% 40%), hsl(77 84% 20%), hsl(10 2% 21%), hsl(180 100% 97%));
-    --gradient-dark: linear-gradient(135deg, hsl(77 50% 40%), hsl(77 84% 20%), hsl(10 2% 21%));
+    --gradient-primary: linear-gradient(135deg, hsl(73 57% 54%), hsl(77 54% 64%), hsl(77 50% 40%), hsl(77 84% 20%), hsl(0 0% 0%), hsl(180 100% 97%));
+    --gradient-dark: linear-gradient(135deg, hsl(77 50% 40%), hsl(77 84% 20%), hsl(0 0% 0%));
     --gradient-light: linear-gradient(135deg, hsl(73 57% 54%), hsl(77 54% 64%), hsl(180 100% 97%));
     
     /* Shadows & Glows */
@@ -71,11 +71,11 @@ All colors MUST be HSL.
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-glow: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
-    --sidebar-background: 10 2% 12%;
+    --sidebar-background: 0 0% 0%;
     --sidebar-foreground: 0 0% 85%;
     --sidebar-primary: 73 57% 54%;
-    --sidebar-primary-foreground: 10 2% 8%;
-    --sidebar-accent: 10 2% 18%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 5%;
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 73 57% 54% / 0.3;
     --sidebar-ring: 73 57% 54%;
@@ -99,7 +99,7 @@ All colors MUST be HSL.
     --dawn-green: 77 54% 64%;       /* June Bud with transparency for dawn effect */
     
     /* Base color */
-    --base: #373435;
+    --base: #000000;
   }
 }
 
