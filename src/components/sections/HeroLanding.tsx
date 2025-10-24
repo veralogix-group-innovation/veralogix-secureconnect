@@ -12,8 +12,8 @@ export const HeroLanding = () => {
     if (!v) return;
 
     const onTimeUpdate = () => {
-      // Freeze before black fade (adjust timing as needed, e.g., 2 seconds before end)
-      if (v.duration && v.currentTime >= v.duration - 2) {
+      // Freeze before black fade
+      if (v.duration && v.currentTime >= v.duration - 1) {
         v.pause();
       }
     };
@@ -61,8 +61,9 @@ export const HeroLanding = () => {
         <path d="M 200 400 Q 350 350 500 400" className="stream-path stream-3" />
       </svg>
       
-      
       <div className="hero-dust" aria-hidden="true"></div>
+      
+      <div className="hero-bottom-fade" aria-hidden="true"></div>
       
       <div className="hero-content">
         <h1 id="hero-heading" className="hero-title">
@@ -72,9 +73,11 @@ export const HeroLanding = () => {
         <p className="hero-subtitle">
           Where AI, IoT, and design converge to protect and connect your community.
         </p>
-        <a href="#vision" className="btn btn--neon" aria-label="Explore the future of smart living">
-          Explore the Future <ArrowRight className="ml-2" aria-hidden="true" />
-        </a>
+        <div className="hero-cta">
+          <a href="#vision" className="btn btn--neon" aria-label="Explore the future of smart living">
+            Explore the Future <ArrowRight className="ml-2" aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </section>
   );
