@@ -336,3 +336,64 @@ button.btn:focus-visible {
   outline: 2px solid hsl(var(--neonC));
   outline-offset: 3px;
 }
+
+/* Animated Neon Border Button */
+.btn--neon-animated {
+  position: relative;
+  background: linear-gradient(135deg, #0d0d0d, #161616);
+  color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 600;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform var(--btn-dur-fast) var(--btn-ease),
+              box-shadow var(--btn-dur-fast) var(--btn-ease);
+}
+
+.btn--neon-animated::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(90deg, 
+    #1FFF00, #4FFF00, #6FFF00, 
+    #8FFF00, #9FFF00, #1FFF00);
+  background-size: 300% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn--neon-animated::before {
+    animation: neon-border-flow 3s linear infinite;
+  }
+}
+
+@keyframes neon-border-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.btn--neon-animated:hover {
+  box-shadow: 0 0 30px rgba(111, 255, 0, 0.6),
+              0 0 60px rgba(111, 255, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--neon-animated {
+    animation: none;
+  }
+  .btn--neon-animated::before {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}

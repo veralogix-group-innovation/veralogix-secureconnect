@@ -8,7 +8,10 @@ import { Footer } from "@/components/Footer";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
-import Demo from "./pages/Demo";
+import MainDashboard from "./pages/MainDashboard";
+import ResidenceDashboard from "./pages/ResidenceDashboard";
+import TrusteesDashboard from "./pages/TrusteesDashboard";
+import ManagingAgentDashboard from "./pages/ManagingAgentDashboard";
 import CaseStudies from "./pages/CaseStudies";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -69,7 +72,10 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
-                <Route path="/demo" element={<Demo />} />
+                <Route path="/demo" element={<MainDashboard />} />
+                <Route path="/residence" element={<ResidenceDashboard />} />
+                <Route path="/trustees" element={<TrusteesDashboard />} />
+                <Route path="/managing-agent" element={<ManagingAgentDashboard />} />
                 <Route path="/case-studies" element={<CaseStudies />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy" element={<Privacy />} />
