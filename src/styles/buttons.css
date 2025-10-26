@@ -340,7 +340,7 @@ button.btn:focus-visible {
 /* Animated Neon Border Button */
 .btn--neon-animated {
   position: relative;
-  background: linear-gradient(135deg, #0d0d0d, #161616);
+  background: #000000;
   color: #FFFFFF;
   border: 2px solid transparent;
   border-radius: 24px;
@@ -348,6 +348,11 @@ button.btn:focus-visible {
   font-weight: 600;
   overflow: hidden;
   z-index: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   transition: transform var(--btn-dur-fast) var(--btn-ease),
               box-shadow var(--btn-dur-fast) var(--btn-ease);
 }

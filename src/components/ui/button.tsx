@@ -9,13 +9,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-md",
-        hero: "rounded-full bg-gradient-to-r from-[hsl(73,57%,54%)] via-[hsl(77,54%,64%)] to-[hsl(77,50%,40%)] text-black font-semibold hover:shadow-[0_0_30px_hsl(180,100%,50%)] transition-all duration-300",
-        neon: "rounded-full bg-secondary/10 text-secondary border-2 border-secondary hover:bg-secondary hover:text-secondary-foreground hover:shadow-[0_0_20px_hsl(180,100%,50%)] transition-all duration-300",
+        default: "btn--neon-animated",
+        hero: "btn--neon-animated",
+        neon: "btn--neon-animated",
         glass: "rounded-lg glass text-foreground border border-primary/30 hover:border-primary hover:shadow-[0_0_15px_hsl(73,57%,54%/0.4)] transition-all duration-300",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-md",
-        outline: "border border-primary/50 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary rounded-md",
-        secondary: "bg-muted text-muted-foreground hover:bg-muted/80 rounded-md",
+        outline: "border border-primary/50 bg-black text-white hover:bg-primary/10 hover:border-primary rounded-full",
+        secondary: "btn--shimmer",
         ghost: "hover:bg-accent/10 hover:text-accent rounded-md",
         link: "text-primary underline-offset-4 hover:underline",
       },
