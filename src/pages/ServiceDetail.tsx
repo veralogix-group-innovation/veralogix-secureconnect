@@ -191,6 +191,98 @@ const ServiceDetail = () => {
               </Card>
             </section>
 
+            {/* Related Services Section */}
+            <section id="related-services" aria-labelledby="related-heading">
+              <h2 id="related-heading" className="text-3xl font-bold mb-6">You May Also Like</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Show 3 related service cards based on current service */}
+                {slug === "smart-iot-sensors" && (
+                  <>
+                    <Link to="/services/predictive-maintenance">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Predictive Maintenance AI</h3>
+                          <p className="text-sm text-muted-foreground">Prevent problems before they happen with 92% accuracy</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/services/ev-charging">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">EV Charging</h3>
+                          <p className="text-sm text-muted-foreground">Smart load management with 99.5% uptime</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/services/wellness-sensors">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Wellness Monitoring</h3>
+                          <p className="text-sm text-muted-foreground">Air quality and comfort optimization</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </>
+                )}
+                {(slug === "ai-concierge" || slug === "biometric-access") && (
+                  <>
+                    <Link to="/services/smart-iot-sensors">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Smart IoT Sensors</h3>
+                          <p className="text-sm text-muted-foreground">Real-time environmental intelligence with 30% energy savings</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/services/virtual-pm">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Virtual Property Management</h3>
+                          <p className="text-sm text-muted-foreground">All-in-one tenant portal and operations hub</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/services/community-platform">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Community Platform</h3>
+                          <p className="text-sm text-muted-foreground">Events, messaging, and resident engagement</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </>
+                )}
+                {!slug?.includes("iot") && !slug?.includes("concierge") && !slug?.includes("biometric") && (
+                  <>
+                    <Link to="/services/smart-iot-sensors">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Smart IoT Sensors</h3>
+                          <p className="text-sm text-muted-foreground">Foundation for all smart building features</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/services/ai-concierge">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">AI Concierge</h3>
+                          <p className="text-sm text-muted-foreground">24/7 intelligent assistant with 85% resolution rate</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                    <Link to="/services/biometric-access">
+                      <Card className="glass hover:border-primary/50 transition-all cursor-pointer h-full">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-bold mb-2 text-primary">Biometric Access</h3>
+                          <p className="text-sm text-muted-foreground">Secure, touchless entry with 99.8% accuracy</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </>
+                )}
+              </div>
+            </section>
+
             {/* CTA Panel */}
             <Card className="glass border-2 border-primary/50 bg-gradient-to-br from-primary/10 to-secondary/10">
               <CardContent className="p-8 text-center space-y-6">

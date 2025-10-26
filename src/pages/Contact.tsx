@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { z } from "zod";
 import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -226,6 +227,33 @@ const Contact = () => {
                 <button className="btn btn--shimmer w-full h-11 px-6">
                   Download PDF (4.2 MB)
                 </button>
+              </CardContent>
+            </Card>
+
+            {/* Quick Service Links */}
+            <Card className="glass">
+              <CardContent className="pt-6 text-center">
+                <p className="text-sm text-muted-foreground mb-4">Interested in a specific service?</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Link to="/services/smart-iot-sensors">
+                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary">IoT Sensors</Badge>
+                  </Link>
+                  <Link to="/services/biometric-access">
+                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary">Biometric Access</Badge>
+                  </Link>
+                  <Link to="/services/ai-concierge">
+                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary">AI Concierge</Badge>
+                  </Link>
+                  <Link to="/services/predictive-maintenance">
+                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary">Predictive Maintenance</Badge>
+                  </Link>
+                  <Link to="/services/ev-charging">
+                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary">EV Charging</Badge>
+                  </Link>
+                  <Link to="/services/ar-leasing">
+                    <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary">AR Leasing</Badge>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           </div>

@@ -8,6 +8,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { Activity, Zap, Droplet, AlertCircle, Car, Sun } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
+import { Link } from "react-router-dom";
 
 // Mock Data
 const accessEvents = [
@@ -84,6 +85,19 @@ const Demo = () => {
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-7xl">
+        {/* Services Banner */}
+        <Card className="glass mb-8 border-primary/30 animate-fade-in">
+          <CardContent className="p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Activity className="h-5 w-5 text-primary flex-shrink-0" />
+              <span className="text-foreground">Want to learn more about individual services?</span>
+            </div>
+            <Link to="/services">
+              <button className="btn btn--shimmer h-10 px-6">Explore Services</button>
+            </Link>
+          </CardContent>
+        </Card>
+
         <div className="flex justify-between items-start mb-12">
           <div className="text-center flex-1 animate-fade-in">
             <NeonHeading level="h1" className="mb-4">

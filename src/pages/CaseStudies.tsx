@@ -2,6 +2,8 @@ import { NeonHeading } from "@/components/NeonHeading";
 import { MetricPill } from "@/components/MetricPill";
 import { Building2, Users, Award, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
 
 const caseStudies = [
   {
@@ -236,6 +238,23 @@ const CaseStudies = () => {
             ))}
           </div>
         </section>
+
+        {/* CTA to Demo */}
+        <div className="text-center mt-16">
+          <Card className="glass border-2 border-primary/50 bg-gradient-to-br from-primary/10 to-secondary/10">
+            <CardContent className="p-8 space-y-4">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Experience It Yourself
+              </h3>
+              <p className="text-lg text-muted-foreground">
+                Explore our interactive dashboard simulator to see SecureConnect™ in action
+              </p>
+              <Link to="/demo">
+                <button className="btn btn--neon h-14 px-10">Try the Dashboard Demo</button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );

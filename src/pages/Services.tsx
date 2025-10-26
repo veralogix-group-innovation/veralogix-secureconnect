@@ -1,5 +1,7 @@
 import { CardFX } from "@/components/CardFX";
 import { NeonHeading } from "@/components/NeonHeading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import { 
   Radio, 
   Bot, 
@@ -128,6 +130,19 @@ const Services = () => {
             );
           })}
         </div>
+
+        {/* CTA Section to Demo */}
+        <Card className="glass border-2 border-primary/50 bg-gradient-to-br from-primary/10 to-secondary/10 mt-16 animate-fade-in">
+          <CardContent className="p-8 text-center space-y-6">
+            <NeonHeading level="h2">See It All In Action</NeonHeading>
+            <p className="text-xl text-muted-foreground">
+              Explore our interactive dashboard simulator to experience SecureConnect™ firsthand
+            </p>
+            <Link to="/demo">
+              <button className="btn btn--neon h-14 px-10">Open Dashboard Demo</button>
+            </Link>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
