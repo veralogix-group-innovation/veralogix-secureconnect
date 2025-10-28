@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 import styles from "./CardFX.module.css";
 
 interface CardFXProps {
@@ -31,9 +32,9 @@ export const CardFX = ({
       <div className={`${styles.face} ${styles.face2}`}>
         <div className={styles.content}>
           <p>{description}</p>
-          <a href={ctaLink} type="button">
+          <Link to={ctaLink} className="inline-block">
             {ctaLabel}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
