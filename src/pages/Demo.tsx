@@ -9,6 +9,7 @@ import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from "rec
 import { Activity, Zap, Droplet, AlertCircle, Car, Sun } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 // Mock Data
 const accessEvents = [
@@ -92,8 +93,8 @@ const Demo = () => {
               <Activity className="h-5 w-5 text-primary flex-shrink-0" />
               <span className="text-foreground">Want to learn more about individual services?</span>
             </div>
-            <Link to="/services" className="btn btn--neon-animated">
-              Explore Services
+            <Link to="/services">
+              <Button variant="neon">Explore Services</Button>
             </Link>
           </CardContent>
         </Card>

@@ -138,8 +138,8 @@ const Services = () => {
             <p className="text-xl text-muted-foreground">
               Explore our interactive dashboard simulator to experience SecureConnect™ firsthand
             </p>
-            <Link to="/demo" className="btn btn--neon-animated">
-              Open Dashboard Demo
+            <Link to="/demo">
+              <button className="btn btn--neon h-14 px-10">Open Dashboard Demo</button>
             </Link>
           </CardContent>
         </Card>

@@ -1,6 +1,8 @@
 import { HolographicCity } from "@/components/HolographicCity";
 import { LogoFormation } from "./LogoFormation";
 import "./FinalCTASection.css";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const FinalCTASection = () => {
   return (
@@ -19,12 +21,12 @@ export const FinalCTASection = () => {
         </h2>
         
         <div className="cta-buttons">
-          <a href="/contact" className="btn btn--neon-animated">
-            Talk to a Consultant
-          </a>
-          <a href="/services" className="btn btn--neon-animated">
-            Explore Services
-          </a>
+          <Link to="/contact">
+            <Button variant="neon">Talk to a Consultant</Button>
+          </Link>
+          <Link to="/services">
+            <Button variant="neon">Explore Services</Button>
+          </Link>
         </div>
       </div>
     </section>

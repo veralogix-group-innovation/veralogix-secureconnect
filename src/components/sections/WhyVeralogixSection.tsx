@@ -1,5 +1,7 @@
 import { DollarSign, Shield, Lock, Wrench, ArrowRight } from "lucide-react";
 import "./WhyVeralogixSection.css";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const WhyVeralogixSection = () => {
   const benefits = [
@@ -49,9 +51,11 @@ export const WhyVeralogixSection = () => {
         </div>
         
         <div className="cta-container">
-          <a href="/contact" className="btn btn--neon-animated">
-            Schedule a Live Demo <ArrowRight className="ml-2" aria-hidden="true" />
-          </a>
+          <Link to="/contact">
+            <Button variant="neon">
+              Schedule a Live Demo <ArrowRight className="ml-2" aria-hidden="true" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

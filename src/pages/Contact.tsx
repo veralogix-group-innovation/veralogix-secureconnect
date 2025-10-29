@@ -9,6 +9,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -148,9 +149,9 @@ const Contact = () => {
                     {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
                   </div>
 
-                  <button type="submit" className="btn btn--neon-animated w-full">
+                  <Button variant="neon" type="submit" className="w-full h-14 px-10 text-base">
                     Send Message
-                  </button>
+                  </Button>
                 </form>
               )}
             </CardContent>
@@ -169,8 +170,8 @@ const Contact = () => {
                     <p className="text-muted-foreground mb-4">
                       Book a personalized 30-minute walkthrough of SecureConnect™ tailored to your complex's needs.
                     </p>
-                    <Link to="/demo" className="btn btn--neon-animated">
-                      View Demo Dashboard
+                    <Link to="/demo">
+                      <button className="btn btn--shimmer h-11 px-6">View Demo Dashboard</button>
                     </Link>
                   </div>
                 </div>
