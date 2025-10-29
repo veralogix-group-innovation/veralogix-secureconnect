@@ -249,8 +249,8 @@ const CaseStudies = () => {
               <p className="text-lg text-muted-foreground">
                 Explore our interactive dashboard simulator to see SecureConnect™ in action
               </p>
-              <Link to="/demo">
-                <button className="btn btn--neon h-14 px-10">Try the Dashboard Demo</button>
+              <Link to="/demo" className="btn btn--neon-animated">
+                Try the Dashboard Demo
               </Link>
             </CardContent>
           </Card>

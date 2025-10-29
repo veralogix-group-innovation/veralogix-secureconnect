@@ -70,10 +70,8 @@ export const Navbar = () => {
               </Link>
             ))}
 
-            <Link to="/contact">
-              <button className="btn btn--neon-animated" aria-label="Book a demo with Veralogix">
-                Book Demo
-              </button>
+            <Link to="/contact" className="btn btn--neon-animated" aria-label="Book a demo with Veralogix">
+              Book Demo
             </Link>
           </div>
 
@@ -128,10 +126,13 @@ export const Navbar = () => {
               </Link>
             ))}
 
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              <button className="btn btn--neon-animated w-full mt-4" aria-label="Book a demo with Veralogix">
-                Book Demo
-              </button>
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="btn btn--neon-animated w-full mt-4"
+              aria-label="Book a demo with Veralogix"
+            >
+              Book Demo
             </Link>
           </div>
         )}

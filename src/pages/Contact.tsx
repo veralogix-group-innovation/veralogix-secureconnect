@@ -148,7 +148,7 @@ const Contact = () => {
                     {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
                   </div>
 
-                  <button type="submit" className="btn btn--ripple w-full h-14 px-10 text-base">
+                  <button type="submit" className="btn btn--neon-animated w-full">
                     Send Message
                   </button>
                 </form>
@@ -169,8 +169,8 @@ const Contact = () => {
                     <p className="text-muted-foreground mb-4">
                       Book a personalized 30-minute walkthrough of SecureConnect™ tailored to your complex's needs.
                     </p>
-                    <Link to="/demo">
-                      <button className="btn btn--shimmer h-11 px-6">View Demo Dashboard</button>
+                    <Link to="/demo" className="btn btn--neon-animated">
+                      View Demo Dashboard
                     </Link>
                   </div>
                 </div>

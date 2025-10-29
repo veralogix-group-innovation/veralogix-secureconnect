@@ -19,10 +19,10 @@ export const FinalCTASection = () => {
         </h2>
         
         <div className="cta-buttons">
-          <a href="/contact" className="btn btn--neon">
+          <a href="/contact" className="btn btn--neon-animated">
             Talk to a Consultant
           </a>
-          <a href="/services" className="btn btn-blue">
+          <a href="/services" className="btn btn--neon-animated">
             Explore Services
           </a>
         </div>

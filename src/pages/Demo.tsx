@@ -92,8 +92,8 @@ const Demo = () => {
               <Activity className="h-5 w-5 text-primary flex-shrink-0" />
               <span className="text-foreground">Want to learn more about individual services?</span>
             </div>
-            <Link to="/services">
-              <button className="btn btn--shimmer h-10 px-6">Explore Services</button>
+            <Link to="/services" className="btn btn--neon-animated">
+              Explore Services
             </Link>
           </CardContent>
         </Card>

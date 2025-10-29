@@ -49,7 +49,7 @@ export const WhyVeralogixSection = () => {
         </div>
         
         <div className="cta-container">
-          <a href="/contact" className="btn-blue">
+          <a href="/contact" className="btn btn--neon-animated">
             Schedule a Live Demo <ArrowRight className="ml-2" aria-hidden="true" />
           </a>
         </div>
