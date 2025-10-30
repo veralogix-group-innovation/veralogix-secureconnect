@@ -29,6 +29,33 @@ The project follows a standard React application structure:
 - `src/styles/`: Global and component-specific stylesheets.
 - `public/`: Static assets that are not processed by the build tool.
 
+### Page Structure
+
+The application's pages are located in `src/pages/`. The following pages are available:
+
+- `CaseStudies.tsx`
+- `Contact.tsx`
+- `Demo.tsx`
+- `Home.tsx`
+- `MainDashboard.tsx`
+- `ManagingAgentDashboard.tsx`
+- `NotFound.tsx`
+- `Privacy.tsx`
+- `ResidenceDashboard.tsx`
+- `Security.tsx`
+- `ServiceDetail.tsx`
+- `Services.tsx`
+- `TrusteesDashboard.tsx`
+
+### Asset Inventory
+
+The project's assets are located in `src/assets/`. The following assets are available:
+
+- `hero-background.png`
+- `hero-landing.mp4`
+- `logo-no-bg.svg`
+- `logo-with-bg.svg`
+
 ### Branding
 
 The brand identity is "SecureConnect", which is reflected in the design system. The core themes are security, technology, and a modern aesthetic.
