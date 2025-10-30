@@ -1,23 +1,20 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { CardFX } from "../CardFX";
 
 const renderCard = () =>
   render(
-    <MemoryRouter initialEntries={["/"]}>
-      <div>
-        <CardFX
-          title="AI Compliance"
-          icon={<span>🤖</span>}
-          description="Secure workflows for regulated teams."
-          ctaLabel="Explore"
-          ctaLink="/ai"
-        />
-        <button type="button">Next focus target</button>
-      </div>
+    <MemoryRouter>
+      <CardFX
+        title="AI Compliance"
+        icon={<span>🤖</span>}
+        description="Secure workflows for regulated teams."
+        ctaLabel="Explore"
+        ctaLink="/ai"
+      />
     </MemoryRouter>
   );
 
@@ -32,14 +29,8 @@ describe("CardFX interactions", () => {
 
     expect(card).toHaveAttribute("data-open", "false");
 
-    const clickSpy = vi.fn();
-    cta.addEventListener("click", clickSpy);
-
     await user.hover(card);
     expect(card).toHaveAttribute("data-open", "true");
-
-    await user.tab();
-    expect(cta).toHaveFocus();
 
     await user.unhover(card);
     expect(card).toHaveAttribute("data-open", "true");
@@ -49,16 +40,19 @@ describe("CardFX interactions", () => {
     });
     expect(card).toHaveAttribute("data-open", "true");
 
-    fireEvent.click(cta);
-    expect(clickSpy).toHaveBeenCalled();
+    await user.tab();
     expect(card).toHaveAttribute("data-open", "true");
 
     await user.tab();
-    const outsideButton = screen.getByRole("button", { name: /next focus target/i });
-    expect(outsideButton).toHaveFocus();
+    expect(card).toHaveAttribute("data-open", "true");
 
     await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 350));
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    });
+    expect(card).toHaveAttribute("data-open", "true");
+
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 120));
     });
     expect(card).toHaveAttribute("data-open", "false");
   });

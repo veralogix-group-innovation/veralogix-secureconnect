@@ -21,7 +21,6 @@ export const CardFX = ({
   className
 }: CardFXProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const cardRef = useRef<HTMLDivElement | null>(null);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearCloseTimeout = () => {
@@ -39,26 +38,6 @@ export const CardFX = ({
   const scheduleCloseCard = () => {
     clearCloseTimeout();
     closeTimeoutRef.current = setTimeout(() => {
-      const cardElement = cardRef.current;
-
-      if (!cardElement) {
-        setIsOpen(false);
-        closeTimeoutRef.current = null;
-        return;
-      }
-
-      const activeElement =
-        typeof document !== "undefined" ? document.activeElement : null;
-      const isFocusWithin =
-        activeElement instanceof Node && cardElement.contains(activeElement);
-      const isPointerOver =
-        typeof window !== "undefined" && cardElement.matches(":hover");
-
-      if (isFocusWithin || isPointerOver) {
-        closeTimeoutRef.current = null;
-        return;
-      }
-
       setIsOpen(false);
       closeTimeoutRef.current = null;
     }, 300);
@@ -72,7 +51,6 @@ export const CardFX = ({
 
   return (
     <div
-      ref={cardRef}
       className={cn(styles.card, className)}
       data-open={isOpen}
       onMouseEnter={openCard}
