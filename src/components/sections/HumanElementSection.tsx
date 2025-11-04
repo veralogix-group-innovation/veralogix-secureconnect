@@ -32,12 +32,20 @@ export const HumanElementSection = () => {
             <p className="caption">Intuitive interfaces that bring your home to your fingertips</p>
           </div>
           
-          <div className="content-block lg:col-span-2 lg:max-w-2xl lg:mx-auto">
+          <div className="content-block">
             <div className="image-placeholder">
               <div className="glow-overlay"></div>
               <div className="placeholder-text">Children watching a passing drone</div>
             </div>
             <p className="caption">Security that's visible yet non-intrusive, protecting what matters most</p>
+          </div>
+          
+          <div className="content-block">
+            <div className="image-placeholder">
+              <div className="glow-overlay"></div>
+              <div className="placeholder-text">Resident checking air quality dashboard</div>
+            </div>
+            <p className="caption">Wellness monitoring that ensures healthy, comfortable living spaces for everyone</p>
           </div>
         </div>
       </div>
