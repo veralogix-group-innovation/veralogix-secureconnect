@@ -28,11 +28,19 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       onComplete();
     };
 
+    const handleCanPlay = () => {
+      video.play().catch(err => console.error("Video autoplay failed:", err));
+    };
+
     video.addEventListener("ended", handleEnded);
-    video.play().catch(err => console.error("Video autoplay failed:", err));
+    video.addEventListener("canplay", handleCanPlay);
+
+    // Trigger load
+    video.load();
 
     return () => {
       video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("canplay", handleCanPlay);
     };
   }, [onComplete, isMobile]);
 

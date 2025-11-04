@@ -1,56 +1,65 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import heroVideo from "@/assets/hero-landing.mp4";
+import heroDesktop from "@/assets/hero-desktop.mp4";
+import heroMobile from "@/assets/hero-mobile.mp4";
 import "./HeroLanding.css";
 
 export const HeroLanding = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
-    const onTimeUpdate = () => {
-      // Freeze at logo
-      if (v.duration && v.currentTime >= v.duration - 0.1) {
-        v.pause();
-      }
+    const onEnded = () => {
+      v.pause();
+      v.currentTime = v.duration;
     };
 
-    const onLoaded = () => setLoaded(true);
+    const onLoaded = () => {
+      setLoaded(true);
+      v.play().catch(() => {});
+    };
 
-    v.addEventListener("timeupdate", onTimeUpdate);
+    v.addEventListener("ended", onEnded);
     v.addEventListener("loadeddata", onLoaded);
 
-    const play = () => v.play().catch(() => {});
-    play();
-
     return () => {
-      v.removeEventListener("timeupdate", onTimeUpdate);
+      v.removeEventListener("ended", onEnded);
       v.removeEventListener("loadeddata", onLoaded);
     };
-  }, []);
+  }, [isMobile]);
 
   const prefersReducedMotion =
     typeof window !== "undefined" && window.matchMedia
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false;
 
+  const videoSrc = isMobile ? heroMobile : heroDesktop;
+
   return (
     <section className="hero-landing" aria-labelledby="hero-heading">
       <div className="hero-background">
         <video
           ref={videoRef}
+          key={videoSrc}
           className={`hero-video ${loaded ? "opacity-100" : "opacity-0"}`}
           playsInline
           muted
-          autoPlay
           preload="auto"
           aria-label="SecureConnect hero background"
         >
           {!prefersReducedMotion && (
-            <source src={heroVideo} type="video/mp4" />
+            <source src={videoSrc} type="video/mp4" />
           )}
         </video>
       </div>
