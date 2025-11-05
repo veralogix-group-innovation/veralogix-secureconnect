@@ -1,14 +1,16 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface InnovationCardProps {
   icon: ReactNode;
   title: string;
   caption: string;
+  slug: string;
 }
 
-export const InnovationCard = ({ icon, title, caption }: InnovationCardProps) => {
+export const InnovationCard = ({ icon, title, caption, slug }: InnovationCardProps) => {
   return (
-    <div className="innovation-card">
+    <Link to={`/services/${slug}`} className="innovation-card">
       <div className="icon-container">
         {icon}
       </div>
@@ -17,6 +19,7 @@ export const InnovationCard = ({ icon, title, caption }: InnovationCardProps) =>
       
       <style>{`
         .innovation-card {
+          display: block;
           background: rgba(55, 52, 53, 0.3);
           backdrop-filter: blur(10px);
           border: 1px solid hsl(var(--neonC));
@@ -25,6 +28,8 @@ export const InnovationCard = ({ icon, title, caption }: InnovationCardProps) =>
           text-align: center;
           transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
           box-shadow: 0 0 15px rgba(111, 255, 0, 0.2);
+          text-decoration: none;
+          cursor: pointer;
         }
         
         .innovation-card:hover {
@@ -64,6 +69,6 @@ export const InnovationCard = ({ icon, title, caption }: InnovationCardProps) =>
           }
         }
       `}</style>
-    </div>
+    </Link>
   );
 };

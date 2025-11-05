@@ -11,32 +11,38 @@ export const InnovationsSection = () => {
     {
       icon: <ConciergeIcon />,
       title: "AI-Powered Concierge",
-      caption: "24/7 intelligent assistance for every resident request"
+      caption: "24/7 intelligent assistance for every resident request",
+      slug: "ai-concierge"
     },
     {
       icon: <BiometricIcon />,
       title: "Biometric Access Control",
-      caption: "Secure, touchless entry with privacy-first authentication"
+      caption: "Secure, touchless entry with privacy-first authentication",
+      slug: "biometric-access"
     },
     {
       icon: <MaintenanceIcon />,
       title: "Predictive Maintenance AI",
-      caption: "Prevent failures before they happen with smart analytics"
+      caption: "Prevent failures before they happen with smart analytics",
+      slug: "predictive-maintenance"
     },
     {
       icon: <EVChargingIcon />,
       title: "EV Charging Infrastructure",
-      caption: "Smart load management with solar and battery integration"
+      caption: "Smart load management with solar and battery integration",
+      slug: "ev-charging"
     },
     {
       icon: <VerticalFarmIcon />,
       title: "Vertical Indoor Farms",
-      caption: "Fresh produce grown sustainably within the complex"
+      caption: "Fresh produce grown sustainably within the complex",
+      slug: "vertical-farms"
     },
     {
       icon: <SensorNetworkIcon />,
       title: "Smart Sensor Network",
-      caption: "Real-time monitoring for comfort, safety, and efficiency"
+      caption: "Real-time monitoring for comfort, safety, and efficiency",
+      slug: "iot-sensors"
     }
   ];
 
@@ -56,6 +62,7 @@ export const InnovationsSection = () => {
               icon={innovation.icon}
               title={innovation.title}
               caption={innovation.caption}
+              slug={innovation.slug}
             />
           ))}
         </div>
