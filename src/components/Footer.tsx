@@ -66,14 +66,8 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start text-muted-foreground" style={{ gap: 'var(--g1)' }}>
-                <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" aria-hidden="true" />
-                <a href="tel:+15551234567" className="hover:text-secondary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-2 rounded">
-                  +1 (555) 123-4567
-                </a>
-              </li>
-              <li className="flex items-start text-muted-foreground" style={{ gap: 'var(--g1)' }}>
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>123 Innovation Drive<br />Tech City, TC 12345</span>
+                <span>3A Laver St, Clubville<br />Middelburg, 1050</span>
               </li>
             </ul>
           </address>

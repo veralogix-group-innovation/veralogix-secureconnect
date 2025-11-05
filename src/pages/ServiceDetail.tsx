@@ -339,9 +339,11 @@ const ServiceDetail = () => {
                       ))}
                     </div>
                   </div>
-                  <Link to="/contact">
-                    <button className="btn btn--neon w-full h-11 px-6">Get Started</button>
-                  </Link>
+                  <div className="pt-4">
+                    <Link to="/contact">
+                      <button className="btn btn--neon w-full h-11 px-6">Get Started</button>
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
 

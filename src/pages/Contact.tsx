@@ -193,26 +193,15 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-lg bg-accent/20">
-                    <Phone className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Phone</div>
-                    <a href="tel:+15551234567" className="text-accent hover:underline">
-                      +1 (555) 123-4567
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
                   <div className="p-3 rounded-lg bg-primary/20">
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Address</div>
                     <p className="text-muted-foreground">
-                      123 Innovation Drive<br />
-                      Tech City, TC 12345
+                      Veralogix Group<br />
+                      3A Laver St, Clubville<br />
+                      Middelburg, 1050
                     </p>
                   </div>
                 </div>
