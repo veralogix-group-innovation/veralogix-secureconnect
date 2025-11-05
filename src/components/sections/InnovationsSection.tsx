@@ -42,7 +42,7 @@ export const InnovationsSection = () => {
       icon: <SensorNetworkIcon />,
       title: "Smart Sensor Network",
       caption: "Real-time monitoring for comfort, safety, and efficiency",
-      slug: "iot-sensors"
+      slug: "smart-iot-sensors"
     }
   ];
 
