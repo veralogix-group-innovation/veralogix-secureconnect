@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import logoSvg from '@/assets/logo-no-bg.svg';
+import logoImage from '@/assets/logo-veralogix.png';
 
 export const ConnectedDiagram = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -13,7 +13,7 @@ export const ConnectedDiagram = () => {
 
     // Load logo
     const logo = new Image();
-    logo.src = logoSvg;
+    logo.src = logoImage;
 
     // Set canvas size
     const updateSize = () => {
@@ -193,21 +193,17 @@ export const ConnectedDiagram = () => {
         });
       });
 
-      // Draw center logo
-      const logoSize = w * 0.15;
-      const logoX = centerX * w - logoSize / 2;
-      const logoY = centerY * h - logoSize / 2;
-      
+      // Draw center glow only (logo moved to HTML overlay)
       if (logo.complete) {
         // Center glow
-        const centerGlow = ctx.createRadialGradient(centerX * w, centerY * h, 0, centerX * w, centerY * h, logoSize * 1.5);
+        const centerGlow = ctx.createRadialGradient(centerX * w, centerY * h, 0, centerX * w, centerY * h, w * 0.15);
         centerGlow.addColorStop(0, `rgba(186, 217, 107, ${0.4 + Math.sin(time * 2) * 0.2})`);
         centerGlow.addColorStop(0.5, `rgba(168, 207, 69, ${0.2 + Math.sin(time * 2) * 0.1})`);
         centerGlow.addColorStop(1, 'rgba(168, 207, 69, 0)');
         
         ctx.fillStyle = centerGlow;
         ctx.beginPath();
-        ctx.arc(centerX * w, centerY * h, logoSize * 1.5, 0, Math.PI * 2);
+        ctx.arc(centerX * w, centerY * h, w * 0.15, 0, Math.PI * 2);
         ctx.fill();
 
         // Rotating ring around logo
@@ -218,14 +214,9 @@ export const ConnectedDiagram = () => {
         ctx.lineWidth = 2;
         ctx.setLineDash([5, 5]);
         ctx.beginPath();
-        ctx.arc(0, 0, logoSize * 0.8, 0, Math.PI * 2);
+        ctx.arc(0, 0, w * 0.12, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
-
-        // Draw logo
-        ctx.globalAlpha = 0.95;
-        ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
-        ctx.globalAlpha = 1;
       }
 
       // Draw nodes
@@ -309,6 +300,27 @@ export const ConnectedDiagram = () => {
         className="w-full h-full"
         aria-label="Neural network diagram showing connected SecureConnect ecosystem"
       />
+      
+      {/* Frosted glass logo container overlay */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full"
+        style={{
+          width: '28%',
+          height: '28%',
+          background: 'rgba(255, 255, 255, 0.08)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(186, 217, 107, 0.2)',
+          boxShadow: '0 0 24px rgba(168, 207, 69, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05)'
+        }}
+      >
+        <img 
+          src={logoImage} 
+          alt="Veralogix SecureConnect" 
+          className="w-[85%] h-auto object-contain"
+          style={{ filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3))' }}
+        />
+      </div>
     </div>
   );
 };
