@@ -14,7 +14,8 @@ import {
   Heart,
   Building2,
   Plane,
-  Users
+  Users,
+  Shield
 } from "lucide-react";
 
 // Import service videos
@@ -26,6 +27,11 @@ import arLeasingVideo from "@/assets/services/ar-leasing.mp4";
 import droneInspectionsVideo from "@/assets/services/drone-inspections.mp4";
 import dynamicPricingVideo from "@/assets/services/dynamic-pricing.mp4";
 import communityPlatformVideo from "@/assets/services/community-platform.mp4";
+import guardianFollowMeVideo from "@/assets/services/guardian-follow-me.mp4";
+import predictiveMaintenanceVideo from "@/assets/services/predictive-maintenance.mp4";
+import verticalFarmsVideo from "@/assets/services/vertical-farms.mp4";
+import virtualPmVideo from "@/assets/services/virtual-pm.mp4";
+import wellnessSensorsVideo from "@/assets/services/wellness-sensors.mp4";
 
 // Map video sources to service slugs
 const serviceVideos: Record<string, string> = {
@@ -37,6 +43,11 @@ const serviceVideos: Record<string, string> = {
   "drone-inspections": droneInspectionsVideo,
   "dynamic-pricing": dynamicPricingVideo,
   "community-platform": communityPlatformVideo,
+  "guardian-follow-me": guardianFollowMeVideo,
+  "predictive-maintenance": predictiveMaintenanceVideo,
+  "vertical-farms": verticalFarmsVideo,
+  "virtual-property-management": virtualPmVideo,
+  "wellness-monitoring": wellnessSensorsVideo,
 };
 
 const services = [
@@ -105,6 +116,12 @@ const services = [
     description: "Automated aerial surveys for roof and facade inspections with AI damage detection.",
     icon: Plane,
     slug: "drone-inspections"
+  },
+  {
+    title: "Guardian Follow Me Home",
+    description: "Autonomous drone escort service that lights your path and ensures safe passage through complex at night.",
+    icon: Shield,
+    slug: "guardian-follow-me"
   },
   {
     title: "Community Platform",
