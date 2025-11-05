@@ -22,7 +22,10 @@ export const HeroLanding = () => {
 
     const onEnded = () => {
       v.pause();
-      v.currentTime = v.duration;
+      // Ensure we stay on the last frame
+      if (v.duration && !isNaN(v.duration)) {
+        v.currentTime = v.duration - 0.001;
+      }
     };
 
     const onLoaded = () => {
@@ -55,6 +58,7 @@ export const HeroLanding = () => {
           className={`hero-video ${loaded ? "opacity-100" : "opacity-0"}`}
           playsInline
           preload="auto"
+          muted={false}
           aria-label="SecureConnect hero background"
         >
           {!prefersReducedMotion && (
