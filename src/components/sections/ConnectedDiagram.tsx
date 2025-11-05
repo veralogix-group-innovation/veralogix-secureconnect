@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import logoSvg from '@/assets/logo-no-bg.svg';
 
 export const ConnectedDiagram = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -10,32 +11,39 @@ export const ConnectedDiagram = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Load logo
+    const logo = new Image();
+    logo.src = logoSvg;
+
     // Set canvas size
     const updateSize = () => {
       const container = canvas.parentElement;
       if (!container) return;
-      const size = Math.min(container.clientWidth, 500);
+      const size = Math.min(container.clientWidth, 600);
       canvas.width = size;
       canvas.height = size;
     };
     updateSize();
     window.addEventListener('resize', updateSize);
 
-    // Neural network structure
-    const layers = [
-      { nodes: 4, y: 0.15 },  // Input layer
-      { nodes: 6, y: 0.4 },   // Hidden layer 1
-      { nodes: 5, y: 0.65 },  // Hidden layer 2
-      { nodes: 3, y: 0.9 }    // Output layer
+    // Organized circular network structure radiating from center
+    const centerX = 0.5;
+    const centerY = 0.5;
+    const rings = [
+      { nodes: 8, radius: 0.38, labels: ['IoT Sensors', 'Access Control', 'EV Charging', 'Vertical Farms', 'AI Concierge', 'Predictive AI', 'Wellness', 'Community'] },
+      { nodes: 12, radius: 0.28, labels: [] },
+      { nodes: 6, radius: 0.15, labels: [] }
     ];
 
     interface Node {
       x: number;
       y: number;
-      layer: number;
+      ring: number;
+      angle: number;
       index: number;
       energy: number;
       pulse: number;
+      label?: string;
     }
 
     interface Connection {
@@ -54,37 +62,65 @@ export const ConnectedDiagram = () => {
     const nodes: Node[] = [];
     const connections: Connection[] = [];
 
-    // Create nodes
-    layers.forEach((layer, layerIndex) => {
-      const spacing = 1 / (layer.nodes + 1);
-      for (let i = 0; i < layer.nodes; i++) {
+    // Create nodes in organized circular rings
+    rings.forEach((ring, ringIndex) => {
+      const angleStep = (Math.PI * 2) / ring.nodes;
+      for (let i = 0; i < ring.nodes; i++) {
+        const angle = angleStep * i - Math.PI / 2; // Start from top
         nodes.push({
-          x: spacing * (i + 1),
-          y: layer.y,
-          layer: layerIndex,
+          x: centerX + Math.cos(angle) * ring.radius,
+          y: centerY + Math.sin(angle) * ring.radius,
+          ring: ringIndex,
+          angle,
           index: i,
           energy: Math.random(),
-          pulse: Math.random() * Math.PI * 2
+          pulse: Math.random() * Math.PI * 2,
+          label: ring.labels[i]
         });
       }
     });
 
-    // Create connections between adjacent layers
+    // Create connections: outer rings connect to inner rings (converging to center)
     nodes.forEach(fromNode => {
       nodes.forEach(toNode => {
-        if (toNode.layer === fromNode.layer + 1) {
+        // Connect to next inner ring
+        if (toNode.ring === fromNode.ring + 1) {
           const numParticles = Math.floor(Math.random() * 2) + 1;
           connections.push({
             from: fromNode,
             to: toNode,
             particles: Array.from({ length: numParticles }, () => ({
               progress: Math.random(),
-              speed: 0.003 + Math.random() * 0.005,
+              speed: 0.002 + Math.random() * 0.004,
               size: 2 + Math.random() * 2,
               brightness: 0.5 + Math.random() * 0.5
             }))
           });
         }
+      });
+    });
+
+    // Add connections from innermost ring to center
+    const centerNode: Node = {
+      x: centerX,
+      y: centerY,
+      ring: rings.length,
+      angle: 0,
+      index: 0,
+      energy: 1,
+      pulse: 0
+    };
+    
+    nodes.filter(n => n.ring === rings.length - 1).forEach(node => {
+      connections.push({
+        from: node,
+        to: centerNode,
+        particles: Array.from({ length: 2 }, () => ({
+          progress: Math.random(),
+          speed: 0.002 + Math.random() * 0.003,
+          size: 2 + Math.random() * 2,
+          brightness: 0.6 + Math.random() * 0.4
+        }))
       });
     });
 
@@ -157,12 +193,47 @@ export const ConnectedDiagram = () => {
         });
       });
 
+      // Draw center logo
+      const logoSize = w * 0.15;
+      const logoX = centerX * w - logoSize / 2;
+      const logoY = centerY * h - logoSize / 2;
+      
+      if (logo.complete) {
+        // Center glow
+        const centerGlow = ctx.createRadialGradient(centerX * w, centerY * h, 0, centerX * w, centerY * h, logoSize * 1.5);
+        centerGlow.addColorStop(0, `rgba(186, 217, 107, ${0.4 + Math.sin(time * 2) * 0.2})`);
+        centerGlow.addColorStop(0.5, `rgba(168, 207, 69, ${0.2 + Math.sin(time * 2) * 0.1})`);
+        centerGlow.addColorStop(1, 'rgba(168, 207, 69, 0)');
+        
+        ctx.fillStyle = centerGlow;
+        ctx.beginPath();
+        ctx.arc(centerX * w, centerY * h, logoSize * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Rotating ring around logo
+        ctx.save();
+        ctx.translate(centerX * w, centerY * h);
+        ctx.rotate(time * 0.5);
+        ctx.strokeStyle = `rgba(182, 255, 46, ${0.3 + Math.sin(time * 3) * 0.2})`;
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.arc(0, 0, logoSize * 0.8, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        // Draw logo
+        ctx.globalAlpha = 0.95;
+        ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+        ctx.globalAlpha = 1;
+      }
+
       // Draw nodes
       nodes.forEach(node => {
         const x = node.x * w;
         const y = node.y * h;
-        const baseSize = node.layer === 0 || node.layer === layers.length - 1 ? 8 : 6;
-        const size = baseSize + node.energy * 3;
+        const baseSize = node.ring === 0 ? 7 : 5;
+        const size = baseSize + node.energy * 2;
 
         // Node outer glow
         const outerGlow = ctx.createRadialGradient(x, y, 0, x, y, size * 4);
@@ -175,13 +246,15 @@ export const ConnectedDiagram = () => {
         ctx.arc(x, y, size * 4, 0, Math.PI * 2);
         ctx.fill();
 
-        // Node pulse ring
-        const pulseSize = size + Math.sin(time * 2 + node.pulse) * 4;
-        ctx.strokeStyle = `rgba(79, 255, 0, ${0.3 + node.energy * 0.2})`;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(x, y, pulseSize, 0, Math.PI * 2);
-        ctx.stroke();
+        // Node pulse ring (only for outer ring)
+        if (node.ring === 0) {
+          const pulseSize = size + Math.sin(time * 2 + node.pulse) * 3;
+          ctx.strokeStyle = `rgba(182, 255, 46, ${0.4 + node.energy * 0.2})`;
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(x, y, pulseSize, 0, Math.PI * 2);
+          ctx.stroke();
+        }
 
         // Node core gradient
         const coreGradient = ctx.createRadialGradient(x, y, 0, x, y, size);
@@ -195,10 +268,27 @@ export const ConnectedDiagram = () => {
         ctx.fill();
 
         // Node highlight
-        ctx.fillStyle = `rgba(255, 255, 255, ${node.energy * 0.4})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${node.energy * 0.3})`;
         ctx.beginPath();
-        ctx.arc(x - size * 0.3, y - size * 0.3, size * 0.4, 0, Math.PI * 2);
+        ctx.arc(x - size * 0.3, y - size * 0.3, size * 0.35, 0, Math.PI * 2);
         ctx.fill();
+
+        // Draw labels for outer ring
+        if (node.label && node.ring === 0) {
+          ctx.save();
+          ctx.font = `${w * 0.022}px Inter, sans-serif`;
+          ctx.fillStyle = `rgba(186, 217, 107, ${0.7 + node.energy * 0.3})`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          
+          // Position label outside the node
+          const labelRadius = rings[0].radius + 0.08;
+          const labelX = (centerX + Math.cos(node.angle) * labelRadius) * w;
+          const labelY = (centerY + Math.sin(node.angle) * labelRadius) * h;
+          
+          ctx.fillText(node.label, labelX, labelY);
+          ctx.restore();
+        }
       });
 
       animationFrame = requestAnimationFrame(animate);
