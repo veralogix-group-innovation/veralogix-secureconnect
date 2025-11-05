@@ -17,10 +17,16 @@ export const FinalCTASection = () => {
         <img 
           src={logoImage} 
           alt="Veralogix SecureConnect" 
-          className="w-80 h-auto mb-8 opacity-0 animate-in fade-in duration-1000"
+          className="w-80 h-auto mb-8 transition-all duration-500 ease-out hover:scale-110 cursor-pointer animate-fade-in"
           style={{ 
             filter: 'drop-shadow(0 0 24px rgba(168, 207, 69, 0.4))',
             maxWidth: '90%'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.filter = 'drop-shadow(0 0 40px rgba(168, 207, 69, 0.8))';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.filter = 'drop-shadow(0 0 24px rgba(168, 207, 69, 0.4))';
           }}
         />
         
