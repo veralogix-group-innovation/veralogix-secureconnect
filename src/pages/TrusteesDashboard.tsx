@@ -11,8 +11,8 @@ const TrusteesDashboard = () => {
 
   return (
     <DashboardShell
-      title="SecureConnect™ for Trustees"
-      subtitle="Portfolio health, risk, ROI, and sustainability insights"
+      title="TRU-Overview: Portfolio Dashboard"
+      subtitle="Occupancy • Arrears • DSO • ESG metrics • Security posture • Export"
       headerActions={
         <>
           <Button className="btn btn--shimmer">

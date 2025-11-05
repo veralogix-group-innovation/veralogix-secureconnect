@@ -20,8 +20,8 @@ const ManagingAgentDashboard = () => {
 
   return (
     <DashboardShell
-      title="SecureConnect™ for Managing Agent"
-      subtitle="Operational command center for estate management"
+      title="CMD-Incidents: Managing Agent Center"
+      subtitle="Incident triage • SLA tracking • Access control • EV load management"
     >
       {/* Command Center Overview */}
       <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
