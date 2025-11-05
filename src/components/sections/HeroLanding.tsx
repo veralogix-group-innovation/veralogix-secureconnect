@@ -54,7 +54,6 @@ export const HeroLanding = () => {
           key={videoSrc}
           className={`hero-video ${loaded ? "opacity-100" : "opacity-0"}`}
           playsInline
-          muted
           preload="auto"
           aria-label="SecureConnect hero background"
         >

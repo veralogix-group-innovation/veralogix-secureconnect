@@ -20,6 +20,8 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  const videoSrc = isMobile ? "/loading-mobile.mp4" : "/loading-desktop.mp4";
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -28,23 +30,28 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       onComplete();
     };
 
-    const handleCanPlay = () => {
-      video.play().catch(err => console.error("Video autoplay failed:", err));
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch (err) {
+        console.error("Video autoplay failed:", err);
+      }
     };
 
     video.addEventListener("ended", handleEnded);
-    video.addEventListener("canplay", handleCanPlay);
-
-    // Trigger load
-    video.load();
+    
+    // Play when video can play through
+    if (video.readyState >= 3) {
+      playVideo();
+    } else {
+      video.addEventListener("canplaythrough", playVideo, { once: true });
+    }
 
     return () => {
       video.removeEventListener("ended", handleEnded);
-      video.removeEventListener("canplay", handleCanPlay);
     };
-  }, [onComplete, isMobile]);
+  }, [onComplete, videoSrc]);
 
-  const videoSrc = isMobile ? "/loading-mobile.mp4" : "/loading-desktop.mp4";
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
