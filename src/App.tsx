@@ -23,11 +23,14 @@ import { LoadingScreen } from "@/components/LoadingScreen";
 
 const queryClient = new QueryClient();
 
-// Component to reinitialize button effects on route change
+// Component to reinitialize button effects on route change and scroll to top
 const RouteChangeHandler = () => {
   const location = useLocation();
   
   useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+    
     // Initialize button effects after route change and DOM update
     const timer = setTimeout(() => {
       initButtonEffects();
