@@ -2,7 +2,7 @@ import { HolographicCity } from "@/components/HolographicCity";
 import "./FinalCTASection.css";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import logoImage from "@/assets/logo-veralogix.png";
+import logoImage from "@/assets/logo-secureconnect.png";
 
 export const FinalCTASection = () => {
   return (
