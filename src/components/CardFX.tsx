@@ -98,7 +98,7 @@ export const CardFX = ({
         )}
         <div className={styles.content}>
           <p>{description}</p>
-          <Link to={ctaLink} className="inline-block">
+          <Link to={ctaLink}>
             {ctaLabel}
           </Link>
         </div>
