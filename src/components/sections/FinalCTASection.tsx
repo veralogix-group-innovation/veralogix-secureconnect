@@ -1,8 +1,8 @@
 import { HolographicCity } from "@/components/HolographicCity";
-import { LogoFormation } from "./LogoFormation";
 import "./FinalCTASection.css";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import logoImage from "@/assets/logo-veralogix.png";
 
 export const FinalCTASection = () => {
   return (
@@ -14,7 +14,15 @@ export const FinalCTASection = () => {
       <div className="cta-dust" aria-hidden="true"></div>
       
       <div className="cta-content">
-        <LogoFormation />
+        <img 
+          src={logoImage} 
+          alt="Veralogix SecureConnect" 
+          className="w-80 h-auto mb-8 opacity-0 animate-in fade-in duration-1000"
+          style={{ 
+            filter: 'drop-shadow(0 0 24px rgba(168, 207, 69, 0.4))',
+            maxWidth: '90%'
+          }}
+        />
         
         <h2 id="final-heading" className="cta-tagline">
           Define your Future. Connect your World.
