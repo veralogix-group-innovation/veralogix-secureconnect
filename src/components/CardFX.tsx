@@ -10,6 +10,7 @@ interface CardFXProps {
   ctaLabel?: string;
   ctaLink?: string;
   className?: string;
+  videoSrc?: string;
 }
 
 export const CardFX = ({
@@ -18,10 +19,12 @@ export const CardFX = ({
   description,
   ctaLabel = "Read More",
   ctaLink = "#",
-  className
+  className,
+  videoSrc
 }: CardFXProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const clearCloseTimeout = () => {
     if (closeTimeoutRef.current) {
@@ -40,8 +43,19 @@ export const CardFX = ({
     closeTimeoutRef.current = setTimeout(() => {
       setIsOpen(false);
       closeTimeoutRef.current = null;
-    }, 300);
+    }, 800);
   };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isOpen) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     return () => {
@@ -66,7 +80,22 @@ export const CardFX = ({
           <h3>{title}</h3>
         </div>
       </div>
-      <div className={`${styles.face} ${styles.face2}`}>
+      <div 
+        className={`${styles.face} ${styles.face2}`}
+        onMouseEnter={openCard}
+        onMouseLeave={scheduleCloseCard}
+      >
+        {videoSrc && (
+          <video
+            ref={videoRef}
+            className={styles.video}
+            src={videoSrc}
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+          />
+        )}
         <div className={styles.content}>
           <p>{description}</p>
           <Link to={ctaLink} className="inline-block">

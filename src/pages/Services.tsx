@@ -17,6 +17,28 @@ import {
   Users
 } from "lucide-react";
 
+// Import service videos
+import iotSensorsVideo from "@/assets/services/iot-sensors.mp4";
+import aiConciergeVideo from "@/assets/services/ai-concierge.mp4";
+import biometricAccessVideo from "@/assets/services/biometric-access.mp4";
+import evChargingVideo from "@/assets/services/ev-charging.mp4";
+import arLeasingVideo from "@/assets/services/ar-leasing.mp4";
+import droneInspectionsVideo from "@/assets/services/drone-inspections.mp4";
+import dynamicPricingVideo from "@/assets/services/dynamic-pricing.mp4";
+import communityPlatformVideo from "@/assets/services/community-platform.mp4";
+
+// Map video sources to service slugs
+const serviceVideos: Record<string, string> = {
+  "smart-iot-sensors": iotSensorsVideo,
+  "ai-concierge": aiConciergeVideo,
+  "biometric-access": biometricAccessVideo,
+  "ev-charging": evChargingVideo,
+  "ar-leasing": arLeasingVideo,
+  "drone-inspections": droneInspectionsVideo,
+  "dynamic-pricing": dynamicPricingVideo,
+  "community-platform": communityPlatformVideo,
+};
+
 const services = [
   {
     title: "Smart IoT Sensors",
@@ -125,6 +147,7 @@ const Services = () => {
                   icon={<IconComponent />}
                   ctaLabel="Explore"
                   ctaLink={`/services/${service.slug}`}
+                  videoSrc={serviceVideos[service.slug]}
                 />
               </div>
             );
