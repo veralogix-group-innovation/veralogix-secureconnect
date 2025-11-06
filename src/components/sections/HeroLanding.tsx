@@ -30,7 +30,14 @@ export const HeroLanding = () => {
 
     const onLoaded = () => {
       setLoaded(true);
-      v.play().catch(() => {});
+      // Start muted to allow autoplay on mobile
+      v.muted = true;
+      v.play().then(() => {
+        // Try to unmute after starting (works on desktop, requires interaction on mobile)
+        if (!isMobile) {
+          v.muted = false;
+        }
+      }).catch(() => {});
     };
 
     v.addEventListener("ended", onEnded);
@@ -58,7 +65,7 @@ export const HeroLanding = () => {
           className={`hero-video ${loaded ? "opacity-100" : "opacity-0"}`}
           playsInline
           preload="auto"
-          muted={false}
+          muted
           aria-label="SecureConnect hero background"
         >
           {!prefersReducedMotion && (
