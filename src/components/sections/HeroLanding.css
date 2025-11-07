@@ -33,6 +33,23 @@
   max-width: 1100px;
   padding: 4rem 2rem;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-content--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .hero-title {

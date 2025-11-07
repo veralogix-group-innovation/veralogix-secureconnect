@@ -74,7 +74,7 @@ export const HeroLanding = () => {
         </video>
       </div>
       
-      <div className="hero-content">
+      <div className={`hero-content ${loaded ? 'hero-content--visible' : ''}`}>
         <h1 id="hero-heading" className="hero-title">
           <span className="glow-text">Smart Living.</span>
           <span className="glow-text">Smarter Security.</span>
