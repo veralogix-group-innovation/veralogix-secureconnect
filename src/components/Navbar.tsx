@@ -71,9 +71,9 @@ export const Navbar = () => {
             ))}
 
             <Link to="/contact">
-              <button className="btn btn--neon-animated" aria-label="Book a demo with Veralogix">
+              <Button variant="neon" aria-label="Book a demo with Veralogix">
                 Book Demo
-              </button>
+              </Button>
             </Link>
           </div>
 
@@ -129,9 +129,9 @@ export const Navbar = () => {
             ))}
 
             <Link to="/contact" onClick={() => setIsOpen(false)}>
-              <button className="btn btn--neon-animated w-full mt-4" aria-label="Book a demo with Veralogix">
+              <Button variant="neon" className="w-full mt-4" aria-label="Book a demo with Veralogix">
                 Book Demo
-              </button>
+              </Button>
             </Link>
           </div>
         )}
