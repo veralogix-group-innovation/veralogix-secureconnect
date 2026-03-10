@@ -10,8 +10,8 @@ const ResidenceDashboard = () => {
 
   return (
     <DashboardShell
-      title={`Welcome back, ${resident.name}`}
-      subtitle={`Unit ${resident.unit}`}
+      title={`TEN-Home: ${resident.name}`}
+      subtitle={`Unit ${resident.unit} • Balance • Bookings • Passes • Quick Actions`}
     >
       {/* Quick Stats */}
       <div className="grid md:grid-cols-3 gap-6 mb-8">

@@ -649,5 +649,63 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         answer: "Residents with strong community connections are 3x more likely to renew. Our platform increases resident engagement by 150% and retention rates by 30% through fostering genuine relationships."
       }
     ]
+  },
+  "guardian-follow-me": {
+    title: "Guardian Follow Me Home",
+    tagline: "Your personal safety escort",
+    problem: "Residents feel unsafe walking alone at night; dark parking areas and pathways increase security risks.",
+    capability: "SecureConnect™ Guardian drones provide on-demand aerial escort with high-lumen lighting and live monitoring.",
+    kpis: [
+      "Safety incidents ↓ 85%",
+      "Response time <60s",
+      "Resident satisfaction 4.9/5.0"
+    ],
+    benefits: [
+      "85% reduction in nighttime safety incidents and perceived risk",
+      "60-second response time with autonomous path lighting",
+      "4.9/5 resident satisfaction with 24/7 on-demand availability"
+    ],
+    features: [
+      "Autonomous flight path planning",
+      "High-lumen LED pathway lighting",
+      "Live video monitoring",
+      "Emergency alert integration"
+    ],
+    metrics: [
+      { label: "Safety", value: "85% ↓" },
+      { label: "Response", value: "<60s" },
+      { label: "Satisfaction", value: "4.9/5" }
+    ],
+    howItWorks: {
+      steps: [
+        "Resident requests escort via app",
+        "Drone launches autonomously",
+        "Path illumination activated",
+        "Live monitoring until destination",
+        "Auto-return to charging station"
+      ]
+    },
+    faqs: [
+      {
+        question: "How do I request a Guardian escort?",
+        answer: "Simply open the mobile app and tap 'Request Guardian'. The drone launches within 60 seconds and meets you at your location. You can also schedule recurring escorts for regular late-night arrivals."
+      },
+      {
+        question: "What if multiple residents need escorts?",
+        answer: "Our fleet management system queues requests and deploys multiple drones when needed. Most properties have 2-4 drones ensuring <2 minute wait times even during peak hours."
+      },
+      {
+        question: "Is someone monitoring the video feed?",
+        answer: "Yes, live feeds are monitored by our 24/7 security operations center. In emergency situations, they can immediately contact local authorities and provide live video evidence."
+      },
+      {
+        question: "What about privacy concerns?",
+        answer: "Video is only recorded during active escort missions with resident consent. Footage is encrypted, retained for 30 days for security purposes only, and never used for any other purpose. GDPR and POPIA compliant."
+      },
+      {
+        question: "How far can the Guardian escort me?",
+        answer: "Typical range is 500 meters with 15-minute flight time. Sufficient for parking to unit, amenities to unit, or property perimeter escort. System automatically alerts if destination exceeds range."
+      }
+    ]
   }
 };

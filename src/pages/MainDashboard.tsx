@@ -10,8 +10,8 @@ const MainDashboard = () => {
 
   return (
     <DashboardShell
-      title="SecureConnect™ Command Center"
-      subtitle="The operational nervous system for modern residential complexes"
+      title="CMD-Overview: Command Center"
+      subtitle="Estate map • Real-time KPIs • AI insights • Incident ticker"
     >
       {/* AI Insights Banner */}
       <div className="grid md:grid-cols-2 gap-4 mb-8">

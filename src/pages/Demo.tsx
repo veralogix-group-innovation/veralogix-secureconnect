@@ -72,14 +72,14 @@ const Demo = () => {
     const factor = value[0];
     setGlowIntensity(factor);
     
-    // Update CSS custom properties for glow
+    // Update CSS custom properties for glow (V2 Neon)
     document.documentElement.style.setProperty(
       '--glow-neon', 
-      `0 0 ${18 * factor}px rgba(31, 255, 0, ${0.55 * factor})`
+      `0 0 ${18 * factor}px rgba(182, 255, 46, ${0.55 * factor})`
     );
     document.documentElement.style.setProperty(
       '--glow-strong', 
-      `0 0 ${28 * factor}px rgba(79, 255, 0, ${0.65 * factor}), 0 0 ${56 * factor}px rgba(79, 255, 0, ${0.35 * factor})`
+      `0 0 ${28 * factor}px rgba(182, 255, 46, ${0.65 * factor}), 0 0 ${56 * factor}px rgba(182, 255, 46, ${0.35 * factor})`
     );
   };
 
@@ -102,10 +102,10 @@ const Demo = () => {
         <div className="flex justify-between items-start mb-12">
           <div className="text-center flex-1 animate-fade-in">
             <NeonHeading level="h1" className="mb-4">
-              Dashboard Simulator
+              SecureConnect™ Demo Dashboard
             </NeonHeading>
             <p className="text-xl text-muted-foreground">
-              Experience SecureConnect™ command center in action
+              Interactive demonstration of real-time building intelligence
             </p>
           </div>
           

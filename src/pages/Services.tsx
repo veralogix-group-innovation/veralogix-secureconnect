@@ -14,8 +14,41 @@ import {
   Heart,
   Building2,
   Plane,
-  Users
+  Users,
+  Shield
 } from "lucide-react";
+
+// Import service videos
+import iotSensorsVideo from "@/assets/services/iot-sensors.mp4";
+import aiConciergeVideo from "@/assets/services/ai-concierge.mp4";
+import biometricAccessVideo from "@/assets/services/biometric-access.mp4";
+import evChargingVideo from "@/assets/services/ev-charging.mp4";
+import arLeasingVideo from "@/assets/services/ar-leasing.mp4";
+import droneInspectionsVideo from "@/assets/services/drone-inspections.mp4";
+import dynamicPricingVideo from "@/assets/services/dynamic-pricing.mp4";
+import communityPlatformVideo from "@/assets/services/community-platform.mp4";
+import guardianFollowMeVideo from "@/assets/services/guardian-follow-me.mp4";
+import predictiveMaintenanceVideo from "@/assets/services/predictive-maintenance.mp4";
+import verticalFarmsVideo from "@/assets/services/vertical-farms.mp4";
+import virtualPmVideo from "@/assets/services/virtual-pm.mp4";
+import wellnessSensorsVideo from "@/assets/services/wellness-sensors.mp4";
+
+// Map video sources to service slugs
+const serviceVideos: Record<string, string> = {
+  "smart-iot-sensors": iotSensorsVideo,
+  "ai-concierge": aiConciergeVideo,
+  "biometric-access": biometricAccessVideo,
+  "ev-charging": evChargingVideo,
+  "ar-leasing": arLeasingVideo,
+  "drone-inspections": droneInspectionsVideo,
+  "dynamic-pricing": dynamicPricingVideo,
+  "community-platform": communityPlatformVideo,
+  "guardian-follow-me": guardianFollowMeVideo,
+  "predictive-maintenance": predictiveMaintenanceVideo,
+  "vertical-farms": verticalFarmsVideo,
+  "virtual-property-management": virtualPmVideo,
+  "wellness-monitoring": wellnessSensorsVideo,
+};
 
 const services = [
   {
@@ -85,6 +118,12 @@ const services = [
     slug: "drone-inspections"
   },
   {
+    title: "Guardian Follow Me Home",
+    description: "Autonomous drone escort service that lights your path and ensures safe passage through complex at night.",
+    icon: Shield,
+    slug: "guardian-follow-me"
+  },
+  {
     title: "Community Platform",
     description: "Social networking app for residents with event planning, classifieds, and neighborhood watch.",
     icon: Users,
@@ -125,6 +164,7 @@ const Services = () => {
                   icon={<IconComponent />}
                   ctaLabel="Explore"
                   ctaLink={`/services/${service.slug}`}
+                  videoSrc={serviceVideos[service.slug]}
                 />
               </div>
             );

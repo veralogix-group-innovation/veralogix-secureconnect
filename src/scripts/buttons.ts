@@ -33,27 +33,33 @@ export function initMagneticTilt() {
 /**
  * Initialize ripple effect for .btn--ripple buttons
  */
+let isRippleEffectInitialized = false;
+
 export function initRippleEffect() {
+  if (isRippleEffectInitialized) return;
+
   document.addEventListener('click', (e: MouseEvent) => {
     const target = e.target as HTMLElement;
     const btn = target.closest<HTMLElement>('.btn--ripple');
     if (!btn) return;
-    
+
     const r = btn.getBoundingClientRect();
     const x = e.clientX - r.left;
     const y = e.clientY - r.top;
-    
+
     const ripple = document.createElement('span');
     ripple.className = 'r';
     ripple.style.left = `${x}px`;
     ripple.style.top = `${y}px`;
-    
+
     btn.appendChild(ripple);
-    
+
     ripple.addEventListener('animationend', () => {
       ripple.remove();
     });
   });
+
+  isRippleEffectInitialized = true;
 }
 
 /**
