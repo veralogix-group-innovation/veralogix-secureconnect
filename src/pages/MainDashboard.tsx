@@ -1,5 +1,6 @@
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { KPICard } from "@/components/dashboard/KPICard";
+import { SEO } from "@/components/SEO";
 import { mockMainDashboard } from "@/data/dashboards/mainDashboard";
 import { Activity, Zap, Droplets, Car, Wrench, Heart, AlertTriangle, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,7 +14,13 @@ const MainDashboard = () => {
       title="CMD-Overview: Command Center"
       subtitle="Estate map • Real-time KPIs • AI insights • Incident ticker"
     >
+      <SEO
+        title="Command Center Demo — SecureConnect™ Dashboard"
+        description="Read-only SecureConnect™ command center: real-time KPIs, AI insights, energy trends and predictive maintenance queue across the estate."
+        path="/demo"
+      />
       {/* AI Insights Banner */}
+      <h2 className="sr-only">AI insights</h2>
       <div className="grid md:grid-cols-2 gap-4 mb-8">
         {aiInsights.map((insight, idx) => (
           <Card key={idx} className="glass border-primary/30 bg-gradient-to-br from-primary/10 to-secondary/10">
