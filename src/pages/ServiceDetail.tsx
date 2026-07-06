@@ -452,6 +452,12 @@ const ServiceDetail = () => {
                     >
                       How It Works
                     </a>
+                    <a
+                      href="#proof-points"
+                      className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
+                      Proof Points
                     <a 
                       href="#benefits" 
                       className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
