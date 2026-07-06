@@ -1,4 +1,5 @@
 import { CardFX } from "@/components/CardFX";
+import { SEO } from "@/components/SEO";
 import { NeonHeading } from "@/components/NeonHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
