@@ -128,10 +128,10 @@ const ServiceDetail = () => {
   return (
     <div className="min-h-screen py-20 px-4">
       <SEO
-        title={seoTitle.length > 60 ? `${service.title}` : seoTitle}
+        title={seoTitle}
         description={seoDesc}
         path={`/services/${slug}`}
-        jsonLd={[serviceLd, faqLd]}
+        jsonLd={[serviceLd, faqLd, breadcrumbLd]}
       />
       <div className="container mx-auto max-w-7xl">
         <Link to="/services">
