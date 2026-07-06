@@ -1,0 +1,8 @@
+/hero-poster.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/loading-poster.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/loading-desktop.mp4
+  Cache-Control: public, max-age=31536000, immutable
+/loading-mobile.mp4
+  Cache-Control: public, max-age=31536000, immutable
