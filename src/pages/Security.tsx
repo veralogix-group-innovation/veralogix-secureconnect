@@ -1,4 +1,5 @@
 import { NeonHeading } from "@/components/NeonHeading";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Lock, AlertTriangle, Database, FileCheck, Key, Server, Search } from "lucide-react";
 import {

@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { NeonHeading } from "@/components/NeonHeading";
+import { SEO } from "@/components/SEO";
 import { MetricPill } from "@/components/MetricPill";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";

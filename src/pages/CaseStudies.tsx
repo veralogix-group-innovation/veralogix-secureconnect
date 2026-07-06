@@ -1,4 +1,5 @@
 import { NeonHeading } from "@/components/NeonHeading";
+import { SEO } from "@/components/SEO";
 import { MetricPill } from "@/components/MetricPill";
 import { Building2, Users, Award, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
