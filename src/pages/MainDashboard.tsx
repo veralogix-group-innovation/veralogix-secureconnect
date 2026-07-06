@@ -40,6 +40,7 @@ const MainDashboard = () => {
       </div>
 
       {/* Real-time Overview Grid */}
+      <h2 className="sr-only">Real-time KPIs</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <KPICard
           title="IoT Operations"
@@ -82,6 +83,7 @@ const MainDashboard = () => {
       </div>
 
       {/* Detailed Sections */}
+      <h2 className="sr-only">Energy and maintenance detail</h2>
       <div className="grid lg:grid-cols-2 gap-6 mb-8">
         {/* Energy Trend */}
         <Card className="glass border-primary/30">
@@ -150,6 +152,7 @@ const MainDashboard = () => {
       </div>
 
       {/* Module Quick Actions */}
+      <h2 className="sr-only">Modules</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="glass border-primary/30 hover:border-primary/50 transition-colors cursor-pointer">
           <CardContent className="p-4 flex items-center gap-3">
