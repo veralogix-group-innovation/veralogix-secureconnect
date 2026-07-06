@@ -1,4 +1,5 @@
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
+import { SEO } from "@/components/SEO";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { mockTrusteesData } from "@/data/dashboards/trustees";
 import { Building2, TrendingUp, Leaf, Shield, Download } from "lucide-react";
@@ -22,6 +23,11 @@ const TrusteesDashboard = () => {
         </>
       }
     >
+      <SEO
+        title="Trustee Portfolio Dashboard — SecureConnect™"
+        description="Executive SecureConnect™ view for trustees: occupancy, arrears, DSO, ESG metrics and security posture across the portfolio."
+        path="/trustees"
+      />
       {/* Portfolio Overview */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card className="glass border-2 border-primary/50 bg-gradient-to-br from-primary/10 to-secondary/10">

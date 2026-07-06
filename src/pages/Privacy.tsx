@@ -1,4 +1,5 @@
 import { NeonHeading } from "@/components/NeonHeading";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Lock, FileText, Users, Phone, Cookie, Globe, Mail } from "lucide-react";
 import {
@@ -11,6 +12,11 @@ import {
 const Privacy = () => {
   return (
     <div className="min-h-screen py-20 px-4">
+      <SEO
+        title="Privacy Policy — Veralogix SecureConnect™"
+        description="How Veralogix SecureConnect™ collects, processes and safeguards resident data — POPIA-aware, consent-first, encrypted end-to-end."
+        path="/privacy"
+      />
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16 animate-fade-in">
           <NeonHeading level="h1" className="mb-4">

@@ -1,4 +1,5 @@
 import { NeonHeading } from "@/components/NeonHeading";
+import { SEO } from "@/components/SEO";
 import { MetricPill } from "@/components/MetricPill";
 import { Building2, Users, Award, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -131,8 +132,23 @@ const LazyVideo = ({ title, description, thumbnail }: { title: string; descripti
 };
 
 const CaseStudies = () => {
+  const articlesLd = caseStudies.map((s) => ({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${s.name} — ${s.kpiLabel}`,
+    about: s.name,
+    articleBody: s.narrative,
+    publisher: { "@type": "Organization", name: "Veralogix Group" },
+  }));
   return (
     <div className="min-h-screen py-20 px-4">
+      <SEO
+        title="Case Studies — SecureConnect™ Results"
+        description="Real deployments, measured outcomes: energy −32%, turnover −65%, uptime 99.7%. See how complexes transformed with Veralogix SecureConnect™."
+        path="/case-studies"
+        ogType="article"
+        jsonLd={articlesLd}
+      />
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -163,7 +179,7 @@ const CaseStudies = () => {
                       <Icon className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold mb-1">{study.name}</h3>
+                      <h2 className="text-2xl font-bold mb-1">{study.name}</h2>
                       <p className="text-sm text-muted-foreground">{study.location} • {study.units} units</p>
                     </div>
                   </div>

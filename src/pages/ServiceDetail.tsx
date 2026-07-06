@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { NeonHeading } from "@/components/NeonHeading";
+import { SEO } from "@/components/SEO";
 import { MetricPill } from "@/components/MetricPill";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";
@@ -72,8 +73,34 @@ const ServiceDetail = () => {
     );
   }
 
+  const serviceLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.capability,
+    provider: { "@type": "Organization", name: "Veralogix Group" },
+    areaServed: "ZA",
+  };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+  const seoTitle = `${service.title} — SecureConnect™`;
+  const seoDesc = service.capability.length > 160 ? service.capability.slice(0, 157) + "…" : service.capability;
+
   return (
     <div className="min-h-screen py-20 px-4">
+      <SEO
+        title={seoTitle.length > 60 ? `${service.title}` : seoTitle}
+        description={seoDesc}
+        path={`/services/${slug}`}
+        jsonLd={[serviceLd, faqLd]}
+      />
       <div className="container mx-auto max-w-7xl">
         <Link to="/services">
           <button className="btn btn--dust mb-8 h-11 px-6">
