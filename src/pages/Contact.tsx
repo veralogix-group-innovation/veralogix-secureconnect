@@ -74,6 +74,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen py-20 px-4">
+      <SEO
+        title="Contact Veralogix — Book a SecureConnect™ Demo"
+        description="Reach the Veralogix team to book a personalized SecureConnect™ demo for your complex. Email info@veralogix.com or send a message online."
+        path="/contact"
+      />
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <NeonHeading level="h1" className="mb-4">

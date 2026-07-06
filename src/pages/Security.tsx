@@ -12,6 +12,11 @@ import {
 const Security = () => {
   return (
     <div className="min-h-screen py-20 px-4">
+      <SEO
+        title="Security Practices — Veralogix SecureConnect™"
+        description="Enterprise-grade security for SecureConnect™: RBAC, MFA, AES-256 at rest, TLS 1.3 in transit, ISO 27001 and SOC 2 Type II controls."
+        path="/security"
+      />
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-16 animate-fade-in">
           <NeonHeading level="h1" className="mb-4">
