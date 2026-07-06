@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";
 import { FeatureDiagram } from "@/components/FeatureDiagram";
 import { serviceDetails } from "@/data/serviceDetails";
+import { serviceEnhancements } from "@/data/serviceEnhancements";
 import {
   Accordion,
   AccordionContent,
