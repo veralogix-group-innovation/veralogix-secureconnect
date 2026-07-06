@@ -187,7 +187,32 @@ const ServiceDetail = () => {
                 How It Works
               </h2>
               <FeatureDiagram steps={service.howItWorks.steps} />
+              {enhancement?.diagramCaption && (
+                <p className="text-sm text-muted-foreground italic mt-4 max-w-3xl leading-relaxed">
+                  {enhancement.diagramCaption}
+                </p>
+              )}
             </section>
+
+            {/* Proof Points */}
+            {enhancement?.proofPoints && enhancement.proofPoints.length > 0 && (
+              <section id="proof-points" aria-labelledby="proof-points-heading">
+                <h2 id="proof-points-heading" className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" style={{ marginBottom: 'var(--g3)' }}>
+                  Proof Points
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {enhancement.proofPoints.map((p, i) => (
+                    <Card key={i} className="glass border border-primary/30 hover:border-primary/60 transition-all">
+                      <CardContent className="p-6 space-y-2">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-primary">{p.label}</div>
+                        <div className="text-2xl font-bold text-foreground">{p.value}</div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{p.detail}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Benefits & Features */}
             <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--g4)' }} id="benefits">
