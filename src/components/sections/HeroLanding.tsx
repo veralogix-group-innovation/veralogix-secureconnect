@@ -64,6 +64,7 @@ export const HeroLanding = () => {
           playsInline
           preload="auto"
           muted
+          poster="/hero-poster.jpg"
           {...({ fetchpriority: "high" } as any)}
           aria-label="SecureConnect hero background"
         >
