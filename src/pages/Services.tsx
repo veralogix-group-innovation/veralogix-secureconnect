@@ -134,6 +134,11 @@ const services = [
 const Services = () => {
   return (
     <div className="px-4" style={{ paddingTop: 'var(--g4)', paddingBottom: 'calc(var(--g4) * 8)' }}>
+      <SEO
+        title="SecureConnect™ Services — 13 Smart Building Solutions"
+        description="Explore 13 SecureConnect™ services: IoT sensors, AI concierge, biometric access, EV charging, drone inspections, predictive maintenance and more."
+        path="/services"
+      />
       <div className="container mx-auto">
         <header className="text-center animate-fade-in" style={{ marginBottom: 'var(--g4)' }}>
           <NeonHeading level="h1" style={{ marginBottom: 'var(--g3)' }}>
