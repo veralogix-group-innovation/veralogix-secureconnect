@@ -64,7 +64,7 @@ export const HeroLanding = () => {
           playsInline
           preload="auto"
           muted
-          fetchPriority="high"
+          {...({ fetchpriority: "high" } as any)}
           aria-label="SecureConnect hero background"
         >
           {!prefersReducedMotion && (
