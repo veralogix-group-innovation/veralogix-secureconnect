@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle2, PlayCircle, Award, HelpCircle } from "lucide-react";
 import { FeatureDiagram } from "@/components/FeatureDiagram";
 import { serviceDetails } from "@/data/serviceDetails";
+import { serviceEnhancements } from "@/data/serviceEnhancements";
 import {
   Accordion,
   AccordionContent,
@@ -73,13 +74,32 @@ const ServiceDetail = () => {
     );
   }
 
+  const enhancement = slug ? serviceEnhancements[slug] : undefined;
+  const canonicalUrl = `https://secureconnect-app.veralogix-group.com/services/${slug}`;
+
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
     description: service.capability,
-    provider: { "@type": "Organization", name: "Veralogix Group" },
-    areaServed: "ZA",
+    serviceType: enhancement?.serviceType ?? service.title,
+    url: canonicalUrl,
+    provider: {
+      "@type": "Organization",
+      name: "Veralogix Group",
+      url: "https://secureconnect-app.veralogix-group.com",
+    },
+    areaServed: { "@type": "Country", name: "South Africa" },
+    audience: { "@type": "Audience", audienceType: "Residential complex operators, HOAs, trustees, managing agents" },
+    brand: { "@type": "Brand", name: "SecureConnect™" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${service.title} capabilities`,
+      itemListElement: service.features.map((f) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: f },
+      })),
+    },
   };
   const faqLd = {
     "@context": "https://schema.org",
@@ -90,16 +110,28 @@ const ServiceDetail = () => {
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
-  const seoTitle = `${service.title} — SecureConnect™`;
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://secureconnect-app.veralogix-group.com/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://secureconnect-app.veralogix-group.com/services" },
+      { "@type": "ListItem", position: 3, name: service.title, item: canonicalUrl },
+    ],
+  };
+  // Unique per-slug meta title (<=60 chars) and description (<=160 chars)
+  const rawTitle = `${service.title} | SecureConnect™`;
+  const seoTitle = rawTitle.length > 60 ? service.title.slice(0, 60) : rawTitle;
   const seoDesc = service.capability.length > 160 ? service.capability.slice(0, 157) + "…" : service.capability;
+
 
   return (
     <div className="min-h-screen py-20 px-4">
       <SEO
-        title={seoTitle.length > 60 ? `${service.title}` : seoTitle}
+        title={seoTitle}
         description={seoDesc}
         path={`/services/${slug}`}
-        jsonLd={[serviceLd, faqLd]}
+        jsonLd={[serviceLd, faqLd, breadcrumbLd]}
       />
       <div className="container mx-auto max-w-7xl">
         <Link to="/services">
@@ -155,7 +187,32 @@ const ServiceDetail = () => {
                 How It Works
               </h2>
               <FeatureDiagram steps={service.howItWorks.steps} />
+              {enhancement?.diagramCaption && (
+                <p className="text-sm text-muted-foreground italic mt-4 max-w-3xl leading-relaxed">
+                  {enhancement.diagramCaption}
+                </p>
+              )}
             </section>
+
+            {/* Proof Points */}
+            {enhancement?.proofPoints && enhancement.proofPoints.length > 0 && (
+              <section id="proof-points" aria-labelledby="proof-points-heading">
+                <h2 id="proof-points-heading" className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" style={{ marginBottom: 'var(--g3)' }}>
+                  Proof Points
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {enhancement.proofPoints.map((p, i) => (
+                    <Card key={i} className="glass border border-primary/30 hover:border-primary/60 transition-all">
+                      <CardContent className="p-6 space-y-2">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-primary">{p.label}</div>
+                        <div className="text-2xl font-bold text-foreground">{p.value}</div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{p.detail}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Benefits & Features */}
             <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--g4)' }} id="benefits">
@@ -394,6 +451,13 @@ const ServiceDetail = () => {
                       style={{ scrollBehavior: 'smooth' }}
                     >
                       How It Works
+                    </a>
+                    <a
+                      href="#proof-points"
+                      className="block text-muted-foreground hover:text-primary transition-colors py-1 px-2 rounded hover:bg-primary/10"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
+                      Proof Points
                     </a>
                     <a 
                       href="#benefits" 
