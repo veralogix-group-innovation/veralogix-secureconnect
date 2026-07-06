@@ -54,25 +54,29 @@ export const HeroLanding = () => {
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false;
 
-  const videoSrc = isMobile ? heroMobile : heroDesktop;
-
   return (
     <section className="hero-landing" aria-labelledby="hero-heading">
       <div className="hero-background">
         <video
           ref={videoRef}
-          key={videoSrc}
+          key={isMobile ? "m" : "d"}
           className={`hero-video ${loaded ? "opacity-100" : "opacity-0"}`}
           playsInline
           preload="auto"
           muted
+          {...({ fetchpriority: "high" } as any)}
           aria-label="SecureConnect hero background"
         >
           {!prefersReducedMotion && (
-            <source src={videoSrc} type="video/mp4" />
+            <>
+              {/* Browser only fetches the source whose media query matches — true breakpoint-aware loading */}
+              <source src={heroMobile} type="video/mp4" media="(max-width: 767px)" />
+              <source src={heroDesktop} type="video/mp4" media="(min-width: 768px)" />
+            </>
           )}
         </video>
       </div>
+
       
       <div className={`hero-content ${loaded ? 'hero-content--visible' : ''}`}>
         <h1 id="hero-heading" className="hero-title">

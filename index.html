@@ -18,16 +18,24 @@
       .skip-to-content:focus{left:50%;transform:translateX(-50%);top:1rem}
     </style>
     
-    <!-- Preconnect & Preload for performance -->
+    <!-- Preconnect to font CDNs (early handshake for LCP) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Preload critical loading-screen assets (LCP) -->
+
+    <!-- High-priority preload of the font stylesheet, then apply -->
+    <link rel="preload" as="style" fetchpriority="high"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+
+    <!-- Preload critical loading-screen assets (first paint / LCP) -->
     <link rel="preload" href="/loading-poster.jpg" as="image" type="image/jpeg" fetchpriority="high">
     <link rel="preload" href="/loading-desktop.mp4" as="video" type="video/mp4" media="(min-width: 768px)">
     <link rel="preload" href="/loading-mobile.mp4" as="video" type="video/mp4" media="(max-width: 767px)">
+
+    <!-- Preload the app entry so JS parse starts before HTML finishes -->
+    <link rel="modulepreload" href="/src/main.tsx">
+
 
     <!-- Open Graph -->
     
