@@ -24,6 +24,11 @@ const ManagingAgentDashboard = () => {
       title="CMD-Incidents: Managing Agent Center"
       subtitle="Incident triage • SLA tracking • Access control • EV load management"
     >
+      <SEO
+        title="Managing Agent Dashboard — SecureConnect™"
+        description="Ops control for managing agents: incident triage, SLA tracking, access control and EV load management inside SecureConnect™."
+        path="/managing-agent"
+      />
       {/* Command Center Overview */}
       <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
         <KPICard

@@ -23,6 +23,11 @@ const TrusteesDashboard = () => {
         </>
       }
     >
+      <SEO
+        title="Trustee Portfolio Dashboard — SecureConnect™"
+        description="Executive SecureConnect™ view for trustees: occupancy, arrears, DSO, ESG metrics and security posture across the portfolio."
+        path="/trustees"
+      />
       {/* Portfolio Overview */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card className="glass border-2 border-primary/50 bg-gradient-to-br from-primary/10 to-secondary/10">
