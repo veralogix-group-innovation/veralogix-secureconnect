@@ -9,14 +9,13 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Detect mobile on mount
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    
+
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -39,8 +38,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     };
 
     video.addEventListener("ended", handleEnded);
-    
-    // Play when video can play through
+
     if (video.readyState >= 3) {
       playVideo();
     } else {
@@ -52,19 +50,27 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     };
   }, [onComplete, videoSrc]);
 
-
   return (
-    <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
-      <video
-        ref={videoRef}
-        key={videoSrc}
-        className="w-full h-full object-contain"
-        muted
-        playsInline
-        preload="auto"
+    <div className="fixed inset-0 z-[9999] bg-[#0a0a0a] flex items-center justify-center p-4 md:p-8 lg:p-12">
+      <div
+        className="relative w-full max-w-[90vw] md:max-w-[85vw] lg:max-w-[80vw]"
+        style={{ aspectRatio: "16 / 9" }}
       >
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+        {/* Fallback background shown before video/poster loads */}
+        <div className="absolute inset-0 bg-[#0a0a0a]" />
+        <video
+          ref={videoRef}
+          key={videoSrc}
+          className="absolute inset-0 w-full h-full object-contain"
+          poster="/loading-poster.jpg"
+          muted
+          playsInline
+          preload="auto"
+          aria-label="Loading animation"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      </div>
     </div>
   );
 };
