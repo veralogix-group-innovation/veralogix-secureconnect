@@ -58,7 +58,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       <video
         ref={videoRef}
         key={videoSrc}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain"
         muted
         playsInline
         preload="auto"
