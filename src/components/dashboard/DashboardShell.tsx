@@ -39,10 +39,11 @@ export const DashboardShell = ({
                 variant="outline"
                 size="icon"
                 onClick={() => setShowNotifications(true)}
+                aria-label="Notifications"
                 className="relative border-primary/30 hover:bg-primary/10 hover:border-primary/50"
               >
-                <Bell className="h-5 w-5 text-primary" />
-                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 text-white text-xs flex items-center justify-center animate-pulse">
+                <Bell className="h-5 w-5 text-primary" aria-hidden="true" />
+                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 text-white text-xs flex items-center justify-center animate-pulse" aria-hidden="true">
                   3
                 </span>
               </Button>
