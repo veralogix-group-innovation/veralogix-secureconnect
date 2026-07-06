@@ -1,0 +1,34 @@
+# Veralogix SecureConnect™
+
+> Next-generation smart building solutions for residential complexes — AI-powered security, IoT sensors, biometric access, predictive maintenance, and intelligent management dashboards.
+
+Veralogix SecureConnect™ helps trustees, managing agents, and residents run safer, more efficient, more connected complexes. The site presents 13 services, live demo dashboards, and real-world case studies.
+
+## Pages
+
+- [Home](/): Overview of SecureConnect™ and the Veralogix vision.
+- [Services](/services): Full catalog of 13 smart-building services.
+- [Case Studies](/case-studies): Measured outcomes from real deployments.
+- [Demo Dashboard](/demo): Read-only command center simulation.
+- [Resident Dashboard](/residence): Resident-facing view of SecureConnect™.
+- [Trustee Dashboard](/trustees): Executive KPIs and governance surface.
+- [Managing Agent Dashboard](/managing-agent): Operations control center.
+- [Contact](/contact): Book a demo or reach the Veralogix team.
+- [Security](/security): Security architecture and compliance posture.
+- [Privacy](/privacy): POPIA-aware privacy policy.
+
+## Services
+
+- [Smart IoT Sensors](/services/smart-iot-sensors): Real-time environmental and energy intelligence.
+- [AI Concierge](/services/ai-concierge): 24/7 resident assistant with natural-language understanding.
+- [Biometric Access Control](/services/biometric-access): Touchless facial and fingerprint entry.
+- [Vertical Farming Systems](/services/vertical-farms): On-site hydroponic food production.
+- [Predictive Maintenance AI](/services/predictive-maintenance): ML-driven failure prevention.
+- [EV Charging Infrastructure](/services/ev-charging): Smart load-managed EV charging.
+- [AR Leasing Experience](/services/ar-leasing): Augmented reality tours and e-lease.
+- [Drone Roof Inspections](/services/drone-inspections): Automated aerial defect detection.
+- [Dynamic Pricing Engine](/services/dynamic-pricing): AI-driven rent optimization.
+- [Wellness Monitoring](/services/wellness-monitoring): Air-quality and comfort sensing.
+- [Virtual Property Management](/services/virtual-property-management): Cloud PM platform.
+- [Guardian Follow Me Home](/services/guardian-follow-me): Autonomous drone escort service.
+- [Community Platform](/services/community-platform): Resident social and event hub.

@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://secureconnect-app.veralogix-group.com/sitemap.xml
