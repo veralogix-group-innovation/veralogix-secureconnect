@@ -1,4 +1,5 @@
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
+import { SEO } from "@/components/SEO";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { StatusBadge } from "@/components/dashboard/StatusBadge";
 import { mockManagingAgentData } from "@/data/dashboards/managingAgent";

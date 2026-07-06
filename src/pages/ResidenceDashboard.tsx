@@ -1,4 +1,5 @@
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
+import { SEO } from "@/components/SEO";
 import { StatusBadge } from "@/components/dashboard/StatusBadge";
 import { mockResidenceData } from "@/data/dashboards/residence";
 import { Key, Users, Calendar, CreditCard, Zap, FileText } from "lucide-react";
@@ -13,6 +14,11 @@ const ResidenceDashboard = () => {
       title={`TEN-Home: ${resident.name}`}
       subtitle={`Unit ${resident.unit} • Balance • Bookings • Passes • Quick Actions`}
     >
+      <SEO
+        title="Resident Portal Demo — SecureConnect™"
+        description="Resident-facing SecureConnect™ view: balances, bookings, visitor passes, EV sessions and digital keys — all in one place."
+        path="/residence"
+      />
       {/* Quick Stats */}
       <div className="grid md:grid-cols-3 gap-6 mb-8">
         <Card className="glass border-2 border-primary/50 bg-gradient-to-br from-primary/10 to-secondary/10">

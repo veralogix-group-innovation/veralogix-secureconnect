@@ -1,4 +1,5 @@
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
+import { SEO } from "@/components/SEO";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { mockTrusteesData } from "@/data/dashboards/trustees";
 import { Building2, TrendingUp, Leaf, Shield, Download } from "lucide-react";
