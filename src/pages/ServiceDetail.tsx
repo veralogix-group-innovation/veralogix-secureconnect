@@ -74,13 +74,32 @@ const ServiceDetail = () => {
     );
   }
 
+  const enhancement = slug ? serviceEnhancements[slug] : undefined;
+  const canonicalUrl = `https://secureconnect-app.veralogix-group.com/services/${slug}`;
+
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
     description: service.capability,
-    provider: { "@type": "Organization", name: "Veralogix Group" },
-    areaServed: "ZA",
+    serviceType: enhancement?.serviceType ?? service.title,
+    url: canonicalUrl,
+    provider: {
+      "@type": "Organization",
+      name: "Veralogix Group",
+      url: "https://secureconnect-app.veralogix-group.com",
+    },
+    areaServed: { "@type": "Country", name: "South Africa" },
+    audience: { "@type": "Audience", audienceType: "Residential complex operators, HOAs, trustees, managing agents" },
+    brand: { "@type": "Brand", name: "SecureConnect™" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${service.title} capabilities`,
+      itemListElement: service.features.map((f) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: f },
+      })),
+    },
   };
   const faqLd = {
     "@context": "https://schema.org",
@@ -91,8 +110,20 @@ const ServiceDetail = () => {
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
-  const seoTitle = `${service.title} — SecureConnect™`;
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://secureconnect-app.veralogix-group.com/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://secureconnect-app.veralogix-group.com/services" },
+      { "@type": "ListItem", position: 3, name: service.title, item: canonicalUrl },
+    ],
+  };
+  // Unique per-slug meta title (<=60 chars) and description (<=160 chars)
+  const rawTitle = `${service.title} | SecureConnect™`;
+  const seoTitle = rawTitle.length > 60 ? service.title.slice(0, 60) : rawTitle;
   const seoDesc = service.capability.length > 160 ? service.capability.slice(0, 157) + "…" : service.capability;
+
 
   return (
     <div className="min-h-screen py-20 px-4">
