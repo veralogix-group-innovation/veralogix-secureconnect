@@ -24,8 +24,10 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/src/assets/hero-background.png" as="image" type="image/png" fetchpriority="high">
+    <!-- Preload critical loading-screen assets (LCP) -->
+    <link rel="preload" href="/loading-poster.jpg" as="image" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" href="/loading-desktop.mp4" as="video" type="video/mp4" media="(min-width: 768px)">
+    <link rel="preload" href="/loading-mobile.mp4" as="video" type="video/mp4" media="(max-width: 767px)">
 
     <!-- Open Graph -->
     
