@@ -12,6 +12,6 @@ Standard commands are defined in `package.json` scripts — use those rather tha
 
 Non-obvious notes:
 - Use npm (a package-lock.json is checked in). The unused bun.lockb should be removed from the repository to avoid dependency divergence and confusion.
-- Known pre-existing failures (not caused by environment setup): `npm run lint` reports a handful of errors/warnings in `src/components/ui/*` and `tailwind.config.ts`, and one Vitest test in `src/components/__tests__/CardFX.test.tsx` is timing-sensitive and fails consistently. Treat these as repo baseline, not setup breakage.
+- Known pre-existing failures (not caused by environment setup): npm run lint reports a handful of errors/warnings in src/components/ui/* and tailwind.config.ts. The timing-sensitive test in src/components/__tests__/CardFX.test.tsx should be skipped until fixed, rather than being allowed to fail consistently.
 - The contact form (`/contact`) shows a "Message Sent!" success state on submit, then intentionally resets the form back to placeholders after ~3 seconds (`setTimeout` in `src/pages/Contact.tsx`). The reset is expected behavior, not a bug.
 - A full-screen intro loading video plays on first visit per session (tracked via `sessionStorage` key `introVideoShown`); wait for it to finish before interacting.
