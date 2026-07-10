@@ -1,3 +1,6 @@
+---
+render_with_liquid: false
+---
 # Phase 3: Performance & Polish - COMPLETED ✅
 
 ## 3A) Lazy-Load Video Slots ✅
